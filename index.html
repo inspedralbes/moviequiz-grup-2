@@ -36,13 +36,13 @@
         </div>
         <div id="modalAdd" class="modal">
             <div class="modal-content">
-                <h4 id="modal-title" class="center-align">Movie Title</h4>
                 <div id="modal-image" class="center-align"></div>
+                <h4 id="modal-title" class="left-align">Movie Title</h4>
+                <h5 id="modal-director" class="left-align">Movie Director</h5>
+                <h6 id="modal-year" class="left-align">Year</h6>
                 <p id="modal-plot">Movie plot</p>
-
                 <ul class="collection" id="modal-ratings">
                 </ul>
-
                 <div id="modal-review" class="center-align">
                     <label>
                         <input name="rating" type="radio" value="1" />
@@ -75,7 +75,10 @@
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn" id="buttonConfirmarAfegir">Confirmar</a>
             </div>
-
+            <input type="hidden" name="year" id="year">
+            <input type="hidden" name="imdbID" id="imdbID">
+            <input type="hidden" name="nom" id="nom">
+            <input type="hidden" name="poster" id="poster">
 
         </div>
     </div>

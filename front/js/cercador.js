@@ -1,7 +1,7 @@
 window.onload = function () {
 
 
-
+    //INICIALIZAR MODALS
     var elems = document.querySelectorAll(".modal");
     var instances = M.Modal.init(elems);
 
@@ -9,11 +9,11 @@ window.onload = function () {
 
 
 
-
+    //GENERAR LAS PELICULAS Y SU MODAL CON INFORMACIÓN
     let contenedorPelis = document.getElementById("contenedorPelis");
     document.getElementById("buttonSearch").addEventListener("click", function () {
         let parametro = document.getElementById("cercar").value;
-        let url = `http://www.omdbapi.com/?apikey=cc87f99c&s=${parametro}`;
+        let url = `http://www.omdbapi.com/?apikey=cc87f99c&type=movie&s=${parametro}`;
         fetch(url)
             .then(function (res) {
                 return res.json();
@@ -44,10 +44,18 @@ window.onload = function () {
                             return res.json()
                         }).then(function (data) {
                             let info = data;
-
                             document.getElementById("modal-title").innerHTML = info.Title;
                             document.getElementById("modal-image").innerHTML = ` <img class="center-align"src="${info.Poster}" width=250 height=350>`
                             document.getElementById("modal-plot").innerHTML = info.Plot;
+                            document.getElementById("modal-year").innerHTML = info.Year;
+                            document.getElementById("modal-director").innerHTML = info.Director;
+
+                            document.getElementById("year").value = info.Year;
+                            document.getElementById("imdbID").value = e.target.id;
+                            document.getElementById("nom").value = info.Title;
+                            document.getElementById("poster").value = info.Poster;
+
+
                             let ulRatings = document.getElementById("modal-ratings");
                             let str = "";
                             info.Ratings.forEach(rating => {
@@ -80,6 +88,7 @@ window.onload = function () {
     });
 
 
+    //BUSCAR PELICULAS AL PULSAR ENTER EN LA BARRA DE BUSQUEDA
     document.getElementById("cercar").addEventListener("keyup", function (event) {
         if (event.key === "Enter") {
             document.getElementById("buttonSearch").click();
@@ -87,30 +96,38 @@ window.onload = function () {
     });
 
 
+    //ENVIAR DATOS AL PULSAR CONFIRMAR
     document.getElementById("buttonConfirmarAfegir").addEventListener("click", function () {
 
+
+        let year = document.getElementById("year").value;
+        let imdbID = document.getElementById("imdbID").value;
+        let nom = document.getElementById("nom").value;
+        let poster = document.getElementById("poster").value;
         let rating = document.querySelector('input[name="rating"]:checked').value;
-
         let comment = document.getElementById("comentari").value;
-        alert(rating);
-        alert(comment);
-
 
         const datosEnvio = new FormData();
 
         datosEnvio.append('rating', rating);
-
         datosEnvio.append('comment', comment);
+        datosEnvio.append('year', year);
+        datosEnvio.append('imdbID', imdbID);
+        datosEnvio.append('nom', nom);
+        datosEnvio.append('poster', poster);
 
-        fetch(`https://labs.inspedralbes.cat/~a19axechacan/login.php`, {
+
+        fetch(`https://labs.inspedralbes.cat/~a19axechacan/guardarPeliculas.php`, {
 
             method: 'POST',
-
+            mode: "no-cors",
             body: datosEnvio
 
         })
             .then(function (res) {
-                console.log(res);
+                return res
+            }).then(function (data) {
+                console.log(data)
             })
 
 
