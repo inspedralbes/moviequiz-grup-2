@@ -56,6 +56,8 @@ window.onload = function () {
                                     img = "front/img/Rotten_Tomatoes.svg"
                                 } else if (rating.Source === "Metacritic") {
                                     img = "front/img/Metacritic.svg"
+                                } else if (rating.Source === "Internet Movie Database") {
+                                    img = "front/img/IMDb.svg"
                                 }
                                 let ratingsDiv = ` <li class="collection-item avatar">
                                 <img src=${img} alt="" class="circle">
