@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="front/css/index.css">
     <title>Pelis Grup 2</title>
 </head>
 
@@ -16,27 +17,67 @@
     <div id="main-Container">
         <div class="search">
             <div class="row">
-                <form class="col s12">
+                <div class="col s12">
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s10 m11">
                             <i class="material-icons prefix">search</i>
                             <input id="cercar" type="text">
                             <label for="cercar">Cercar Pel·lícula</label>
-                            <a class="waves-effect waves-light btn-small"><i
-                                    class="material-icons right">cloud</i>button</a>
+                        </div>
+                        <div class="col s2 m1">
+                            <a id="buttonSearch" class="waves-effect waves-light btn-large"><i
+                                    class="material-icons ">send</i></a>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-        <div id="pelis">
+        <div id="contenedorPelis" class="row">
+        </div>
+        <div id="modalAdd" class="modal">
+            <div class="modal-content">
+                <h4 id="modal-title">Movie Title</h4>
+                <div id="modal-image"></div>
+                <p id="modal-plot">Movie plot</p>
+                <div id="modal-rating" class="center-align">
+                    <label>
+                        <input name="rating" type="radio" value="1" />
+                        <span>1</span>
+                    </label>
+                    <label>
+                        <input name="rating" type="radio" value="2" />
+                        <span>2</span>
+                    </label>
+                    <label>
+                        <input name="rating" type="radio" value="3" />
+                        <span>3</span>
+                    </label>
+                    <label>
+                        <input name="rating" type="radio" value="4" />
+                        <span>4</span>
+                    </label>
+                    <label>
+                        <input name="rating" type="radio" value="5" />
+                        <span>5</span>
+                    </label>
+                </div>
+                <div id="modal-comment">
+                    <div class="input-field col s12">
+                        <textarea id="comentari" name="comentari" class="materialize-textarea"></textarea>
+                        <label for="comentari">Comentari</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn" id="buttonAfegir">Confirmar</a>
+            </div>
+
+
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-
-    </script>
+    <script src="front/js/cercador.js"></script>
 </body>
 
 </html>

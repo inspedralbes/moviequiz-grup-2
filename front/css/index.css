@@ -1,0 +1,24 @@
+
+
+body{
+    background-color: #BFA19F;
+    margin: 5%;
+}
+
+.card-image{
+    padding-top: 5%;
+}
+
+
+.card:hover > .card-image>img{
+    filter: brightness(50%)
+}
+.card>.card-action>a{
+    width: 100%;
+    background-color: #696DBF;
+}
+
+.card > .card-image>img{
+    transition: all 500ms ease;
+}
+
