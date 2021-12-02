@@ -20,7 +20,7 @@ $conn = new mysqli($servername, $username, $password, $db);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
+
 
 
 
@@ -40,16 +40,17 @@ $poster = $_POST["poster"];
 $sql = "SELECT * FROM pelicula WHERE imdbID='".$imdbID."'";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    echo "error";
-  } else {
+if ($result->num_rows == 0) {
+    
     $sql = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
     VALUES ('".$imdbID."', '".$nom."', '".$poster."',".$year.")";
 
     if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
+   // echo "OK";
     } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+   // echo "Error: " . $sql . "<br>" . $conn->error;
     }
   }
+  echo "OK";
+
 ?>

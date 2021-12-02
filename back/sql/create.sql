@@ -62,8 +62,8 @@ INSERT INTO `usuari` (`id`, `nomUsuari`, `nom`, `cognom`, `password`, `email`, `
 --
 
 CREATE TABLE `usu_peli` (
-  `id` int(11) NOT NULL,
-  `ImdbID` varchar(50) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
+  `ImdbID` varchar(50) NOT NULL PRIMARY KEY,
   `comentari` text NOT NULL,
   `puntuacio` int(11) NOT NULL
 ) ;

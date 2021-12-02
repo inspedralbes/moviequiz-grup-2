@@ -2,8 +2,8 @@ window.onload = function () {
 
 
     //INICIALIZAR MODALS
-    var elems = document.querySelectorAll(".modal");
-    var instances = M.Modal.init(elems);
+    let elem = document.getElementById("modalAdd");
+    let instances = M.Modal.init(elem);
 
 
 
@@ -99,36 +99,69 @@ window.onload = function () {
     //ENVIAR DATOS AL PULSAR CONFIRMAR
     document.getElementById("buttonConfirmarAfegir").addEventListener("click", function () {
 
+        let modal = M.Modal.getInstance(document.getElementById("modalAdd"));
 
-        let year = document.getElementById("year").value;
-        let imdbID = document.getElementById("imdbID").value;
-        let nom = document.getElementById("nom").value;
-        let poster = document.getElementById("poster").value;
-        let rating = document.querySelector('input[name="rating"]:checked').value;
-        let comment = document.getElementById("comentari").value;
+        Swal.fire({
+            title: '¿Vols enviar aquesta crítica?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Sí',
+            denyButtonText: 'No',
+            customClass: {
+                actions: 'my-actions',
+                cancelButton: 'order-1 right-gap',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        const datosEnvio = new FormData();
 
-        datosEnvio.append('rating', rating);
-        datosEnvio.append('comment', comment);
-        datosEnvio.append('year', year);
-        datosEnvio.append('imdbID', imdbID);
-        datosEnvio.append('nom', nom);
-        datosEnvio.append('poster', poster);
+                let year = document.getElementById("year").value;
+                let imdbID = document.getElementById("imdbID").value;
+                let nom = document.getElementById("nom").value;
+                let poster = document.getElementById("poster").value;
+                let rating = document.querySelector('input[name="rating"]:checked').value;
+                let comment = document.getElementById("comentari").value;
+
+                const datosEnvio = new FormData();
+
+                datosEnvio.append('rating', rating);
+                datosEnvio.append('comment', comment);
+                datosEnvio.append('year', year);
+                datosEnvio.append('imdbID', imdbID);
+                datosEnvio.append('nom', nom);
+                datosEnvio.append('poster', poster);
 
 
-        fetch(`http://localhost/pruebas/guardarPeliculas.php`, {
 
-            method: 'POST',
-            body: datosEnvio
+                fetch(`http://localhost/pruebas/guardarPeliculas.php`, {
 
+                    method: 'POST',
+                    body: datosEnvio
+
+                }).then(function (res) {
+                    console.log(res)
+                    return res.text()
+                }).then(function (result) {
+                    console.log(result)
+                    if (result === "OK") {
+                        Swal.fire('Saved!', '', 'success')
+                        modal.close();
+                    } else {
+                        Swal.fire(
+                            'Error',
+                            'Algo no ha funcionat correctament',
+                            'error'
+                        )
+                    }
+                })
+
+            }
         })
-            .then(function (res) {
-                console.log(res)
-                return res.text()
-            }).then(function (data) {
-                console.log(data)
-            })
+
+
+
 
 
     })
