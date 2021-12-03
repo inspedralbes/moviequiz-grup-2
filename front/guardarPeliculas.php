@@ -8,13 +8,15 @@ if ($method == "OPTIONS") {
   die();
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "projectePelis";
+require_once("back/sql/config.php");
+
+$db = $config["db"];
+
+
+
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $db);
+$conn = new mysqli($db["server"], $db["username"], $db["password"], $db["db"]);
 
 // Check connection
 if ($conn->connect_error) {
