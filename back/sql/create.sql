@@ -1,7 +1,3 @@
-DROP DATABASE IF EXISTS projectepelis;
-
-CREATE DATABASE projectepelis;
-
 DROP TABLE IF EXISTS usu_peli;
 
 DROP TABLE IF EXISTS usuari;
@@ -23,7 +19,7 @@ CREATE TABLE `pelicula` (
   `nom` varchar(50) NOT NULL,
   `poster` varchar(150) NOT NULL,
   `estrena` int(11) NOT NULL
-) ;
+);
 
 --
 -- Bolcament de dades per a la taula `pelicula`
@@ -46,7 +42,7 @@ CREATE TABLE `usuari` (
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `karma` tinyint(4) NOT NULL DEFAULT 0
-);
+) ;
 
 --
 -- Bolcament de dades per a la taula `usuari`
@@ -62,8 +58,8 @@ INSERT INTO `usuari` (`id`, `nomUsuari`, `nom`, `cognom`, `password`, `email`, `
 --
 
 CREATE TABLE `usu_peli` (
-  `id` int(11) NOT NULL PRIMARY KEY,
-  `ImdbID` varchar(50) NOT NULL PRIMARY KEY,
+  `id` int(11) NOT NULL,
+  `ImdbID` varchar(50) NOT NULL,
   `comentari` text NOT NULL,
   `puntuacio` int(11) NOT NULL
 ) ;
@@ -90,6 +86,7 @@ ALTER TABLE `usuari`
 -- Índexs per a la taula `usu_peli`
 --
 ALTER TABLE `usu_peli`
+  ADD PRIMARY KEY (`ImdbID`),
   ADD KEY `fk_idUsuari` (`id`),
   ADD KEY `fk_idPelicula` (`ImdbID`);
 
