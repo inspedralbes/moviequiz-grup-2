@@ -4,8 +4,8 @@ header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Conte
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 $method = $_SERVER['REQUEST_METHOD'];
-if($method == "OPTIONS") {
-    die();
+if ($method == "OPTIONS") {
+  die();
 }
 
 $servername = "localhost";
@@ -37,20 +37,24 @@ $poster = $_POST["poster"];
 
 
 
-$sql = "SELECT * FROM pelicula WHERE imdbID='".$imdbID."'";
+$sql = "SELECT * FROM pelicula WHERE imdbID='" . $imdbID . "'";
 $result = $conn->query($sql);
 
 if ($result->num_rows == 0) {
-    
-    $sql = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
-    VALUES ('".$imdbID."', '".$nom."', '".$poster."',".$year.")";
 
-    if ($conn->query($sql) === TRUE) {
-   // echo "OK";
-    } else {
-   // echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-  }
+  $sql = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
+    VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ")";
+  $conn->query($sql);
+}
+
+
+
+$sql = "INSERT INTO usu_peli (id, imdbID, comentari, puntuacio)
+VALUES (1, '" . $imdbID . "', '" . $comment . "'," . $rating . ")";
+
+
+if ($conn->query($sql) === TRUE) {
   echo "OK";
-
-?>
+} else {
+  echo "ERROR";
+}
