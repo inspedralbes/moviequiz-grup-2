@@ -5,7 +5,8 @@ window.onload = function () {
     let elem = document.getElementById("modalAdd");
     let instances = M.Modal.init(elem);
 
-
+    var sidenavElems = document.querySelectorAll('.sidenav');
+    var sidenavs = M.Sidenav.init(sidenavElems);
 
 
 
