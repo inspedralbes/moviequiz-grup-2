@@ -1,5 +1,5 @@
 <?php
 
 $config = array(
-    "db" => array("server" => "", "username" => "", "password" => "", "db" => "")
+    "db" => array("server" => "localhost", "username" => "root", "password" => "", "db" => "projectePelis")
 );
