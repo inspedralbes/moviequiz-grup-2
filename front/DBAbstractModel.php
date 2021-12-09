@@ -47,8 +47,14 @@ abstract class DBAbstractModel
     protected function execute_single_query()
     {
         $this->open_connection();
-        $this->conn->query($this->query);
+        $succes = 0;
+        if ($result =  $this->conn->query($this->query)) {
+            $succes = 1;
+        } else {
+            $succes = 0;
+        }
         $this->close_connection();
+        return $succes;
     }
 
     protected function get_results_from_query()

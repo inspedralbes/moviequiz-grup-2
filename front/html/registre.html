@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+
+    <label for="username">ID Usuari</label>
+    <input type="text" name="username" required id="username"><br>
+
+    <label for="nom">Nom</label>
+    <input type="text" name="nom" id="nom"><br>
+
+    <label for="cognoms">Cognoms</label>
+    <input type="text" name="cognoms" id="cognoms"><br>
+
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email"><br>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password"><br>
+
+    <button type="submit" id="registre">registrar</button>
+
+</body>
+<script>
+
+    document.getElementById("registre").addEventListener("click", function () {
+
+
+        let usuari = document.getElementById("username").value;
+        let nom = document.getElementById("nom").value;
+        let cognoms = document.getElementById("cognoms").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+
+
+        const datosEnvio = new FormData();
+
+        datosEnvio.append('user', usuari);
+        datosEnvio.append('nom', nom);
+        datosEnvio.append('cognom', cognoms);
+        datosEnvio.append('email', email);
+        datosEnvio.append('password', password);
+
+        console.log(datosEnvio);
+
+
+
+
+        fetch(`http://localhost/pruebas/controller.php?action=registrarUser`, {
+
+            method: 'POST',
+            body: datosEnvio
+
+        }).then(function (res) {
+            console.log(res)
+            return res.text()
+        })
+
+    });
+
+
+
+</script>
+
+</html>
