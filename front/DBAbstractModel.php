@@ -32,10 +32,10 @@ abstract class DBAbstractModel
         require_once("config.php");
 
         $db = $config["db"];
-        $this->db_host = $db["server"];
-        $this->db_user = $db["username"];
-        $this->db_pass = $db["password"];
-        $this->db_name = $db["db"];
+        self::$db_host = $db["server"];
+        self::$db_user = $db["username"];
+        self::$db_pass = $db["password"];
+        self::$db_name = $db["db"];
         $this->conn = new mysqli(self::$db_host, self::$db_user, self::$db_pass, $this->db_name);
     }
 
