@@ -34,30 +34,45 @@
 </form>
 
 <?php
+    comprobauser();
 
 
 
-
-
-    comprobauser($conn);
-
-    function comprobauser($conn)
+    function comprobauser()
     {
 
+        print_r($_POST);
 
-        $nom = $_POST["nom"];
-        $username = $_POST["username"];
+            $nom = $_POST["nom"];
+            $usuari = $_POST["username"];
 
-        $cognoms = $_POST["cognoms"];
-        $email = $_POST["email"];
+            $cognoms = $_POST["cognoms"];
+            $email = $_POST["email"];
 
-        $password = $_POST["password"];
-        $passwordr = $_POST["passwordr"];
+            $passwordu = $_POST["password"];
+            $passwordr = $_POST["passwordr"];
 
-        $sql = "SELECT * FROM usuari WHERE nomUsuari ='" . $username . "'";
-        $conn->query($sql);
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $db = "projectePelis";
+
+            $conn = new mysqli($servername, $username, $password, $db);
+
+            if (!$conn->query("INSERT INTO usuari (id, nomUsuari, nom,cognom, password, email, karma )
+        VALUES (5, '" . $usuari . "', '" . $nom . "', '" . $cognoms . "', '" . $passwordu . "', '" . $email . "', 0)")) {
+                echo("Error description: " . $conn->error);
+            }
+
+
     }
 
+
+    function insertuser(){
+
+
+
+    }
 
 
     function get_results_from_query() {
@@ -68,12 +83,15 @@
         $db = "projectePelis";
 
         $conn = new mysqli($servername, $username, $password, $db);
+        $result = $conn->query("SELECT * from usuari");
+        printf("Select returned %d rows.\n", $result->num_rows);
 
-    $result = $this->conn->query($this->query);
-    for ($i=0;$i<$result->num_rows;$i++)
-      $this->rows[$i]=$result->fetch_assoc();
-    $result->close();
-    $this->close_connection();
+        if ($result = $conn -> query("SELECT * from usuari")) {
+            while ($row = $result -> fetch_row()) {
+                printf ("%s (%s) %s\n", $row[0], $row[1], $row[2]);
+            }
+            $result -> free_result();
+        }
   }
 
 
