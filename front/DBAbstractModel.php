@@ -29,7 +29,7 @@ abstract class DBAbstractModel
     private function open_connection()
     {
 
-        require_once("back/sql/config.php");
+        require_once("config.php");
 
         $db = $config["db"];
         $this->db_host = $db["server"];
