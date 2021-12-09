@@ -1,34 +1,79 @@
 <?php
-require_once("DBAbstractModel");
 
+// magic constant
+require_once("DBAbstractModel.php");
 
 class pelicula extends DBAbstractModel
 {
-    private $imdbID;
+
     private $nom;
+    private $imdbID;
     private $poster;
     private $estrena;
 
+    public $message;
 
-    public function selectAll(){
-
+    function __construct()
+    {
+        $this->db_name = "projectePelis";
     }
 
-    public function select(){
-
+    function __toString()
+    {
+        return "WIP";
     }
 
-    public function update(){
-
+    function __destruct()
+    {
     }
 
-    public function delete(){
+    //select dels camps passats de tots els registres
+    //stored in $rows property
+    public function selectAll($fields = array())
+    {
 
+        $this->query = "SELECT ";
+        $firstField = true;
+        for ($i = 0; $i < count($fields); $i++) {
+            if ($firstField) {
+                $this->query .= $fields[$i];
+                $firstField = false;
+            } else $this->query .= ", " . $fields[$i];
+        }
+        $this->query .= " FROM persones";
+        $this->get_results_from_query();
+        return $this->rows;
     }
 
-    public function insert(){
-
+    public function select($nom = "")
+    {
+        $this->query = "SELECT * FROM PERSONES WHERE nom='" . $nom . "'";
+        $this->get_results_from_query();
+        return $this->rows;
     }
 
-    
+
+    public function insert($dadesPeli = array())
+    {
+
+
+        if (array_key_exists("imdbID", $dadesPeli)) {
+            $imdbID = $dadesPeli["imdbID"];
+            $nom = $dadesPeli["nom"];
+            $poster = $dadesPeli["poster"];
+            $year = $dadesPeli["year"];
+
+            $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
+            VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ")";
+            $this->execute_single_query();
+        }
+    }
+
+    public function update($userData = array())
+    {
+    }
+
+    public function delete($nom = "")
+    {
+    }
 }

@@ -4,8 +4,11 @@
 abstract class DBAbstractModel
 {
 
-    private static $db_host = "localhost";
-    private static $db_user = "root";
+
+
+
+    private static $db_host = "";
+    private static $db_user = "";
     private static $db_pass = "";
 
 
@@ -25,6 +28,14 @@ abstract class DBAbstractModel
 
     private function open_connection()
     {
+
+        require("config.php");
+
+        $db = $config["db"];
+        self::$db_host = $db["server"];
+        self::$db_user = $db["username"];
+        self::$db_pass = $db["password"];
+        $this->db_name = $db["db"];
         $this->conn = new mysqli(self::$db_host, self::$db_user, self::$db_pass, $this->db_name);
     }
 
@@ -51,4 +62,4 @@ abstract class DBAbstractModel
     }
 }
 
-?>  
+?>

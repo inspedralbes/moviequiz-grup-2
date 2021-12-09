@@ -136,7 +136,7 @@ window.onload = function () {
 
 
 
-                fetch(`http://localhost/pruebas/controller.php?action=`, {
+                fetch(`http://localhost/pruebas/controller.php?action=insertarPelicula`, {
 
                     method: 'POST',
                     body: datosEnvio
