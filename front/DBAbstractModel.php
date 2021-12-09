@@ -35,7 +35,7 @@ abstract class DBAbstractModel
         self::$db_host = $db["server"];
         self::$db_user = $db["username"];
         self::$db_pass = $db["password"];
-        self::$db_name = $db["db"];
+        $this->db_name = $db["db"];
         $this->conn = new mysqli(self::$db_host, self::$db_user, self::$db_pass, $this->db_name);
     }
 

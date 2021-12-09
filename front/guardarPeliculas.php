@@ -8,20 +8,8 @@ if ($method == "OPTIONS") {
   die();
 }
 
-require_once("back/sql/config.php");
-
-$db = $config["db"];
 
 
-
-
-// Create connection
-$conn = new mysqli($db["server"], $db["username"], $db["password"], $db["db"]);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 
 
