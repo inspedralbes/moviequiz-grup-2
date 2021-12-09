@@ -78,13 +78,15 @@
 
   <script>
 
-    Document.getElementById("buttonLogin").addEventListener('click', function () {
+    /*Document.getElementById("buttonLogin").addEventListener('click', function () {
         let textemail= Document.getElementById("email").addEventListener;
         let textpassword= Document.getElementById("password").addEventListener;
 
         const datosEnvio = new FormData();
             datosEnvio.append('username', textemail);
             datosEnvio.append('pwd', textpassword);
+
+            console.log("textemail");
 
             fetch(``, {
                 method: 'POST',
@@ -103,7 +105,7 @@
                 });
     })
 
-    /*var app = angular.module('mainModule', []);
+    var app = angular.module('mainModule', []);
 
         app.controller('mainController', function($scope, $http){ //o scope liga o js e o template
         $scope.nome = 'Valor Inicial';
@@ -118,6 +120,50 @@
 
 <?php
 
+    class pelicula extends DBAbstractModel
+    {
+
+        private $nom;
+        private $imdbID;
+        private $poster;
+        private $estrena;
+
+        public $message;
+
+        function __construct()
+        {
+            $this->db_name = "projectePelis";
+        }
+
+        function __toString()
+        {
+            return "WIP";
+        }
+
+        function __destruct()
+        {
+        }
+
+        function cogerDatos()
+        {
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+        }
+
+        public function select($email = "")
+        {
+            $this->query = "SELECT * FROM PERSONES WHERE email='" . $email . "'";
+            $this->get_results_from_query();
+            return $this->rows;
+        }
+
+        public function select($password = "")
+        {
+            $this->query = "SELECT * FROM PERSONES WHERE password='" . $password . "'";
+            $this->get_results_from_query();
+            return $this->rows;
+        }
+    }
 
 ?>
 
