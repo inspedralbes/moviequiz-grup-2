@@ -142,11 +142,10 @@ window.onload = function () {
                     body: datosEnvio
 
                 }).then(function (res) {
-                    console.log(res)
-                    return res.text()
+                    return res.json()
                 }).then(function (result) {
-                    console.log(result)
-                    if (result === "OK") {
+                    console.log(result.result)
+                    if (result.result === "OK") {
                         Swal.fire('Saved!', '', 'success')
                         modal.close();
                     } else {

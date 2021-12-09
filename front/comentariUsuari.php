@@ -3,13 +3,8 @@
 // magic constant
 require_once("DBAbstractModel.php");
 
-class pelicula extends DBAbstractModel
+class comentariUsuari extends DBAbstractModel
 {
-
-    private $nom;
-    private $imdbID;
-    private $poster;
-    private $estrena;
 
     public $message;
 
@@ -53,20 +48,15 @@ class pelicula extends DBAbstractModel
     }
 
 
-    public function insert($dadesPeli = array())
+    public function insert($dadesPeli = array(), $dadesComentari = array())
     {
-
-
-        if (array_key_exists("imdbID", $dadesPeli)) {
-            $imdbID = $dadesPeli["imdbID"];
-            $nom = $dadesPeli["nom"];
-            $poster = $dadesPeli["poster"];
-            $year = $dadesPeli["year"];
-
-            $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
-            VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ")";
-            $this->execute_single_query();
-        }
+        $imdbID = $dadesPeli["imdbID"];
+        $idUsuari = $dadesComentari["id"];
+        $comment =  $dadesComentari["comentari"];
+        $rating = $dadesComentari["rating"];
+        $this->query = "INSERT INTO usu_peli (id, imdbID, comentari, puntuacio)
+        VALUES ($idUsuari, '" . $imdbID . "', '" . $comment . "'," . $rating . ")";
+        return $this->execute_single_query();
     }
 
     public function update($userData = array())
