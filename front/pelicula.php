@@ -55,17 +55,20 @@ class pelicula extends DBAbstractModel
 
     public function insert($dadesPeli = array())
     {
-
-
         if (array_key_exists("imdbID", $dadesPeli)) {
             $imdbID = $dadesPeli["imdbID"];
-            $nom = $dadesPeli["nom"];
-            $poster = $dadesPeli["poster"];
-            $year = $dadesPeli["year"];
 
-            $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
-            VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ")";
-            $this->execute_single_query();
+            $result = $this->select($imdbID);
+
+            if (count($result) == 0) {
+                $nom = $dadesPeli["nom"];
+                $poster = $dadesPeli["poster"];
+                $year = $dadesPeli["year"];
+
+                $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
+                VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ")";
+                $this->execute_single_query();
+            }
         }
     }
 
