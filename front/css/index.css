@@ -24,4 +24,12 @@ body{
     transition: all 500ms ease;
 }
 
+#modal1{
+    overflow: hidden;
+}
+
+.login-form{
+    margin: 2%;
+}
+
 

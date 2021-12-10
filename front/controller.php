@@ -12,7 +12,7 @@ if ($method == "OPTIONS") {
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
 
-$peticions = array("insertarPelicula", "insertarComentarioValoracion");
+$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser");
 
 function handler($peticions)
 {
@@ -72,6 +72,25 @@ function handler($peticions)
         }
         echo json_encode($json);
     }
+
+
+    if ($event === "registrarUser") {
+        $dadesUser = array(
+            "nomUsuari" => $_POST["user"],
+            "nom" => $_POST["nom"],
+            "cognom" => $_POST["cognom"],
+            "password" => $_POST["password"],
+            "email" => $_POST["email"],
+            "karma" => 0,
+
+        );
+        print_r($dadesUser);
+        $usuari = new usuari();
+        $usuari->insert($dadesUser);
+    }
+
+
+
 }
 
 
