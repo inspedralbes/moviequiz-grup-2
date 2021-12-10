@@ -87,7 +87,7 @@ ALTER TABLE `usuari`
 -- Índexs per a la taula `usu_peli`
 --
 ALTER TABLE `usu_peli`
-  ADD PRIMARY KEY (`ImdbID`),
+  ADD PRIMARY KEY (`ImdbID`, `id`),
   ADD KEY `fk_idUsuari` (`id`),
   ADD KEY `fk_idPelicula` (`ImdbID`);
 
