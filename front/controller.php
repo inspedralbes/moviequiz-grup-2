@@ -31,7 +31,7 @@ function handler($peticions)
             "poster" => $_POST["poster"]
         );
         $dadesComentari = array(
-            "id" => 1,
+            "id" => 2,
             "comentari" => $_POST["comment"],
             "rating" => $_POST["rating"]
         );
@@ -50,8 +50,10 @@ function handler($peticions)
             } else {
                 //La peli no la té guardada l'usuari
                 $pelicula->increaseNFavorits($dadesPelicula["imdbID"]);
-                $comentariUsuari->insert($dadesPelicula, $dadesComentari);
-                $result = true;
+                $succes = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
+                if ($succes == 0) {
+                    $result = false;
+                } else $result = true;
             }
         } else {
             //La peli no està guardada en la base de dades
