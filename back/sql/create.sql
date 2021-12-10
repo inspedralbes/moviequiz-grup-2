@@ -18,7 +18,8 @@ CREATE TABLE `pelicula` (
   `ImdbID` varchar(50) NOT NULL,
   `nom` varchar(50) NOT NULL,
   `poster` varchar(150) NOT NULL,
-  `estrena` int(11) NOT NULL
+  `estrena` int(11) NOT NULL,
+  `nFavorits` int(11) NOT NULL
 );
 
 --

@@ -24,26 +24,20 @@ class comentariUsuari extends DBAbstractModel
 
     //select dels camps passats de tots els registres
     //stored in $rows property
-    public function selectAll($fields = array())
+    public function selectAll($imdbID = "", $idUsuari = "")
     {
 
-        $this->query = "SELECT ";
-        $firstField = true;
-        for ($i = 0; $i < count($fields); $i++) {
-            if ($firstField) {
-                $this->query .= $fields[$i];
-                $firstField = false;
-            } else $this->query .= ", " . $fields[$i];
-        }
-        $this->query .= " FROM persones";
+        $this->query = "SELECT * from usu_peli where id='" . $idUsuari . "' and imdbID='" . $imdbID . "'";
         $this->get_results_from_query();
+
         return $this->rows;
     }
 
-    public function select($imdbID = "")
+    public function select($imdbID = "", $idUsuari = "")
     {
-        $this->query = "SELECT * FROM pelicula WHERE imdbID='" . $imdbID . "'";
+        $this->query = "SELECT * from usu_peli where id='" . $idUsuari . "' and imdbID='" . $imdbID . "'";
         $this->get_results_from_query();
+
         return $this->rows;
     }
 

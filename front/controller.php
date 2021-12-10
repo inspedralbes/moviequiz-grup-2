@@ -35,10 +35,33 @@ function handler($peticions)
             "comentari" => $_POST["comment"],
             "rating" => $_POST["rating"]
         );
-        $pelicula = new pelicula();
-        $pelicula->insert($dadesPelicula);
+
         $comentariUsuari = new comentariUsuari();
-        $result = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
+        $pelicula = new pelicula();
+
+
+        $result = false;
+        if ($pelicula->select($dadesPelicula["imdbID"])) {
+            //La peli està guardada en la base de dades
+
+            if ($comentariUsuari->select($dadesPelicula["imdbID"], $dadesComentari["id"])) {
+                //La peli ja la té guardada l'usuari
+                $result = false;
+            } else {
+                //La peli no la té guardada l'usuari
+                $pelicula->increaseNFavorits($dadesPelicula["imdbID"]);
+                $comentariUsuari->insert($dadesPelicula, $dadesComentari);
+                $result = true;
+            }
+        } else {
+            //La peli no està guardada en la base de dades
+
+            $pelicula->insert($dadesPelicula);
+            $result = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
+        }
+
+
+
         $json = array("result" => "");
         if ($result == true) {
             $json["result"] = "OK";

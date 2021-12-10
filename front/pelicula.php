@@ -65,11 +65,17 @@ class pelicula extends DBAbstractModel
                 $poster = $dadesPeli["poster"];
                 $year = $dadesPeli["year"];
 
-                $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena)
-                VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ")";
+                $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena, nfavorits)
+                VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ",1)";
                 $this->execute_single_query();
             }
         }
+    }
+
+    public function increaseNFavorits($imdbID)
+    {
+        $this->query = "UPDATE `pelicula` SET `nFavorits` = nFavorits+1 WHERE `pelicula`.`ImdbID` = '" . $imdbID . "'; ";
+        $this->execute_single_query();
     }
 
     public function update($userData = array())

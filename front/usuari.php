@@ -14,42 +14,37 @@ class usuari extends DBAbstractModel
 
 
 
-    public function selectAll($fields=array()) {
+    public function selectAll($fields = array())
+    {
 
-        $this->query="SELECT ";
+        $this->query = "SELECT ";
         $firstField = true;
-        for ($i=0; $i<count($fields); $i++) {
+        for ($i = 0; $i < count($fields); $i++) {
             if ($firstField) {
                 $this->query .= $fields[$i];
-                $firstField=false;
-            }
-            else $this->query .= ", " . $fields[$i];
+                $firstField = false;
+            } else $this->query .= ", " . $fields[$i];
         }
         $this->query .= " FROM usuari";
         $this->get_results_from_query();
         return $this->rows;
-
     }
 
-    public function select($nomusuari="") {
-
-        $this->query="SELECT * from usuari where nom like '$nomusuari'";
-        $this->get_results_from_query();
-
-        return $this->rows;
-
+    public function select()
+    {
     }
 
-    public function update(){
-
+    public function update()
+    {
     }
 
-    public function delete(){
-
+    public function delete()
+    {
     }
 
 
-    public function insert($user_data = array()) {
+    public function insert($user_data = array())
+    {
 
 
         if (array_key_exists("nomUsuari", $user_data)) {
@@ -66,9 +61,5 @@ class usuari extends DBAbstractModel
 
             $this->execute_single_query();
         }
-
-
     }
-
-    
 }
