@@ -33,10 +33,19 @@ class usuari extends DBAbstractModel
 
     public function select($nomusuari="") {
 
-        $this->query="SELECT * from usuari where nom like '$nomusuari'";
+        $this->query="SELECT * from usuari where nomUsuari like '$nomusuari'";
         $this->get_results_from_query();
 
-        return $this->rows;
+        print_r($this->rows." rororor ");
+
+
+        if($this->rows != 0) {
+            return true;
+        }
+
+
+            return false;
+
 
     }
 
@@ -52,6 +61,7 @@ class usuari extends DBAbstractModel
     public function insert($user_data = array()) {
 
 
+
         if (array_key_exists("nomUsuari", $user_data)) {
 
             $nomusuari = $user_data["nomUsuari"];
@@ -61,10 +71,16 @@ class usuari extends DBAbstractModel
             $email = $user_data["email"];
             $karma = $user_data["karma"];
 
+            $bool = $this->select($nomusuari);
+            print_r($bool . " soy un booleano");
 
-            $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma) values ('$nomusuari', '$nom', '$cognom', '$password', '$email', $karma)";
+            $hashed = password_hash($password, PASSWORD_BCRYPT);
+            print_r($user_data. " valor");
+
 
             $this->execute_single_query();
+
+
         }
 
 
