@@ -17,14 +17,14 @@
             <a href="#!" class="brand-logo">Logo</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a>Login</a></li>
+                <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
                 <li><a>Register</a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
-        <li><a>Login</a></li>
+        <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
         <li><a>Register</a></li>
     </ul>
 
@@ -94,9 +94,43 @@
             <input type="hidden" name="imdbID" id="imdbID">
             <input type="hidden" name="nom" id="nom">
             <input type="hidden" name="poster" id="poster">
-
         </div>
 
+        <div id="modalLogin" class="modal">
+            <div class="col s12">
+                <form class="login-form">
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mail_outline</i>
+                            <input class="validate" id="email" type="email">
+                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="password" type="password">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Login</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin medium-small"><a href="#">Register Now!</a></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Atras</a>
+                    </div>
+                </form>
+            </div>
+        </div>
 
 
         <div class="col s12 m12 l12 center-align">

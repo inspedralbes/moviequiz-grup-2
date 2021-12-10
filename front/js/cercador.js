@@ -8,7 +8,8 @@ window.onload = function () {
     var sidenavElems = document.querySelectorAll('.sidenav');
     var sidenavs = M.Sidenav.init(sidenavElems);
 
-
+    var elems = document.querySelectorAll('.modal');
+    var instancesLogin = M.Modal.init(elems);
 
     //GENERAR LAS PELICULAS Y SU MODAL CON INFORMACIÓN
     let contenedorPelis = document.getElementById("contenedorPelis");
@@ -165,4 +166,7 @@ window.onload = function () {
 
 
     })
+
+    //MODAL LOGIN
+
 }

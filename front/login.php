@@ -7,76 +7,55 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 
-<style>
-    html,
-    body {
-        height: 100%;
-    }
-    html {
-        display: table;
-        margin: auto;
-    }
-    body {
-        display: table-cell;
-        vertical-align: middle;
-        background: #BFA19F;
-    }
-
-    #login-page {
-        width: 500px;
-    }
-
-    .card {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        -moz-transform: translate(-50%, -50%)
-        -webkit-transform: translate(-50%, -50%)
-        -ms-transform: translate(-50%, -50%)
-        -o-transform: translate(-50%, -50%)
-        transform: translate(-50%, -50%);
-    }
-</style>
-
 </head>
-<body ng-app="mainModule" ng-controller="mainController">
-<div id="login-page" class="row">
-    <div class="col s10 z-depth-6 card-panel">
-      <form class="login-form">
-        <div class="row">
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">mail_outline</i>
-            <input class="validate" id="email" type="email">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <i class="material-icons prefix">lock_outline</i>
-            <input id="password" type="password">
-            <label for="password">Password</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Login</a>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6 m6 l6">
-            <p class="margin medium-small"><a href="#">Register Now!</a></p>
-          </div>
-        </div>
 
-      </form>
+<a class="waves-effect waves-light btn modal-trigger" href="#modalLogin">LOGIN</a>
+
+<div id="modalLogin" class="modal">
+    <div class="col s12">
+        <form class="login-form">
+            <div class="row">
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mail_outline</i>
+                    <input class="validate" id="email" type="email">
+                    <label for="email" data-error="wrong" data-success="right">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock_outline</i>
+                    <input id="password" type="password">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Login</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6 m6 l6">
+                    <p class="margin medium-small"><a href="#">Register Now!</a></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Atras</a>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 
   <script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+    });
 
     /*Document.getElementById("buttonLogin").addEventListener('click', function () {
         let textemail= Document.getElementById("email").addEventListener;
@@ -119,53 +98,36 @@
 
 
 <?php
+  session_start();
 
-    class pelicula extends DBAbstractModel
-    {
+    // email and password sent from form
 
-        private $nom;
-        private $imdbID;
-        private $poster;
-        private $estrena;
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $db = "projectePelis";
+    $db = mysqli_connect($servername,$username,$password,$db);
 
-        public $message;
+    $myemail = mysqli_real_escape_string($db,$_POST['email']);
+    $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-        function __construct()
-        {
-            $this->db_name = "projectePelis";
-        }
+    $sql = "SELECT id FROM admin WHERE email = '$myemail' and passcode = '$mypassword'";
+    $result = mysqli_query($db,$sql);
+    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    $active = $row['active'];
 
-        function __toString()
-        {
-            return "WIP";
-        }
+    $count = mysqli_num_rows($result);
 
-        function __destruct()
-        {
-        }
+    // If result matched $myemail and $mypassword, table row must be 1 row
 
-        function cogerDatos()
-        {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-        }
+    if($count == 1) {
+        $_SESSION['login_user'] = $myemail;
 
-        public function select($email = "")
-        {
-            $this->query = "SELECT * FROM PERSONES WHERE email='" . $email . "'";
-            $this->get_results_from_query();
-            return $this->rows;
-        }
-
-        public function select($password = "")
-        {
-            $this->query = "SELECT * FROM PERSONES WHERE password='" . $password . "'";
-            $this->get_results_from_query();
-            return $this->rows;
-        }
+        header("location: welcome.php");
+    }else {
+        $error = "Your Login Name or Password is invalid";
     }
 
 ?>
 
-</body>
 </html>
