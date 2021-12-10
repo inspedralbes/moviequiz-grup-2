@@ -18,7 +18,7 @@ abstract class DBAbstractModel
 
     protected $rows = array();
 
-    private $conn;
+    protected $conn;
 
     abstract protected function selectAll();
     abstract protected function select();
