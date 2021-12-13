@@ -68,6 +68,7 @@ class pelicula extends DBAbstractModel
                 $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena, nfavorits)
                 VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ",1)";
                 $this->execute_single_query();
+
             }
         }
     }
