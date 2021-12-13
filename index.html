@@ -217,4 +217,32 @@
     <script src="front/js/cercador.js"></script>
 </body>
 
+<script>
+
+    document.getElementById("buttonLogin").addEventListener("click", function () {
+
+        console.log("click");
+
+        let email = document.getElementById('email').value;
+        let password = document.getElementById("password").value;
+
+        console.log(email);
+        console.log(password);
+
+        const datosEnvio = new FormData();
+
+        datosEnvio.append('email', email);
+        datosEnvio.append('password', password);
+
+        fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
+
+            method: 'POST',
+            body: datosEnvio
+
+            //promise recibe respuesta json
+        })
+    })
+
+</script>
+
 </html>

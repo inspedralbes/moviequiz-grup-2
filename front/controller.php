@@ -8,7 +8,7 @@ if ($method == "OPTIONS") {
     die();
 }
 
-
+require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
 
@@ -89,15 +89,16 @@ function handler($peticions)
         $usuari->insert($dadesUser);
     }
 
-    if ($event === "registrarUser") {
+    if ($event === "logearUser") {
         $dadesUser = array(
 
             "password" => $_POST["password"],
             "email" => $_POST["email"]
         );
-        print_r($dadesUser);
+
         $usuari = new usuari();
-        $usuari->selectAll($dadesUser);
+        echo " llegacion";
+        $usuari->select($dadesUser);
     }
 
 

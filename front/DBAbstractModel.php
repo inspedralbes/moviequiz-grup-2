@@ -54,7 +54,6 @@ abstract class DBAbstractModel
             $succes = 0;
         }
         $this->close_connection();
-        print_r($succes . " de la funcion");
         return $succes;
     }
 
@@ -66,6 +65,7 @@ abstract class DBAbstractModel
             $this->rows[$i] = $result->fetch_assoc();
         $result->close();
         $this->close_connection();
+        print_r($this->rows);
     }
 }
 
