@@ -30,8 +30,33 @@ class usuari extends DBAbstractModel
         return $this->rows;
     }
 
-    public function select()
+    public function select($user_data = array())
     {
+
+        echo " array ar";
+        if (array_key_exists("email", $user_data)) {
+
+            $password = $user_data["password"];
+            $email = $user_data["email"];
+
+
+            $this->query = "SELECT email, password FROM usuari WHERE email = '$email' and password = '$password'";
+
+            $success = $this->execute_single_query();
+
+            print_r($success . " success ");
+
+            if ($success == 0) {
+
+                echo "usuari no encontrat";
+            } else {
+
+                echo "usuari encontrat";
+
+            }
+
+
+        }
     }
 
     public function update()

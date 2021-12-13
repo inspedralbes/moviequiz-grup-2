@@ -22,14 +22,14 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">mail_outline</i>
-                    <input class="validate" id="email" type="email">
+                    <input class="validate" name="email" type="email" id="email">
                     <label for="email" data-error="wrong" data-success="right">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">lock_outline</i>
-                    <input id="password" type="password">
+                    <input name="password" type="password" id="password">
                     <label for="password">Password</label>
                 </div>
             </div>
@@ -57,6 +57,36 @@
       var instances = M.Modal.init(elems);
     });
 
+
+  document.getElementById("buttonLogin").addEventListener("click", function () {
+
+
+      let email = document.getElementById("email").value;
+      let password = document.getElementById("password").value;
+
+
+
+      const datosEnvio = new FormData();
+
+      datosEnvio.append('email', email);
+      datosEnvio.append('password', password);
+
+      console.log(datosEnvio);
+
+
+
+
+      fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
+
+          method: 'POST',
+          body: datosEnvio
+
+      }).then(function (res) {
+          console.log(res)
+          return res.text()
+      })
+
+  });
     /*Document.getElementById("buttonLogin").addEventListener('click', function () {
         let textemail= Document.getElementById("email").addEventListener;
         let textpassword= Document.getElementById("password").addEventListener;
@@ -98,7 +128,7 @@
 
 
 <?php
-    header('Access-Control-Allow-Origin: *');
+  /*  header('Access-Control-Allow-Origin: *');
     header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
     header("Allow: GET, POST, OPTIONS, PUT, DELETE");
@@ -116,31 +146,35 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db = "projectePelis ";
+    $db = "projectepelis";
     $db = mysqli_connect($servername,$username,$password,$db);
+echo "llego aqui2";
 
-    $myemail = mysqli_real_escape_string($db,$_POST['email']);
-    $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-    echo(" "$myemail);
-    echo(" "$mypassword);
+    if($_POST) {
 
-    $sql = "SELECT email, password FROM usuari WHERE email = '$myemail' and password = '$mypassword'";
-    $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $active = $row['active'];
+        $myemail = $_POST['email'];
+        $mypassword =  $_POST['password'];
 
-    $count = mysqli_num_rows($result);
+        echo "llego aqui";
 
-    // If result matched $myemail and $mypassword, table row must be 1 row
+        $sql = "SELECT email, password FROM usuari WHERE email = '$myemail' and password = '$mypassword'";
+        $result = mysqli_query($db, $sql);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $active = $row['active'];
 
-    if($count == 1) {
-        $_SESSION['login_user'] = $myemail;
+        $count = mysqli_num_rows($result);
 
-        header("location: welcome.php");
-    }else {
-        $error = "Your Login Name or Password is invalid";
-    }
+        // If result matched $myemail and $mypassword, table row must be 1 row
+
+        if ($count == 1) {
+            $_SESSION['login_user'] = $myemail;
+
+            header("location: welcome.php");
+        } else {
+            $error = "Your Login Name or Password is invalid";
+        }
+    }*/
 
 ?>
 
