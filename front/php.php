@@ -18,8 +18,7 @@ if ($conn->connect_error) {
 
 comprobauser($conn);
 
-function comprobauser($conn)
-{
+function comprobauser($conn){
 
 
     $nom = $_POST["nom"];
@@ -34,10 +33,8 @@ function comprobauser($conn)
     $sql = "SELECT * FROM usuari WHERE nomUsuari='" . $username . "'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows != 0) {
 
-    echo "Ja existeix l'user";
-    }
+    
 }
 
 

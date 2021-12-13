@@ -8,8 +8,11 @@ window.onload = function () {
     var sidenavElems = document.querySelectorAll('.sidenav');
     var sidenavs = M.Sidenav.init(sidenavElems);
 
-    var elems = document.querySelectorAll('.modal');
-    var instancesLogin = M.Modal.init(elems);
+    var elemsLogin = document.querySelectorAll('#modalLogin');
+    var instancesLogin = M.Modal.init(elemsLogin);
+
+    var elemsRegistre = document.querySelectorAll('#modalRegistre');
+    var instancesRegistre = M.Modal.init(elemsRegistre);
 
     //GENERAR LAS PELICULAS Y SU MODAL CON INFORMACIÓN
     let contenedorPelis = document.getElementById("contenedorPelis");
@@ -163,5 +166,38 @@ window.onload = function () {
     })
 
 
+    //VERIFICAR EL LOGIN
+    document.getElementById("buttonLogin").addEventListener("click", function () {
+
+        console.log("click");
+
+        let email = document.getElementById('email').value;
+        let password = document.getElementById("password").value;
+
+        console.log(email);
+        console.log(password);
+
+        const datosEnvio = new FormData();
+
+        datosEnvio.append('email', email);
+        datosEnvio.append('password', password);
+
+        fetch(`http://localhost/pruebas/login.php`, {
+
+            method: 'POST',
+            body: datosEnvio
+        })
+    })
+
+    //CANVIS DE MODALS
+    document.getElementById("RegisterToLogin").addEventListener('click', function () {
+        var elemsRegistre = document.querySelectorAll('#modalRegistre');
+        var instancesRegistre = M.Modal.init(elemsRegistre, {
+            dismissible: false
+        });
+
+        var instancesLogin = M.Modal.getInstance(elemsLogin);
+        instancesLogin.open();
+    })
 
 }

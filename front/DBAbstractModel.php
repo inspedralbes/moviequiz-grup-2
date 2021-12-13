@@ -65,6 +65,7 @@ abstract class DBAbstractModel
             $this->rows[$i] = $result->fetch_assoc();
         $result->close();
         $this->close_connection();
+        print_r($this->rows);
     }
 }
 

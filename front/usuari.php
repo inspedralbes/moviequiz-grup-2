@@ -30,8 +30,48 @@ class usuari extends DBAbstractModel
         return $this->rows;
     }
 
-    public function select()
+    public function select($user_data = array())
     {
+
+        echo "holaaa ";
+
+        if (array_key_exists("email", $user_data)) {
+
+            $password = $user_data["password"];
+            $email = $user_data["email"];
+
+
+            $this->query = "SELECT nomUsuari ,email, password FROM usuari WHERE email = '$email' and password = '$password'";
+            $this->get_results_from_query();
+
+            $username = $this->rows[0]["nomUsuari"];
+
+            echo $this->rows[0]["nomUsuari"];
+
+
+
+
+
+
+            if ($this->rows == null) {
+
+                echo "usuari no encontrat";
+            } else {
+
+                echo "usuari encontrat";
+                $html = file_get_contents(__DIR__ . '/html/welcome.php');
+                $html = str_replace('{nombreuser}', $username, $html);
+
+                print $html;
+
+
+
+
+
+            }
+
+
+        }
     }
 
     public function update()
@@ -59,7 +99,22 @@ class usuari extends DBAbstractModel
 
             $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma) values ('$nomusuari', '$nom', '$cognom', '$password', '$email', $karma)";
 
-            $this->execute_single_query();
+           $success=  $this->execute_single_query();
+
+           print_r($success . " success ");
+
+           if($success == 0){
+
+               echo "usuari no registrat, ja existeix el nom o el email";
+           }
+           else{
+
+               echo "usuari registrat correctamnet";
+
+           }
+
+
+
         }
     }
 }

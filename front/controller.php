@@ -8,11 +8,11 @@ if ($method == "OPTIONS") {
     die();
 }
 
-
+require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
 
-$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser");
+$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser");
 
 function handler($peticions)
 {
@@ -87,6 +87,18 @@ function handler($peticions)
         print_r($dadesUser);
         $usuari = new usuari();
         $usuari->insert($dadesUser);
+    }
+
+    if ($event === "logearUser") {
+        $dadesUser = array(
+
+            "password" => $_POST["password"],
+            "email" => $_POST["email"]
+        );
+
+        $usuari = new usuari();
+        echo " llegacion";
+        $usuari->select($dadesUser);
     }
 
 

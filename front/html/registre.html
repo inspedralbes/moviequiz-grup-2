@@ -4,34 +4,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/index.css">
+
 </head>
 
 <body>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modalRegistre">REGISTRE</a>
 
-
-    <label for="username">ID Usuari</label>
-    <input type="text" name="username" required id="username"><br>
-
-    <label for="nom">Nom</label>
-    <input type="text" name="nom" id="nom"><br>
-
-    <label for="cognoms">Cognoms</label>
-    <input type="text" name="cognoms" id="cognoms"><br>
-
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email"><br>
-
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password"><br>
-
-    <button type="submit" id="registre">registrar</button>
-
-
+    <div id="modalRegistre" class="modal">
+        <div class="col s12">
+            <form class="registre-form">
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">assignment_ind</i>
+                        <input class="validate" id="username" type="text">
+                        <label for="username" data-error="wrong" data-success="right">Nom d'usuari</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person_outline</i>
+                        <input class="validate" id="nom" type="text">
+                        <label for="nom" data-error="wrong" data-success="right">Nom real</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person_outline</i>
+                        <input class="validate" id="cognoms" type="text">
+                        <label for="cognoms" data-error="wrong" data-success="right">Cognoms</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mail_outline</i>
+                        <input class="validate" id="email" type="email">
+                        <label for="email" data-error="wrong" data-success="right">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock_outline</i>
+                        <input id="password" type="password">
+                        <label for="password">Contrasenya</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock_outline</i>
+                        <input id="passwordr" type="password">
+                        <label for="passwordr">Repeteix Contraseña</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Registrar</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 m6 l6">
+                        <p class="margin medium-small"><a id="RegisterToLogin" href="#modalLogin">Login!</a></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Atras</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+
+    document.getElementById("RegisterToLogin").addEventListener('click', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+        dismissible: false
+    });
 
     document.getElementById("registre").addEventListener("click", function () {
 
