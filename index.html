@@ -19,6 +19,8 @@
             <ul class="right hide-on-med-and-down">
                 <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
                 <li><a>Register</a></li>
+                <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -26,6 +28,8 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
         <li><a>Register</a></li>
+        <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar<i
+                    class="material-icons ">videogame_asset</i></a></li>
     </ul>
 
 
@@ -133,6 +137,18 @@
         </div>
 
 
+
+        <div id="modalGame" class="modal">
+            <div class="modal-content">
+                <h4 class="center-align">Joc</h4>
+                <div id="question-container"></div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+
+
         <div class="col s12 m12 l12 center-align">
             <ul class="pagination">
                 <li class="disabled"><a href="#!"><i class="material-icons">chevron_left </i></a></li>
@@ -149,6 +165,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="front/js/cercador.js"></script>
+    <script src="front/js/joc.js"></script>
+
 </body>
 
 </html>

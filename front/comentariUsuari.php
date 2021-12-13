@@ -41,6 +41,14 @@ class comentariUsuari extends DBAbstractModel
         return $this->rows;
     }
 
+    public function selectAllFromUser($idUsuari = "")
+    {
+        $this->query = "SELECT * from usu_peli where id=" . $idUsuari . "";
+        $this->get_results_from_query();
+
+        return $this->rows;
+    }
+
 
     public function insert($dadesPeli = array(), $dadesComentari = array())
     {
