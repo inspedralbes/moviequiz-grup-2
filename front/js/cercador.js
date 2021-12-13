@@ -163,5 +163,26 @@ window.onload = function () {
     })
 
 
+    //VERIFICAR EL LOGIN
+    document.getElementById("buttonLogin").addEventListener("click", function () {
 
+        console.log("click");
+
+        let email = document.getElementById('email').value;
+        let password = document.getElementById("password").value;
+
+        console.log(email);
+        console.log(password);
+
+        const datosEnvio = new FormData();
+
+        datosEnvio.append('email', email);
+        datosEnvio.append('password', password);
+
+        fetch(`http://localhost/pruebas/login.php`, {
+
+            method: 'POST',
+            body: datosEnvio
+        })
+    })
 }

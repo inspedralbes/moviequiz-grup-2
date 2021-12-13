@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Atras</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Enrere</a>
             </div>
         </form>
     </div>
@@ -98,20 +98,34 @@
 
 
 <?php
-  session_start();
+    header('Access-Control-Allow-Origin: *');
+    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+    header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+    $method = $_SERVER['REQUEST_METHOD'];
+    if ($method == "OPTIONS") {
+        die();
+    }
+
+
+    echo("El fetch funciona");
 
     // email and password sent from form
 
+    
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db = "projectePelis";
+    $db = "projectePelis ";
     $db = mysqli_connect($servername,$username,$password,$db);
 
     $myemail = mysqli_real_escape_string($db,$_POST['email']);
     $mypassword = mysqli_real_escape_string($db,$_POST['password']);
 
-    $sql = "SELECT id FROM admin WHERE email = '$myemail' and passcode = '$mypassword'";
+    echo(" "$myemail);
+    echo(" "$mypassword);
+
+    $sql = "SELECT email, password FROM usuari WHERE email = '$myemail' and password = '$mypassword'";
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
     $active = $row['active'];
