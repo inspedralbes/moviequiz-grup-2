@@ -12,6 +12,12 @@
 </head>
 
 <body>
+
+
+
+
+
+
     <nav>
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo">Logo</a>
@@ -52,7 +58,59 @@
         <div id="contenedorPelis" class="row">
         </div>
         <div id="modalAdd" class="modal">
-            <div class="modal-content">
+            <div id="modal-preloader" class="center-align">
+                <div class="preloader-wrapper big active ">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-content" id="modal-content-add">
                 <div id="modal-image" class="center-align"></div>
                 <h4 id="modal-title" class="left-align">Movie Title</h4>
                 <h5 id="modal-director" class="left-align">Movie Director</h5>
@@ -88,8 +146,10 @@
                         <label for="comentari">Comentari</label>
                     </div>
                 </div>
+
             </div>
-            <div class="modal-footer">
+
+            <div class="modal-footer" id="modal-footer-add">
                 <a href="#!" class=" waves-effect waves-green btn" id="buttonConfirmarAfegir">Confirmar</a>
             </div>
             <input type="hidden" name="year" id="year">

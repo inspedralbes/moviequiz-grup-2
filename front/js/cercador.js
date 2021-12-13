@@ -47,10 +47,17 @@ window.onload = function () {
 
                 contenedorPelis.addEventListener("click", function (e) {
                     if (e.target.classList.contains("buttonAfegir")) {
+                        let preloader = document.getElementById("modal-preloader");
+                        preloader.classList.remove("hide")
+                        document.getElementById("modal-content-add").classList.add("hide");
+                        document.getElementById("modal-footer-add").classList.add("hide");
                         let url = `https://www.omdbapi.com/?apikey=cc87f99c&i=${e.target.id}`
                         fetch(url).then(function (res) {
                             return res.json()
                         }).then(function (data) {
+                            document.getElementById("modal-preloader").classList.add("hide");
+                            document.getElementById("modal-content-add").classList.remove("hide");
+                            document.getElementById("modal-footer-add").classList.remove("hide");
                             let info = data;
                             document.getElementById("modal-title").innerHTML = info.Title;
                             document.getElementById("modal-image").innerHTML = ` <img class="center-align"src="${info.Poster}" width=250 height=350>`

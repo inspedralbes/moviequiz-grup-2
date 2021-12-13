@@ -4,6 +4,10 @@ body{
 .main-container{
     margin: 5%;
 }
+#modal-preloader{
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
 
 .card-image{
     padding-top: 5%;

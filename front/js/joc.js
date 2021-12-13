@@ -74,14 +74,6 @@ document.getElementById("question-container").addEventListener("click", function
 
         e.target.classList.toggle("deep-purple");
         e.target.classList.toggle("selected");
-        if (e.target.classList.contains("selected")) {
-            console.log("SELECTED!")
-        } else {
-            console.log("UNSELECTED!")
-        }
-
-
-
 
     }
 })
