@@ -13,22 +13,62 @@
 <body>
 
 
-    <label for="username">ID Usuari</label>
-    <input type="text" name="username" required id="username"><br>
 
-    <label for="nom">Nom</label>
-    <input type="text" name="nom" id="nom"><br>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">Registre</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
+                <li><a>Register</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <label for="cognoms">Cognoms</label>
-    <input type="text" name="cognoms" id="cognoms"><br>
 
-    <label for="email">Email</label>
-    <input type="text" name="email" id="email"><br>
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="username" type="text" data-length="10">
+            <label for="username"> <span class="blue-text text-darken-2">Nom d'usuari</span></label>
+        </div>
+    </div>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password"><br>
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="nom" type="text" data-length="10">
+            <label for="nom"><span class="blue-text text-darken-2">Nom real</span></label>
+        </div>
+    </div>
 
-    <p>{missatge}</p>
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="cognoms" type="text" data-length="10">
+            <label for="cognoms"><span class="blue-text text-darken-2">Cognoms</span></label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="email" type="text" data-length="10">
+            <label for="email"><span class="blue-text text-darken-2">Adreça electrónica</span></label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="password" type="text" data-length="10">
+            <label for="password"><span class="blue-text text-darken-2">Contrasenya</span></label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s6">
+            <input id="passwordr" type="text" data-length="10">
+            <label for="passwordr"><span class="blue-text text-darken-2">Repeteix Contrasenya</span></label>
+        </div>
+    </div>
+
+
 
 
     <button type="submit" id="registre">registrar</button>
