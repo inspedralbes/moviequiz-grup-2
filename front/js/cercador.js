@@ -8,8 +8,11 @@ window.onload = function () {
     var sidenavElems = document.querySelectorAll('.sidenav');
     var sidenavs = M.Sidenav.init(sidenavElems);
 
-    var elems = document.querySelectorAll('.modal');
-    var instancesLogin = M.Modal.init(elems);
+    var elemsLogin = document.querySelectorAll('#modalLogin');
+    var instancesLogin = M.Modal.init(elemsLogin);
+
+    var elemsRegistre = document.querySelectorAll('#modalRegistre');
+    var instancesRegistre = M.Modal.init(elemsRegistre);
 
     //GENERAR LAS PELICULAS Y SU MODAL CON INFORMACIÓN
     let contenedorPelis = document.getElementById("contenedorPelis");
@@ -185,4 +188,16 @@ window.onload = function () {
             body: datosEnvio
         })
     })
+
+    //CANVIS DE MODALS
+    document.getElementById("RegisterToLogin").addEventListener('click', function () {
+        var elemsRegistre = document.querySelectorAll('#modalRegistre');
+        var instancesRegistre = M.Modal.init(elemsRegistre, {
+            dismissible: false
+        });
+
+        var instancesLogin = M.Modal.getInstance(elemsLogin);
+        instancesLogin.open();
+    })
+
 }

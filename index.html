@@ -18,14 +18,14 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
-                <li><a>Register</a></li>
+                <li><a class="modal-trigger" href="#modalRegistre">Registre</a></li>
             </ul>
         </div>
     </nav>
 
     <ul class="sidenav" id="mobile-demo">
         <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
-        <li><a>Register</a></li>
+        <li><a class="modal-trigger" href="#modalRegistre">Registre</a></li>
     </ul>
 
 
@@ -122,7 +122,73 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6 m6 l6">
-                            <p class="margin medium-small"><a href="#">Register Now!</a></p>
+                            <p class="margin medium-small"><a href="#modalRegistre">Register Now!</a></p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Atras</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="modalRegistre" class="modal">
+            <div class="col s12">
+                <form class="registre-form">
+                    <div class="row">
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">assignment_ind</i>
+                            <input class="validate" id="username" type="text">
+                            <label for="username" data-error="wrong" data-success="right">Nom d'usuari</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">person_outline</i>
+                            <input class="validate" id="nom" type="text">
+                            <label for="nom" data-error="wrong" data-success="right">Nom real</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">person_outline</i>
+                            <input class="validate" id="cognoms" type="text">
+                            <label for="cognoms" data-error="wrong" data-success="right">Cognoms</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">mail_outline</i>
+                            <input class="validate" id="email" type="email">
+                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="password" type="password">
+                            <label for="password">Contrasenya</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">lock_outline</i>
+                            <input id="passwordr" type="password">
+                            <label for="passwordr">Repeteix Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Registrar</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6 m6 l6">
+                            <p class="margin medium-small">Ja tens una compte? <a id="RegisterToLogin"
+                                    href="#modalLogin">Login!</a></p>
                         </div>
                     </div>
                     <div class="modal-footer">

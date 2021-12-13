@@ -1,5 +1,3 @@
-
-
 body{
     background-color: #BFA19F;
 }
@@ -10,7 +8,6 @@ body{
 .card-image{
     padding-top: 5%;
 }
-
 
 .card:hover > .card-image>img{
     filter: brightness(50%)
@@ -28,8 +25,15 @@ body{
     overflow: hidden;
 }
 
-.login-form{
+.login-form, .registre-form{
     margin: 2%;
 }
 
+label{
 
+    color: black;
+}
+
+.oculto{
+    display: none;
+}

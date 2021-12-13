@@ -6,74 +6,76 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../css/registre.css">
+    <link rel="stylesheet" href="../css/index.css">
 
 </head>
 
 <body>
+    <a class="waves-effect waves-light btn modal-trigger" href="#modalRegistre">REGISTRE</a>
 
-
-
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Registre</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
-                <li><a>Register</a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="username" type="text" data-length="10">
-            <label for="username"> <span class="blue-text text-darken-2">Nom d'usuari</span></label>
+    <div id="modalRegistre" class="modal">
+        <div class="col s12">
+            <form class="registre-form">
+                <div class="row">
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">assignment_ind</i>
+                        <input class="validate" id="username" type="text">
+                        <label for="username" data-error="wrong" data-success="right">Nom d'usuari</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person_outline</i>
+                        <input class="validate" id="nom" type="text">
+                        <label for="nom" data-error="wrong" data-success="right">Nom real</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">person_outline</i>
+                        <input class="validate" id="cognoms" type="text">
+                        <label for="cognoms" data-error="wrong" data-success="right">Cognoms</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">mail_outline</i>
+                        <input class="validate" id="email" type="email">
+                        <label for="email" data-error="wrong" data-success="right">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock_outline</i>
+                        <input id="password" type="password">
+                        <label for="password">Contrasenya</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">lock_outline</i>
+                        <input id="passwordr" type="password">
+                        <label for="passwordr">Repeteix Contraseña</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Registrar</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6 m6 l6">
+                        <p class="margin medium-small"><a id="RegisterToLogin" href="#modalLogin">Login!</a></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Atras</a>
+                </div>
+            </form>
         </div>
     </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="nom" type="text" data-length="10">
-            <label for="nom"><span class="blue-text text-darken-2">Nom real</span></label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="cognoms" type="text" data-length="10">
-            <label for="cognoms"><span class="blue-text text-darken-2">Cognoms</span></label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="email" type="text" data-length="10">
-            <label for="email"><span class="blue-text text-darken-2">Adreça electrónica</span></label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="password" type="text" data-length="10">
-            <label for="password"><span class="blue-text text-darken-2">Contrasenya</span></label>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-            <input id="passwordr" type="text" data-length="10">
-            <label for="passwordr"><span class="blue-text text-darken-2">Repeteix Contrasenya</span></label>
-        </div>
-    </div>
-
-
-
-
-    <button type="submit" id="registre">registrar</button>
-
-
 
 
 
@@ -82,6 +84,16 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+
+    document.getElementById("RegisterToLogin").addEventListener('click', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+        dismissible: false
+    });
 
     document.getElementById("registre").addEventListener("click", function () {
 
