@@ -5,6 +5,7 @@ let jocTriggers = document.getElementsByClassName("joc-trigger");
 for (let element of jocTriggers) {
     element.addEventListener("click", function () {
         fetch("http://localhost/pruebas/joc.php").then(function (res) {
+
             return res.json();
         }).then(function (data) {
             let preguntas = data.peliculas;

@@ -14,6 +14,9 @@ window.onload = function () {
     var elemsRegistre = document.querySelectorAll('#modalRegistre');
     var instancesRegistre = M.Modal.init(elemsRegistre);
 
+    var elemGame = document.querySelectorAll('#modalGame');
+    var instancesGame = M.Modal.init(elemGame);
+
     //GENERAR LAS PELICULAS Y SU MODAL CON INFORMACIÓN
     let contenedorPelis = document.getElementById("contenedorPelis");
     document.getElementById("buttonSearch").addEventListener("click", function () {
