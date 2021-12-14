@@ -33,13 +33,15 @@ window.onload = function () {
                 let str = "";
 
                 busqueda.forEach(pelicula => {
-                    let divPeliStr = `<div class="card col s6 m3">
+                    let divPeliStr = `<div class=" col s6 m3">
+                    <div class="card">
                     <div class="card-image">
                       <img src="${pelicula.Poster}" width=250 height=350>
                       <span class="card-title">${pelicula.Title}</span>
                     </div>
                     <div class="card-action">
                     <a class="waves-effect waves-light btn modal-trigger buttonAfegir" href="#modalAdd" id="${pelicula.imdbID}" ><i class="material-icons right">add</i>Afegir</a>
+                    </div>
                     </div>
                   </div>`;
                     str += divPeliStr;

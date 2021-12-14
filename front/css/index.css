@@ -9,9 +9,6 @@ body{
     margin-bottom: 5%;
 }
 
-.card-image{
-    padding-top: 5%;
-}
 
 .card:hover > .card-image>img{
     filter: brightness(50%)
@@ -80,7 +77,6 @@ label{
 	position: absolute;
 	top: 0;
 	right: 0;
-	
 	height: 100%;
 	background: #696DBF;
 	z-index: 1;
@@ -88,4 +84,8 @@ label{
 }
 
 
+
+#contenedorPelis .card{
+    margin-left: auto;
+}
 
