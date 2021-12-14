@@ -27,6 +27,7 @@ window.onload = function () {
                 return res.json();
             })
             .then(function (data) {
+                if(data.Response=="True"){
                 let busqueda = data.Search;
                 let str = "";
 
@@ -96,10 +97,13 @@ window.onload = function () {
                     }
                 })
 
-            })
-
-
-
+           }else{
+            Swal.fire(
+                'Error',
+                'No hem trobat cap pel-lícula :(',
+                'error'
+            )
+           }})
     });
 
 

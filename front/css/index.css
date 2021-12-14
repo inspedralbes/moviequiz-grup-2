@@ -25,6 +25,10 @@ body{
     transition: all 500ms ease;
 }
 
+.preguntas{
+    margin: 5%;
+}
+
 #modal1{
     overflow: hidden;
 }

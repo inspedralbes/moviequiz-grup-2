@@ -1,5 +1,3 @@
-
-
 let divPreguntes = document.getElementById("question-container");
 let jocTriggers = document.getElementsByClassName("joc-trigger");
 
@@ -16,22 +14,26 @@ for (let element of jocTriggers) {
                 {
                     poster: "https://m.media-amazon.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_SX300.jpg",
                     opcions: [2006, 2002, 2003, 2004],
-                    nom: "Cars"
+                    nom: "Cars",
+                    imdbID:"tt0317219"
                 },
                 {
                     poster: "https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg",
                     opcions: [2002, 2002, 2003, 2004],
-                    nom: "Spider-man"
+                    nom: "Spider-man",
+                    imdbID:"tt0145487"
                 },
                 {
-                    poster: "https://m.media-amazon.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_SX300.jpg",
-                    opcions: [2006, 2002, 2003, 2004],
-                    nom: "Cars"
+                    poster: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+                    opcions: [1994, 2002, 2003, 2004],
+                    nom: "Pulp Fiction",
+                    imdbID:"tt0110912"
                 },
                 {
-                    poster: "https://m.media-amazon.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_SX300.jpg",
-                    opcions: [2006, 2002, 2003, 2004],
-                    nom: "Cars"
+                    poster: "https://m.media-amazon.com/images/M/MV5BMTc3MDY3ODQ2OV5BMl5BanBnXkFtZTgwOTQ2NTYxMTE@._V1_SX300.jpg",
+                    opcions: [1987, 2002, 2003, 2004],
+                    nom: "Dirty Dancing",
+                    imdbID:"tt0092890"
                 }
 
             ]
@@ -41,7 +43,7 @@ for (let element of jocTriggers) {
 
                 let preguntasHtml = `<div class="pregunta-pelicula">
                 <div class="center-align"><img  src="${element.poster}" width=250 height=350></div>`
-                preguntasHtml += `<div class="preguntes center-align">
+                preguntasHtml += `<div class="preguntas center-align">
                 <div class="row">
                 <div class="col s6"> <a class="waves-effect waves-light btn btn-pregunta">${element.opcions[0]}</a></div> 
                 <div class="col s6"><a class="waves-effect waves-light btn btn-pregunta">${element.opcions[1]}</a></div> 
