@@ -21,6 +21,7 @@ window.onload = function () {
     let contenedorPelis = document.getElementById("contenedorPelis");
     document.getElementById("buttonSearch").addEventListener("click", function () {
         let parametro = document.getElementById("cercar").value;
+        document.getElementById("cercar").value="";
         let url = `https://www.omdbapi.com/?apikey=cc87f99c&type=movie&s=${parametro}`;
         fetch(url)
             .then(function (res) {
