@@ -13,29 +13,9 @@
 
 <body>
 
-
-
-
-
-
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">Logo</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
-                <li><a class="modal-trigger " href="#modalRegistre">Registre</a></li>
-                <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <ul class="sidenav" id="mobile-demo">
-        <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
-        <li><a class="modal-trigger" href="#modalRegistre">Registre</a></li>
-        <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
-    </ul>
-
+    <?php
+    include("front/header.php");
+    ?>
 
     <div id="main-container">
         <div class="search">
@@ -189,7 +169,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a id="atrasLogin" class="modal-close waves-effect waves-green btn-flat">Enrere</a>
+                        <a class="modal-close waves-effect waves-green btn-flat">Enrere</a>
                     </div>
                 </form>
             </div>
@@ -287,7 +267,9 @@
         </div>
     </div>
 
-
+    <?php
+    include("front/footer.php");
+    ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

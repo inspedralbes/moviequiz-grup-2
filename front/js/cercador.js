@@ -210,4 +210,15 @@ window.onload = function () {
         instancesLogin.open();
     })
 
+    document.getElementById("LoginToRegistre").addEventListener('click', function () {
+        var elemsLogin = document.querySelectorAll('#modalLogin');
+        var instancesLogin = M.Modal.init(elemsLogin, {
+            dismissible: false
+        });
+
+        var instancesRegistre = M.Modal.getInstance(elemsRegistre);
+        instancesLogin.open();
+    })
+
+
 }
