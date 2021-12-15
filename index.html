@@ -38,19 +38,25 @@
 
 
     <div id="main-container">
-        
-        
-    <div class="container">
-        <div class="search_wrap search_wrap_1">
-			<div class="search_box">
-				<input type="text" id="cercar" class="input browser-default" placeholder="Buscar...">
-				<a id="buttonSearch" class="waves-effect waves-light btn-large "><i
-                    class="material-icons ">search</i></a>
-			</div>
-		</div>
-    </div>
 
 
+        <div class="container">
+            <div class="search_wrap search_wrap_1">
+                <div class="search_box">
+                    <input type="text" id="cercar" class="input browser-default" placeholder="Buscar...">
+                    <a id="buttonSearch" class="waves-effect waves-light btn-large "><i
+                            class="material-icons ">search</i></a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="welcomecontainer">
+
+            <h1 id="welcome"></h1>
+
+        </div>
 
 
 
@@ -275,7 +281,7 @@
         </div>
 
 
-       
+
     </div>
 
 
@@ -304,13 +310,43 @@
         datosEnvio.append('email', email);
         datosEnvio.append('password', password);
 
-        fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
+        let promesa = fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
+
 
             method: 'POST',
             body: datosEnvio
 
-            //promise recibe respuesta json
+
+        }).then(function (res) {
+
+            return res.json();
         })
+
+
+        promesa.then((a) => {
+
+
+            let b = JSON.stringify(a);
+            console.log(b);
+            let json = JSON.parse(b);
+
+            console.log(json.nomUsuari);
+
+            document.getElementById("welcome").innerHTML = "Benvingut " + json.nomUsuari;
+
+
+
+        })
+
+
+
+
+
+
+
+
+
+
     })
 
 </script>

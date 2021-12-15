@@ -30,7 +30,8 @@ class usuari extends DBAbstractModel
         return $this->rows;
     }
 
-    public function select($user_data = array())
+    public function
+    select($user_data = array())
     {
 
         echo "holaaa ";
@@ -41,12 +42,12 @@ class usuari extends DBAbstractModel
             $email = $user_data["email"];
 
 
-            $this->query = "SELECT nomUsuari ,email, password FROM usuari WHERE email = '$email' and password = '$password'";
+            $this->query = "* FROM usuari WHERE email = '$email' and password = '$password'";
             $this->get_results_from_query();
 
             $username = $this->rows[0]["nomUsuari"];
 
-            echo $this->rows[0]["nomUsuari"];
+            $json=  $this->rows[0];
 
 
 
@@ -59,10 +60,8 @@ class usuari extends DBAbstractModel
             } else {
 
                 echo "usuari encontrat";
-                $html = file_get_contents(__DIR__ . '/html/welcome.php');
-                $html = str_replace('{nombreuser}', $username, $html);
 
-                print $html;
+                print $json;
 
 
 
