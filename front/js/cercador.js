@@ -21,19 +21,19 @@ window.onload = function () {
     let contenedorPelis = document.getElementById("contenedorPelis");
     document.getElementById("buttonSearch").addEventListener("click", function () {
         let parametro = document.getElementById("cercar").value;
-        document.getElementById("cercar").value="";
+        document.getElementById("cercar").value = "";
         let url = `https://www.omdbapi.com/?apikey=cc87f99c&type=movie&s=${parametro}`;
         fetch(url)
             .then(function (res) {
                 return res.json();
             })
             .then(function (data) {
-                if(data.Response=="True"){
-                let busqueda = data.Search;
-                let str = "";
+                if (data.Response == "True") {
+                    let busqueda = data.Search;
+                    let str = "";
 
-                busqueda.forEach(pelicula => {
-                    let divPeliStr = `<div class=" col s6 m3">
+                    busqueda.forEach(pelicula => {
+                        let divPeliStr = `<div class=" col s6 m3">
                     <div class="card">
                     <div class="card-image">
                       <img src="${pelicula.Poster}" width=250 height=350>
@@ -44,69 +44,71 @@ window.onload = function () {
                     </div>
                     </div>
                   </div>`;
-                    str += divPeliStr;
-                });
-                contenedorPelis.innerHTML = str;
+                        str += divPeliStr;
+                    });
+                    document.getElementById("contenedorPelis").classList.remove("hide");
+                    contenedorPelis.innerHTML = str;
 
 
-                contenedorPelis.addEventListener("click", function (e) {
-                    if (e.target.classList.contains("buttonAfegir")) {
-                        let preloader = document.getElementById("modal-preloader");
-                        preloader.classList.remove("hide")
-                        document.getElementById("modal-content-add").classList.add("hide");
-                        document.getElementById("modal-footer-add").classList.add("hide");
-                        let url = `https://www.omdbapi.com/?apikey=cc87f99c&i=${e.target.id}`
-                        fetch(url).then(function (res) {
-                            return res.json()
-                        }).then(function (data) {
-                            document.getElementById("modal-preloader").classList.add("hide");
-                            document.getElementById("modal-content-add").classList.remove("hide");
-                            document.getElementById("modal-footer-add").classList.remove("hide");
-                            let info = data;
-                            document.getElementById("modal-title").innerHTML = info.Title;
-                            document.getElementById("modal-image").innerHTML = ` <img class="center-align"src="${info.Poster}" width=250 height=350>`
-                            document.getElementById("modal-plot").innerHTML = info.Plot;
-                            document.getElementById("modal-year").innerHTML = info.Year;
-                            document.getElementById("modal-director").innerHTML = info.Director;
+                    contenedorPelis.addEventListener("click", function (e) {
+                        if (e.target.classList.contains("buttonAfegir")) {
+                            let preloader = document.getElementById("modal-preloader");
+                            preloader.classList.remove("hide")
+                            document.getElementById("modal-content-add").classList.add("hide");
+                            document.getElementById("modal-footer-add").classList.add("hide");
+                            let url = `https://www.omdbapi.com/?apikey=cc87f99c&i=${e.target.id}`
+                            fetch(url).then(function (res) {
+                                return res.json()
+                            }).then(function (data) {
+                                document.getElementById("modal-preloader").classList.add("hide");
+                                document.getElementById("modal-content-add").classList.remove("hide");
+                                document.getElementById("modal-footer-add").classList.remove("hide");
+                                let info = data;
+                                document.getElementById("modal-title").innerHTML = info.Title;
+                                document.getElementById("modal-image").innerHTML = ` <img class="center-align"src="${info.Poster}" width=250 height=350>`
+                                document.getElementById("modal-plot").innerHTML = info.Plot;
+                                document.getElementById("modal-year").innerHTML = info.Year;
+                                document.getElementById("modal-director").innerHTML = info.Director;
 
-                            document.getElementById("year").value = info.Year;
-                            document.getElementById("imdbID").value = e.target.id;
-                            document.getElementById("nom").value = info.Title;
-                            document.getElementById("poster").value = info.Poster;
+                                document.getElementById("year").value = info.Year;
+                                document.getElementById("imdbID").value = e.target.id;
+                                document.getElementById("nom").value = info.Title;
+                                document.getElementById("poster").value = info.Poster;
 
 
-                            let ulRatings = document.getElementById("modal-ratings");
-                            let str = "";
-                            info.Ratings.forEach(rating => {
-                                let img = "front/img/user-icon.svg"
-                                if (rating.Source === "Rotten Tomatoes") {
-                                    img = "front/img/Rotten_Tomatoes.svg"
-                                } else if (rating.Source === "Metacritic") {
-                                    img = "front/img/Metacritic.svg"
-                                } else if (rating.Source === "Internet Movie Database") {
-                                    img = "front/img/IMDb.svg"
-                                }
-                                let ratingsDiv = ` <li class="collection-item avatar">
+                                let ulRatings = document.getElementById("modal-ratings");
+                                let str = "";
+                                info.Ratings.forEach(rating => {
+                                    let img = "front/img/user-icon.svg"
+                                    if (rating.Source === "Rotten Tomatoes") {
+                                        img = "front/img/Rotten_Tomatoes.svg"
+                                    } else if (rating.Source === "Metacritic") {
+                                        img = "front/img/Metacritic.svg"
+                                    } else if (rating.Source === "Internet Movie Database") {
+                                        img = "front/img/IMDb.svg"
+                                    }
+                                    let ratingsDiv = ` <li class="collection-item avatar">
                                 <img src=${img} alt="" class="circle">
                                 <span class="title">${rating.Source}</span>
                                 <p>${rating.Value} <br>
                                    
                                 </p>
                               </li>`
-                                str += ratingsDiv;
-                            });
-                            ulRatings.innerHTML = str;
-                        })
-                    }
-                })
+                                    str += ratingsDiv;
+                                });
+                                ulRatings.innerHTML = str;
+                            })
+                        }
+                    })
 
-           }else{
-            Swal.fire(
-                'Error',
-                'No hem trobat cap pel-lícula :(',
-                'error'
-            )
-           }})
+                } else {
+                    Swal.fire(
+                        'Error',
+                        'No hem trobat cap pel-lícula :(',
+                        'error'
+                    )
+                }
+            })
     });
 
 
@@ -225,6 +227,10 @@ window.onload = function () {
 
         var instancesRegistre = M.Modal.getInstance(elemsRegistre);
         instancesLogin.open();
+    })
+
+    document.getElementById("logo").addEventListener('click', function () {
+        document.getElementById("contenedorPelis").classList.add("hide");
     })
 
 
