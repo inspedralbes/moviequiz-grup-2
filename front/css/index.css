@@ -1,9 +1,9 @@
 body{
-    background-color: #92319b;
+    background-color: #BFA19F;
 }
 
 nav, .page-footer{
-	background-color: #240d26;
+	background-color: #696DBF;
 }
 
 .main-container{
@@ -21,7 +21,7 @@ nav, .page-footer{
 
 .card>.card-action>a{
     width: 100%;
-    background-color: #481a4c;
+    background-color: #696DBF;
 }
 
 .card > .card-image>img{
