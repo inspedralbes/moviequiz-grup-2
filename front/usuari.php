@@ -1,6 +1,6 @@
 <?php
 require_once("DBAbstractModel.php");
-
+session_start();
 
 class usuari extends DBAbstractModel
 {
@@ -33,7 +33,6 @@ class usuari extends DBAbstractModel
     public function select($user_data = array())
     {
 
-        echo "holaaa ";
 
         if (array_key_exists("email", $user_data)) {
 
@@ -41,28 +40,29 @@ class usuari extends DBAbstractModel
             $email = $user_data["email"];
 
 
-            $this->query = "SELECT nomUsuari ,email, password FROM usuari WHERE email = '$email' and password = '$password'";
+            $this->query = "SELECT * FROM usuari WHERE email = '$email' and password = '$password'";
             $this->get_results_from_query();
 
+
+
+            $json = json_encode($this->rows[0]);
+
             $username = $this->rows[0]["nomUsuari"];
+            $email = $this->rows[0]["email"];
 
-            echo $this->rows[0]["nomUsuari"];
+            $this->rows = $json;
 
 
+            $_SESSION[$username]= $email;
 
 
 
 
             if ($this->rows == null) {
 
-                echo "usuari no encontrat";
             } else {
 
-                echo "usuari encontrat";
-                $html = file_get_contents(__DIR__ . '/html/welcome.php');
-                $html = str_replace('{nombreuser}', $username, $html);
-
-                print $html;
+                print $json;
 
 
 

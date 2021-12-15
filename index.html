@@ -24,6 +24,7 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
+                <li><a class="modal-trigger" href="#modalLogout" hidden>Logout</a></li>
                 <li><a class="modal-trigger " href="#modalRegistre">Registre</a></li>
                 <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
             </ul>
@@ -32,25 +33,32 @@
 
     <ul class="sidenav" id="mobile-demo">
         <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
+        <li><a class="modal-trigger" href="#modalLogout">Logout</a></li>
         <li><a class="modal-trigger" href="#modalRegistre">Registre</a></li>
         <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
     </ul>
 
 
     <div id="main-container">
-        
-        
-    <div class="container">
-        <div class="search_wrap search_wrap_1">
-			<div class="search_box">
-				<input type="text" id="cercar" class="input browser-default" placeholder="Buscar...">
-				<a id="buttonSearch" class="waves-effect waves-light btn-large "><i
-                    class="material-icons ">search</i></a>
-			</div>
-		</div>
-    </div>
 
 
+        <div class="container">
+            <div class="search_wrap search_wrap_1">
+                <div class="search_box">
+                    <input type="text" id="cercar" class="input browser-default" placeholder="Buscar...">
+                    <a id="buttonSearch" class="waves-effect waves-light btn-large "><i
+                            class="material-icons ">search</i></a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="welcomecontainer">
+
+            <h1 id="welcome"></h1>
+
+        </div>
 
 
 
@@ -275,7 +283,7 @@
         </div>
 
 
-       
+
     </div>
 
 
@@ -288,6 +296,9 @@
 </body>
 
 <script>
+
+
+
 
     document.getElementById("buttonLogin").addEventListener("click", function () {
 
@@ -304,15 +315,55 @@
         datosEnvio.append('email', email);
         datosEnvio.append('password', password);
 
-        fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
+        let promesa = fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
+
 
             method: 'POST',
             body: datosEnvio
 
-            //promise recibe respuesta json
+
+        }).then(function (res) {
+
+            return res.json();
         })
+
+
+        promesa.then((a) => {
+
+
+            let b = JSON.stringify(a);
+            console.log(b);
+            let json = JSON.parse(b);
+
+            console.log(json.nomUsuari);
+
+            document.getElementById("welcome").innerHTML = "Benvingut " + json.nomUsuari;
+            document.getElementById("modalLogin").hidden;
+
+            document.getElementsByClassName("modal-trigger")[1].hidden = false;
+
+            document.getElementsByClassName("modal-trigger")[0].hidden = true;
+
+
+        })
+
+    })
+
+    document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function (){
+
+
+        document.getElementsByClassName("modal-trigger")[0].hidden = false;
+        document.getElementsByClassName("modal-trigger")[1].hidden = true;
+
+
+
+
+
+
     })
 
 </script>
+
+
 
 </html>
