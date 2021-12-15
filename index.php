@@ -18,23 +18,17 @@
     ?>
 
     <div id="main-container">
-        <div class="search">
-            <div class="row">
-                <div class="col s12">
-                    <div class="row">
-                        <div class="input-field col s10 m11">
-                            <i class="material-icons prefix">search</i>
-                            <input id="cercar" type="text">
-                            <label for="cercar">Cercar Pel·lícula</label>
-                        </div>
-                        <div class="col s2 m1">
-                            <a id="buttonSearch" class="waves-effect waves-light btn-large"><i
-                                    class="material-icons ">send</i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <div class="search_wrap search_wrap_1">
+			<div class="search_box">
+				<input type="text" id="cercar" class="input browser-default" placeholder="Buscar...">
+				<a id="buttonSearch" class="waves-effect waves-light btn-large "><i
+                    class="material-icons ">search</i></a>
+			</div>
+		</div>
+    </div>
+
+
         <div id="contenedorPelis" class="row">
         </div>
         <div id="modalAdd" class="modal">
