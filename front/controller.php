@@ -7,12 +7,13 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method == "OPTIONS") {
     die();
 }
+session_start();
 
 require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
 
-$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser");
+$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser");
 
 function handler($peticions)
 {
@@ -97,8 +98,14 @@ function handler($peticions)
         );
 
         $usuari = new usuari();
-        echo " llegacion";
         $usuari->select($dadesUser);
+    }
+
+
+    if ($event === "logoutUser") {
+
+        session_destroy();
+
     }
 
 

@@ -24,6 +24,7 @@
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
+                <li><a class="modal-trigger" href="#modalLogout" hidden>Logout</a></li>
                 <li><a class="modal-trigger " href="#modalRegistre">Registre</a></li>
                 <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
             </ul>
@@ -32,6 +33,7 @@
 
     <ul class="sidenav" id="mobile-demo">
         <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
+        <li><a class="modal-trigger" href="#modalLogout">Logout</a></li>
         <li><a class="modal-trigger" href="#modalRegistre">Registre</a></li>
         <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
     </ul>
@@ -295,6 +297,9 @@
 
 <script>
 
+
+
+
     document.getElementById("buttonLogin").addEventListener("click", function () {
 
         console.log("click");
@@ -333,14 +338,22 @@
             console.log(json.nomUsuari);
 
             document.getElementById("welcome").innerHTML = "Benvingut " + json.nomUsuari;
+            document.getElementById("modalLogin").hidden;
 
+            document.getElementsByClassName("modal-trigger")[1].hidden = false;
+
+            document.getElementsByClassName("modal-trigger")[0].hidden = true;
 
 
         })
 
+    })
+
+    document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function (){
 
 
-
+        document.getElementsByClassName("modal-trigger")[0].hidden = false;
+        document.getElementsByClassName("modal-trigger")[1].hidden = true;
 
 
 
@@ -350,5 +363,7 @@
     })
 
 </script>
+
+
 
 </html>
