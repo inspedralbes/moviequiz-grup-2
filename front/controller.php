@@ -1,4 +1,5 @@
 <?php
+
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
@@ -7,7 +8,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method == "OPTIONS") {
     die();
 }
-session_start();
 
 require_once "usuari.php";
 require_once "pelicula.php";
@@ -85,7 +85,6 @@ function handler($peticions)
             "karma" => 0,
 
         );
-        print_r($dadesUser);
         $usuari = new usuari();
         $usuari->insert($dadesUser);
     }
@@ -98,13 +97,15 @@ function handler($peticions)
         );
 
         $usuari = new usuari();
+
         $usuari->select($dadesUser);
+        print_r($_SESSION);
     }
 
 
     if ($event === "logoutUser") {
 
-        session_destroy();
+       // session_destroy();
 
     }
 

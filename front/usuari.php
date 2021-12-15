@@ -1,6 +1,5 @@
 <?php
 require_once("DBAbstractModel.php");
-session_start();
 
 class usuari extends DBAbstractModel
 {
@@ -50,10 +49,11 @@ class usuari extends DBAbstractModel
             $username = $this->rows[0]["nomUsuari"];
             $email = $this->rows[0]["email"];
 
+
             $this->rows = $json;
 
 
-            $_SESSION[$username]= $email;
+
 
 
 
@@ -61,6 +61,11 @@ class usuari extends DBAbstractModel
             if ($this->rows == null) {
 
             } else {
+
+                session_start();
+
+
+                $_SESSION[$username]= $email;
 
                 print $json;
 
