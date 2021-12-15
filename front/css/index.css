@@ -1,21 +1,27 @@
 body{
-    background-color: #BFA19F;
+    background-color: #6D2673;
 }
+
+nav, .page-footer{
+	background-color: #240d26;
+}
+
 .main-container{
     margin: 5%;
 }
+
 #modal-preloader{
     margin-top: 10%;
     margin-bottom: 5%;
 }
 
-
 .card:hover > .card-image>img{
     filter: brightness(50%)
 }
+
 .card>.card-action>a{
     width: 100%;
-    background-color: #696DBF;
+    background-color: #481a4c;
 }
 
 .card > .card-image>img{
@@ -35,14 +41,8 @@ body{
 }
 
 label{
-
     color: black;
 }
-
-.oculto{
-    display: none;
-}
-
 
 .container .input{
 	border: 0;
@@ -83,7 +83,9 @@ label{
 	cursor: pointer;
 }
 
-
+li {
+	margin-top: 2%;
+}
 
 #contenedorPelis .card{
     margin-left: auto;

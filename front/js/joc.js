@@ -15,25 +15,25 @@ for (let element of jocTriggers) {
                     poster: "https://m.media-amazon.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_SX300.jpg",
                     opcions: [2006, 2002, 2003, 2004],
                     nom: "Cars",
-                    imdbID:"tt0317219"
+                    imdbID: "tt0317219"
                 },
                 {
                     poster: "https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg",
                     opcions: [2002, 2002, 2003, 2004],
                     nom: "Spider-man",
-                    imdbID:"tt0145487"
+                    imdbID: "tt0145487"
                 },
                 {
                     poster: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
                     opcions: [1994, 2002, 2003, 2004],
                     nom: "Pulp Fiction",
-                    imdbID:"tt0110912"
+                    imdbID: "tt0110912"
                 },
                 {
                     poster: "https://m.media-amazon.com/images/M/MV5BMTc3MDY3ODQ2OV5BMl5BanBnXkFtZTgwOTQ2NTYxMTE@._V1_SX300.jpg",
                     opcions: [1987, 2002, 2003, 2004],
                     nom: "Dirty Dancing",
-                    imdbID:"tt0092890"
+                    imdbID: "tt0092890"
                 }
 
             ]

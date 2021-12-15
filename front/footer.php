@@ -6,13 +6,13 @@
   <div class="container">
     <div class="row">
       <div class="col l6 s12">
-        <h5 class="white-text"><i class="material-icons prefix">group</i> Sobre nosaltres</h5>
-        <li><p class="grey-text text-lighten-4">EMPRESA encarregada de CREAR pàginas webs:</p></li>
-        <li><p class="grey-text text-lighten-4">ALTRES PROJECTES:</a><a class="grey-text text-lighten-3" href="http://cantina2.alumnes.inspedralbes.cat"> cantina2.alumnes.inspedralbes.cat</p></li>
+        <h5 class="white-text"><i class="material-icons prefix">group</i> SOBRE NOSALTRES</h5>
+        <li><a class="grey-text text-lighten-4">EMPRESA encarregada de CREAR pàginas webs:</a></li>
+        <li><a class="grey-text text-lighten-4">ALTRES PROJECTES:</a><a class="grey-text text-lighten-3" href="http://cantina2.alumnes.inspedralbes.cat"> cantina2.alumnes.inspedralbes.cat</a></li>
         <li><a class="grey-text text-lighten-3" href=""><i class="material-icons prefix">phone_</i>426 587 156</a></li>
       </div>
       <div class="col l4 offset-l2 s12">
-        <h5 class="white-text"><i class="material-icons prefix">contact_mail</i> Contactens:</h5>
+        <h5 class="white-text"><i class="material-icons prefix">contact_mail</i> CONTACTENS:</h5>
         <ul>
           <li><i class="material-icons prefix">person_outline</i><a class="grey-text text-lighten-3" href="">a20servilrac@inspedralbes.cat</a></li>
           <li><i class="material-icons prefix">person_outline</i><a class="grey-text text-lighten-3" href="">a17chetrupos@inspedralbes.cat</a></li>
