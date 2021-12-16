@@ -42,6 +42,7 @@ for (let element of jocTriggers) {
             preguntas.forEach(element => {
 
                 let preguntasHtml = `<div class="pregunta-pelicula">
+                <input type="hidden" value=${element.imdbID}>
                 <div class="center-align"><img  src="${element.poster}" width=250 height=350></div>`
                 preguntasHtml += `<div class="preguntas center-align">
                 <div class="row">
@@ -98,22 +99,38 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
 
             let divPreguntas = document.querySelectorAll(".preguntas");
             let error = false;
+            let respuestas = [];
             for (let div of divPreguntas) {
+                let imdbID = div.parentElement.getElementsByTagName("input")[0].value;
                 let botones = div.getElementsByClassName("btn-pregunta");
                 let oneIsSelected = false;
                 for (let boton of botones) {
                     if (boton.classList.contains("selected")) {
+
+                        let resposta = {
+                            id: imdbID,
+                            resposta: boton.innerHTML
+                        }
+                        respuestas.push(resposta)
                         oneIsSelected = true;
                     }
                 }
                 if (!oneIsSelected) {
-                    launchError = true;
+                    error = true;
                     break;
                 }
             }
             if (!error) {
 
 
+                fetch(`http://localhost/pruebas/comprovarResposta.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json, text/plain, */*',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(respuestas)
+                }).then()
 
             } else {
                 console.log("error")
