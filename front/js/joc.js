@@ -97,25 +97,32 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
         if (result.isConfirmed) {
 
             let divPreguntas = document.querySelectorAll(".preguntas");
-
+            let error = false;
             for (let div of divPreguntas) {
                 let botones = div.getElementsByClassName("btn-pregunta");
-                let oneSelected = false;
+                let oneIsSelected = false;
                 for (let boton of botones) {
                     if (boton.classList.contains("selected")) {
-                        oneSelected = true;
+                        oneIsSelected = true;
                     }
                 }
                 if (!oneSelected) {
-                    Swal.fire(
-                        'Error',
-                        'No has seleccionat totes les respostes!',
-                        'error'
-                    )
+                    launchError = true;
+                    break;
                 }
             }
+            if (!error) {
 
 
+
+            } else {
+                console.log("error")
+                Swal.fire(
+                    'Error',
+                    'No has seleccionat totes les respostes!',
+                    'error'
+                )
+            }
         }
     })
 })
