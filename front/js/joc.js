@@ -70,12 +70,69 @@ document.getElementById("question-container").addEventListener("click", function
         let buttons = divParent.getElementsByClassName("btn-pregunta");
 
         for (let button of buttons) {
-            button.classList.remove("deep-purple");
+            button.classList.remove("indigo", "darken-1");
             button.classList.remove("selected");
         }
 
-        e.target.classList.toggle("deep-purple");
+        e.target.classList.toggle("indigo", "darken-1");
         e.target.classList.toggle("selected");
-
     }
 })
+
+
+
+document.getElementById("buttonConfirmarJoc").addEventListener("click", function () {
+    Swal.fire({
+        title: '¿Enviar respostes?',
+        showDenyButton: true,
+        confirmButtonText: 'Sí',
+        denyButtonText: 'No',
+        customClass: {
+            actions: 'my-actions',
+            cancelButton: 'order-1 right-gap',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            let divPreguntas = document.querySelectorAll(".preguntas");
+
+            for (let div of divPreguntas) {
+                let botones = div.getElementsByClassName("btn-pregunta");
+                let oneSelected = false;
+                for (let boton of botones) {
+                    if (boton.classList.contains("selected")) {
+                        oneSelected = true;
+                    }
+                }
+                if (!oneSelected) {
+                    Swal.fire(
+                        'Error',
+                        'No has seleccionat totes les respostes!',
+                        'error'
+                    )
+                }
+            }
+
+
+        }
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

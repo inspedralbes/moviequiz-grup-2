@@ -243,7 +243,7 @@
                 <div id="question-container"></div>
             </div>
             <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                <a id="buttonConfirmarJoc" href="#!" class="waves-effect waves-green btn-flat">Agree</a>
             </div>
         </div>
 
