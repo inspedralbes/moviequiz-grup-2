@@ -8,6 +8,27 @@ if ($method == "OPTIONS") {
     die();
 }
 
-$resposta= json_decode(file_get_contents('php://input'));
+require_once "pelicula.php";
 
-print_r($resposta);
+
+$respostes= json_decode(file_get_contents('php://input'),true);
+
+$pelicula = new pelicula();
+
+foreach($respostes as $resposta){
+    $imdbID = $resposta["id"];
+    $anySelected = $resposta["resposta"];
+
+    $dadesPelicula= $pelicula->select($imdbID)[0];
+    if($dadesPelicula["estrena"]==$anySelected){
+        //AUGMENTAR 3 DE KARMA A L'USUARI
+        echo "Encertat! ".$dadesPelicula["nom"]."<br>";
+    }else{
+        //RESTAR 1 DE KARMA A L'USUARI
+    }
+
+
+
+    //GUARDAR PARTIDA
+
+}
