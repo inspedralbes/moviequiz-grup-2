@@ -106,7 +106,7 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
                         oneIsSelected = true;
                     }
                 }
-                if (!oneSelected) {
+                if (!oneIsSelected) {
                     launchError = true;
                     break;
                 }
