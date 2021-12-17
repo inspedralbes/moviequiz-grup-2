@@ -12,7 +12,7 @@ Un cop comenceu heu de canviar aquesta explicació amb la corresponent al vostre
  * Nom dels integrants
  * Nom del projecte
  * Petita descripció
- * URL de producció (quan la tingueu)
+ * URL de producció [http://moviequiz2.alumnes.inspedralbes.cat/]
  * Estat: (explicació de en quin punt està)
 
 
