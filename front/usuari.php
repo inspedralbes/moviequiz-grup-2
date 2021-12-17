@@ -62,7 +62,6 @@ class usuari extends DBAbstractModel
 
             } else {
 
-                session_start();
 
 
                 $_SESSION[$username]= $email;
@@ -76,6 +75,27 @@ class usuari extends DBAbstractModel
             }
 
 
+        }
+    }
+
+    public function sumarKarma($id)
+    {
+
+        if (!empty($id)) {
+
+
+            $this->query = "UPDATE `usuari` SET `karma` = karma+3 WHERE `id` = $id";
+            $this->execute_single_query();
+        }
+    }
+
+    public function restarKarma($id)
+    {
+
+        if (!empty($id)) {
+
+            $this->query = "UPDATE `usuari` SET `karma` = karma-1 WHERE `id` = $id";
+            $this->execute_single_query();
         }
     }
 
@@ -120,26 +140,6 @@ class usuari extends DBAbstractModel
 
 
 
-        }
-    }
-    public function sumarKarma($id)
-    {
-
-        if (!empty($id)) {
-
-
-            $this->query = "UPDATE `usuari` SET `karma` = karma+3 WHERE `id` = $id";
-            $this->execute_single_query();
-        }
-    }
-
-    public function restarKarma($id)
-    {
-
-        if (!empty($id)) {
-
-            $this->query = "UPDATE `usuari` SET `karma` = karma-1 WHERE `id` = $id";
-            $this->execute_single_query();
         }
     }
 }
