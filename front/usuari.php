@@ -63,15 +63,9 @@ class usuari extends DBAbstractModel
             } else {
 
 
-
                 $_SESSION[$username]= $email;
 
                 print $json;
-
-
-
-
-
             }
 
 
