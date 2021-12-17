@@ -9,11 +9,13 @@ if ($method == "OPTIONS") {
 }
 
 require_once "pelicula.php";
+require_once "usuari.php";
 
 
 $respostes= json_decode(file_get_contents('php://input'),true);
 
 $pelicula = new pelicula();
+$usuari = new usuari();
 
 foreach($respostes as $resposta){
     $imdbID = $resposta["id"];
@@ -23,8 +25,11 @@ foreach($respostes as $resposta){
     if($dadesPelicula["estrena"]==$anySelected){
         //AUGMENTAR 3 DE KARMA A L'USUARI
         echo "Encertat! ".$dadesPelicula["nom"]."<br>";
+        $usuari->sumarKarma(1);
     }else{
         //RESTAR 1 DE KARMA A L'USUARI
+        echo "Fallat! ".$dadesPelicula["nom"]."<br>";
+        $usuari->restarKarma(1);
     }
 
 
