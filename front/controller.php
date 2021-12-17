@@ -13,7 +13,7 @@ require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
 
-$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser");
+$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser", "cargaPerfil");
 
 function handler($peticions)
 {
@@ -32,7 +32,7 @@ function handler($peticions)
             "poster" => $_POST["poster"]
         );
         $dadesComentari = array(
-            "id" => 1,
+            "id" => 2,
             "comentari" => $_POST["comment"],
             "rating" => $_POST["rating"]
         );
@@ -85,21 +85,26 @@ function handler($peticions)
             "karma" => 0,
 
         );
+
+
         $usuari = new usuari();
         $usuari->insert($dadesUser);
     }
 
     if ($event === "logearUser") {
+
+
+
         $dadesUser = array(
 
             "password" => $_POST["password"],
             "email" => $_POST["email"]
         );
 
+
         $usuari = new usuari();
 
         $usuari->select($dadesUser);
-        print_r($_SESSION);
     }
 
 
@@ -108,6 +113,8 @@ function handler($peticions)
        // session_destroy();
 
     }
+
+
 
 
 
