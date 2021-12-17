@@ -22,7 +22,7 @@ $json = array(
 );
 
 
-$favorits = $comentariUsuari->selectAllFromUser(2);
+$favorits = $comentariUsuari->selectAllFromUser(1);
 $pelisKeys = array_rand($favorits, 5);
 $pelicules = array();
 
