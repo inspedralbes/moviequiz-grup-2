@@ -48,9 +48,17 @@ class partida extends DBAbstractModel
     }
 
 
-    public function insert($partida)
+    public function insert($partida = array())
     {
-        
+        $dia = $partida["dataPartida"];
+        $nom = $partida["nomPartida"];
+        $encerts = $partida["encerts"];
+        $errors = $partida["errors"];
+        $json_partida = $partida["respostes"];
+
+        $this->query = "INSERT INTO partida (nom, dia, encerts, errors, json_partida)
+        VALUES ('" . $dia . "', '" . $nom . "', '" . $encerts . "', '" . $errors . "', '" . $json_partida . "')";
+        $this->execute_single_query();
     }
 
     public function update($userData = array())
