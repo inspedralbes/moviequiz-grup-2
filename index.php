@@ -240,6 +240,7 @@
         <div id="modalGame" class="modal">
             <div class="modal-content">
                 <h4 class="center-align">Joc</h4>
+                <input type="text" id="nomPartida" placeholder="Nom de la partida...">
                 <div id="question-container"></div>
             </div>
             <div class="modal-footer">

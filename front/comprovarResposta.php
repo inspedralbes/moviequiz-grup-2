@@ -10,14 +10,19 @@ if ($method == "OPTIONS") {
 
 require_once "pelicula.php";
 require_once "usuari.php";
+require_once "partida.php";
 
 
-$respostes= json_decode(file_get_contents('php://input'),true);
-
+$partida= json_decode(file_get_contents('php://input'),true);
+$nomPartida = $partida["nomPartida"];
 $pelicula = new pelicula();
 $usuari = new usuari();
+$modelPartida = new partida(); 
 
-foreach($respostes as $resposta){
+$nEncerts=0;
+$nErrors=0;
+
+foreach($partida["respostes"] as $resposta){
     $imdbID = $resposta["id"];
     $anySelected = $resposta["resposta"];
 
@@ -26,14 +31,19 @@ foreach($respostes as $resposta){
         //AUGMENTAR 3 DE KARMA A L'USUARI
         echo "Encertat! ".$dadesPelicula["nom"]."<br>";
         $usuari->sumarKarma(1);
+        $nEncerts++;
     }else{
         //RESTAR 1 DE KARMA A L'USUARI
         echo "Fallat! ".$dadesPelicula["nom"]."<br>";
         $usuari->restarKarma(1);
+        $nErrors++;
     }
-
+    $partida["encerts"] = $nEncerts;
+    $partida["errors"] = $nErrors;
 
 
     //GUARDAR PARTIDA
+    $modelPartida->insert($partida);
+
 
 }
