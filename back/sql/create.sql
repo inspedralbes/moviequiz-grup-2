@@ -103,3 +103,7 @@ ALTER TABLE `usu_peli`
   ADD CONSTRAINT `fk_idUsuari` FOREIGN KEY (`id`) REFERENCES `usuari` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
+
+CREATE TABLE `projectepelis`.`partida` ( `id` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , 
+`dia` DATE NOT NULL , `encerts` INT NOT NULL , `errors` INT NOT NULL , `json_partida` JSON NOT NULL , PRIMARY KEY (`id`)) ; 
+
