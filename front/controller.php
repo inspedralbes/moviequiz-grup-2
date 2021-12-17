@@ -32,7 +32,7 @@ function handler($peticions)
             "poster" => $_POST["poster"]
         );
         $dadesComentari = array(
-            "id" => 2,
+            "id" => 1,
             "comentari" => $_POST["comment"],
             "rating" => $_POST["rating"]
         );
