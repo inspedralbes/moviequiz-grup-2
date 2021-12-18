@@ -49,6 +49,13 @@ class comentariUsuari extends DBAbstractModel
         return $this->rows;
     }
 
+    public function return_rows(){
+
+
+        return $this->rows;
+    }
+
+
 
     public function insert($dadesPeli = array(), $dadesComentari = array())
     {

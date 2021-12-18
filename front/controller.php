@@ -116,6 +116,22 @@ function handler($peticions)
 
 
 
+    
+    if ($event === "cargaPerfil") {
+
+        $dadesusu = $_POST["id"];
+
+        $dadespeliuser = new comentariUsuari();
+
+        $dadespeliuser->selectAllFromUser($dadesusu);
+
+        print_r($dadespeliuser->return_rows());
+
+
+        
+
+     }
+ 
 
 
 }

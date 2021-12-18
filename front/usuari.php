@@ -120,7 +120,7 @@ class usuari extends DBAbstractModel
 
            $success=  $this->execute_single_query();
 
-           print_r($success . " success ");
+           print_r($this->query);
 
            if($success == 0){
 

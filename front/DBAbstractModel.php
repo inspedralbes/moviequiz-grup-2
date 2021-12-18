@@ -28,6 +28,10 @@ abstract class DBAbstractModel
     abstract protected function update();
     abstract protected function delete();
 
+
+
+
+
     private function open_connection()
     {
 

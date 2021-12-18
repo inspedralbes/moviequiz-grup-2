@@ -36,13 +36,15 @@ INSERT INTO `pelicula` (`ImdbID`, `nom`, `poster`, `estrena`) VALUES
 --
 
 CREATE TABLE `usuari` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT ,
   `nomUsuari` varchar(20) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `cognom` varchar(25) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `karma` tinyint(4) NOT NULL DEFAULT 0
+  `karma` tinyint(4) NOT NULL DEFAULT 0,
+  PRIMARY KEY (ID)
+
 ) ;
 
 --
@@ -79,7 +81,6 @@ ALTER TABLE `pelicula`
 -- Índexs per a la taula `usuari`
 --
 ALTER TABLE `usuari`
-  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nomUsuari` (`nomUsuari`),
   ADD UNIQUE KEY `email` (`email`);
 

@@ -333,7 +333,7 @@ if($_SESSION != null){
         datosEnvio.append('email', email);
         datosEnvio.append('password', password);
 
-        let promesa = fetch(`http://localhost/front/controller.php?action=logearUser`, {
+        let promesa = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logearUser`, {
 
 
             method: 'POST',
@@ -378,7 +378,7 @@ if($_SESSION != null){
 
             console.log(json.id + " aw");
 
-            let prom = fetch(`http://localhost/front/controller.php?action=cargaPerfil`, {
+            let prom = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargaPerfil`, {
 
 
                 method: 'POST',
@@ -432,7 +432,7 @@ if($_SESSION != null){
 
 
 
-        fetch(`http://localhost/front/controller.php?action=registrarUser`, {
+        fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
 
             method: 'POST',
             body: datosEnvio
@@ -445,7 +445,7 @@ if($_SESSION != null){
 
     document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function (){
 
-        fetch(`http://localhost/front/controller.php?action=logoutUser`, {
+        fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
 
         })
 
