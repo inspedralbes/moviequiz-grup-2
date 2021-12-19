@@ -44,6 +44,7 @@ CREATE TABLE `usuari` (
   `email` varchar(50) NOT NULL,
   `karma` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (ID)
+--Colegas he cambaido esto que sino no se hacia autoincrementable
 
 ) ;
 
