@@ -72,7 +72,17 @@ class comentariUsuari extends DBAbstractModel
     {
     }
 
-    public function delete($nom = "")
+    public function delete($idusuari = "", $idpeli = "")
     {
+
+        $idusuari = $idusuari;
+        $idpeli = $idpeli;
+
+        $this->query = "DELETE FROM usu_peli WHERE id = $idusuari and imdbID = '".$idpeli."'";
+        echo  $this->query;
+        $this->execute_single_query();
+
+
+
     }
 }

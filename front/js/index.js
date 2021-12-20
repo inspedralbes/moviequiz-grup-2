@@ -1,12 +1,8 @@
 document.getElementById("buttonLogin").addEventListener("click", function () {
 
-    console.log("click");
 
     let email = document.getElementById('email').value;
     let password = document.getElementById("password").value;
-
-    console.log(email);
-    console.log(password);
 
     const datosEnvio = new FormData();
 
@@ -24,7 +20,6 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
     promesa.then((a) => {
 
         let b = JSON.stringify(a);
-        console.log(b);
         let json = JSON.parse(b);
 
         document.getElementById("karmap").innerHTML = json.karma + " puntos de karma";
@@ -48,7 +43,6 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
         prom.then((a) => {
             let b = JSON.stringify(a);
             let jsonpelis = JSON.parse(b);
-            console.log(jsonpelis);
 
             for (let peli of jsonpelis) {
 
@@ -56,7 +50,6 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 let comentari = peli.comentari;
                 let votacion = peli.puntuacio;
 
-                console.log(comentari + votacion);
                 document.getElementById("comentarioaux").innerHTML = comentari;
                 document.getElementById("votacionaux").innerHTML = votacion;
 
@@ -70,8 +63,10 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                     "      <span class=\"card-title activator grey-text text-darken-4\" id=" + id + ">" + id + "</span>" +
                     "      <span class=\"card-title activator blue-text text-darken-4\" id='com" + id + "'>" + comentari + "</span>" +
                     "      <span class=\"card-title activator red-text text-darken-4\" id ='vot" + id + "'>" + votacion + "</span>" +
+                    "  <button id ="+id +"button value="+id+"><i class=\"material-icons\">highlight_off</i></button> "+
                     "    </div>\n" +
                     "  </div>";
+
 
                 const ascociarnombreid = new FormData();
                 ascociarnombreid.append('idpeli', id);
@@ -98,11 +93,62 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                     }
                 })
             }
+            divis();
+
         })
+
 
     })
 
+
+
 })
+
+
+function divis() {
+    let divs = document.getElementsByClassName("card");
+    for (let div of divs) {
+
+        div.children[0].children[3].addEventListener("click", function () {
+
+
+            Swal.fire({
+                title: '¿Vols eliminar aquesta pelicula?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Sí',
+                denyButtonText: 'No',
+                customClass: {
+                    actions: 'my-actions',
+                    cancelButton: 'order-1 right-gap',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let idpeli = div.children[0].children[3].value;
+
+
+                    const formulario = new FormData();
+                    formulario.append('idpeli', idpeli);
+
+                    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=borrarPeliUser`, {
+
+                        method: 'POST',
+                        body: formulario
+
+                    }).then(function (res) {
+                        return res.text()
+                    })
+                }
+            })
+        })
+    }
+}
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.carousel');

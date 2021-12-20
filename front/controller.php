@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida");
+$peticions = array("insertarPelicula", "insertarComentarioValoracion","borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida");
 
 function handler($peticions)
 {
@@ -112,9 +112,15 @@ function handler($peticions)
             $json["result"] = "OK";
             $selectedUser = $usuari->select($dadesUser);
             $_SESSION["idUsuari"] = $selectedUser[0]["id"];
-        } else {
-            $json["result"] = "FALSE";
-        }
+
+
+            $json = $selectedUser[0];
+            $json["result"] = "OK";
+
+            } else {
+                $json["result"] = "FALSE";
+            }
+
         echo json_encode($json);
     }
 
@@ -131,6 +137,7 @@ function handler($peticions)
     if ($event === "cargaPerfil") {
 
         $dadesusu = $_POST["id"];
+        $dadesusu = $_SESSION["idUsuari"];
 
         $dadespeliuser = new comentariUsuari();
 
@@ -248,6 +255,22 @@ function handler($peticions)
         }
         echo json_encode($json);
     }
+
+
+    if ($event === "borrarPeliUser") {
+
+        $idpeli = $_POST["idpeli"];
+        print_r($idpeli);
+        $dadesusu = $_SESSION["idUsuari"];
+
+        $dadespeliuser = new comentariUsuari();
+
+        $dadespeliuser->delete($dadesusu, $idpeli);
+    }
+
+
+
+
 }
 
 
