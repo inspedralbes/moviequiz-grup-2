@@ -10,7 +10,6 @@ fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=car
     let ulComentarios = document.getElementById("comentaris");
     let str = "";
     let icono = `<i class="material-icons">favorite</i>`;
-    console.log(usuari.comentaris)
     usuari.comentaris.forEach(comentario => {
         let comentarioDiv = ` <li class="collection-item avatar">
             <img src=${comentario.poster} alt="" class="circle">
@@ -23,6 +22,14 @@ fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=car
         str += comentarioDiv + "</a></li>";;
     });
     ulComentarios.innerHTML = str;
+
+    let imgAvatar = document.getElementById("avatar");
+    imgAvatar.src = usuari.avatar;
+    document.getElementById("nomUsuari").innerHTML = usuari.nomUsuari;
+    document.getElementById("nom").innerHTML = usuari.nomUsuari + " " + usuari.cognom;
+
+
+
 })
 
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="front/css/index.css">
+    <link rel="stylesheet" href="front/css/perfil.css">
     <title>Pelis Grup 2</title>
 </head>
 
@@ -20,10 +21,18 @@
 
 
     <div class="row">
-        <div class="col s12" id="profile">
-
+        <header class="row" id="profile">
+        <div class="col s12  m1 offset-m5" >
+            <img id="avatar">
         </div>
-        <div class="col s12" >
+        <div class="row">
+        <div class="col s12 center-align"  id="nomUsuari"></div>
+        <div class="col s12  center-align"  id="nom"></div>
+        </div>
+      
+        </header>
+        
+        <div class="col s12">
             <ul id="comentaris" class="collection"></ul>
         </div>
     </div>   
