@@ -63,9 +63,9 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 let div = document.getElementsByClassName("carousel")[0];
 
                 div.innerHTML += "  <div class=\"card\">\n" +
-                    "    <div class=\"card-image waves-effect waves-block waves-light\">\n" +
+                    /*"    <div class=\"card-image waves-effect waves-block waves-light\">\n" +
                     "      <img class=\"activator\" src=\"images/office.jpg\">\n" +
-                    "    </div>\n" +
+                    "    </div>\n" +*/
                     "    <div class=\"card-content\">\n" +
                     "      <span class=\"card-title activator grey-text text-darken-4\" id=" + id + ">" + id + "</span>" +
                     "      <span class=\"card-title activator blue-text text-darken-4\" id='com" + id + "'>" + comentari + "</span>" +
