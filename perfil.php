@@ -18,9 +18,17 @@
     include("front/header.php");
     ?>
 
-   
 
-<div id="modalGame" class="modal">
+    <div class="row">
+        <div class="col s12" id="profile">
+
+        </div>
+        <div class="col s12" >
+            <ul id="comentaris" class="collection"></ul>
+        </div>
+    </div>   
+
+    <div id="modalGame" class="modal">
             <div class="modal-content">
                 <h4 class="center-align">Joc</h4>
                 <input type="text" id="nomPartida" placeholder="Nom de la partida...">
@@ -29,15 +37,15 @@
             <div class="modal-footer">
                 <a id="buttonConfirmarJoc" href="#!" class="waves-effect waves-green btn-flat">Agree</a>
             </div>
-        </div>
+    </div>
     <?php
     include("front/footer.php");
     ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="front/js/cercador.js"></script>
     <script src="front/js/joc.js"></script>
-    <script src="front/js/index.js"></script>
+    <script src="front/js/perfil.js"></script>
+    
 
 </body>
 
