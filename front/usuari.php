@@ -41,17 +41,8 @@ class usuari extends DBAbstractModel
         $this->query = "SELECT password FROM usuari WHERE email = '$email' ";
         $this->get_results_from_query();
         $hash = $this->rows[0]["password"];
-        
 
-        if (password_verify($pass, $hash))
-     {
-            echo '¡La contraseña es válida!';
-        } else {
-            echo 'La contraseña no es válida.';
-        }
-
-
-
+        return password_verify($pass, $hash);
     }
 
     public function select($user_data = array())
@@ -65,33 +56,10 @@ class usuari extends DBAbstractModel
             $this->query = "SELECT * FROM usuari WHERE email = '$email'";
             $this->get_results_from_query();
 
-
-
-            $json = json_encode($this->rows[0]);
-
-            $username = $this->rows[0]["nomUsuari"];
-            $email = $this->rows[0]["email"];
-
-
-            $this->rows = $json;
-
-
-
-
-
-
-
             if ($this->rows == null) {
-
             } else {
-
-
-                $_SESSION[$username]= $email;
-
-                print $json;
+                return $this->rows;
             }
-
-
         }
     }
 
@@ -138,26 +106,21 @@ class usuari extends DBAbstractModel
             $email = $user_data["email"];
             $karma = $user_data["karma"];
 
-            $hashed = password_hash($password, PASSWORD_DEFAULT);
+            $hashed = password_hash($password, PASSWORD_BCRYPT);
 
             $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma) values ('$nomusuari', '$nom', '$cognom', '$hashed', '$email', $karma)";
 
-           $success=  $this->execute_single_query();
+            $success =  $this->execute_single_query();
 
-           print_r($this->query);
+            print_r($this->query);
 
-           if($success == 0){
+            if ($success == 0) {
 
-               echo "usuari no registrat, ja existeix el nom o el email";
-           }
-           else{
+                echo "usuari no registrat, ja existeix el nom o el email";
+            } else {
 
-               echo "usuari registrat correctamnet";
-
-           }
-
-
-
+                echo "usuari registrat correctamnet";
+            }
         }
     }
 }

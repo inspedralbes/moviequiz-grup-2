@@ -12,6 +12,7 @@ if ($method == "OPTIONS") {
 require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
+session_start();
 
 $peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser");
 
@@ -103,22 +104,29 @@ function handler($peticions)
 
 
         $usuari = new usuari();
-        print($usuari->selecthash($dadesUser));
+        $resultat = $usuari->selecthash($dadesUser);
 
-        $usuari2 = new usuari();
-        $usuari2->select($dadesUser);
+        $json = array();
+        if ($resultat) {
+            $json["result"] = "OK";
+            $selectedUser = $usuari->select($dadesUser);
+            $_SESSION["idUsuari"] = $selectedUser[0]["id"];
+        } else {
+            $json["result"] = "FALSE";
+        }
+        echo json_encode($json);
     }
 
 
     if ($event === "logoutUser") {
 
-       // session_destroy();
+        // session_destroy();
 
     }
 
 
 
-    
+
     if ($event === "cargaPerfil") {
 
         $dadesusu = $_POST["id"];
@@ -130,28 +138,18 @@ function handler($peticions)
         $json = json_encode($dadespeliuser->return_rows());
 
         print_r($json);
-
-
-        
-
-     }
+    }
 
 
     if ($event === "buscaPeliparaUser") {
 
-    $idpeli = $_POST["idpeli"];
-    $peli = new pelicula();
-    $peliretornada = $peli->select($idpeli);
-    $json = json_encode($peliretornada);
+        $idpeli = $_POST["idpeli"];
+        $peli = new pelicula();
+        $peliretornada = $peli->select($idpeli);
+        $json = json_encode($peliretornada);
 
-    print_r($json);
-
-
-
+        print_r($json);
     }
- 
-
-
 }
 
 
