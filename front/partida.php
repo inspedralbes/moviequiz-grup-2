@@ -26,7 +26,7 @@ class partida extends DBAbstractModel
     //stored in $rows property
     public function selectAll($fields = array())
     {
-/*
+        /*
         $this->query = "SELECT ";
         $firstField = true;
         for ($i = 0; $i < count($fields); $i++) {
@@ -42,7 +42,7 @@ class partida extends DBAbstractModel
 
     public function select($imdbID = "")
     {
-       /* $this->query = "SELECT * FROM pelicula WHERE imdbID='" . $imdbID . "'";
+        /* $this->query = "SELECT * FROM pelicula WHERE imdbID='" . $imdbID . "'";
         $this->get_results_from_query();
         return $this->rows;*/
     }
@@ -54,11 +54,12 @@ class partida extends DBAbstractModel
         $nom = $partida["nomPartida"];
         $encerts = $partida["encerts"];
         $errors = $partida["errors"];
-        $json_partida = $partida["respostes"];
+        $idUsuari = $partida["idUsuari"];
+        $json_partida = json_encode($partida["respostes"]);
 
-        $this->query = "INSERT INTO partida (nom, dia, encerts, errors, json_partida)
-        VALUES ('" . $dia . "', '" . $nom . "', '" . $encerts . "', '" . $errors . "', '" . $json_partida . "')";
-        $this->execute_single_query();
+        $this->query = "INSERT INTO partida (nom, dia, encerts, errors, json_partida, id_usuari)
+        VALUES ('" . $nom . "', '" . $dia . "', '" . $encerts . "', '" . $errors . "', '" . $json_partida . "'," . $idUsuari . ")";
+        return $this->execute_single_query();
     }
 
     public function update($userData = array())

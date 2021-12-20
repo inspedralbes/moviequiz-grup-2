@@ -12,11 +12,12 @@ if ($method == "OPTIONS") {
 require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
+require_once "partida.php";
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser");
+$peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida");
 
 function handler($peticions)
 {
@@ -149,6 +150,103 @@ function handler($peticions)
         $json = json_encode($peliretornada);
 
         print_r($json);
+    }
+
+
+    if ($event === "generarPartida") {
+
+        $comentariUsuari = new comentariUsuari();
+        $pelicula = new pelicula();
+
+        $json = array(
+            "id_partida" => 10,
+            "peliculas" => array("")
+        );
+
+
+        $favorits = $comentariUsuari->selectAllFromUser($_SESSION["idUsuari"]);
+        $pelisKeys = array_rand($favorits, 5);
+        $pelicules = array();
+
+        for ($i = 0; $i < count($pelisKeys); $i++) {
+            $imdbID = $favorits[$pelisKeys[$i]]["ImdbID"];
+            array_push($pelicules, $pelicula->select($imdbID));
+        }
+
+
+        $preguntes = array();
+
+        foreach ($pelicules as $key => $pelicula) {
+            $vectorAnys = [-15, -10, -5, -2, +2, +5, +10, +15];
+
+            $preguntes[$key] = array(
+                "imdbID" => $pelicula[0]["ImdbID"],
+                "nom" => $pelicula[0]["nom"],
+                "poster" => $pelicula[0]["poster"],
+                "opcions" => array($pelicula[0]["estrena"], 0, 0, 0)
+            );
+
+
+            for ($i = 1; $i < count($preguntes[$key]["opcions"]); $i++) {
+                $rand = rand(0, count($vectorAnys) - 1);
+                $preguntes[$key]["opcions"][$i] = $pelicula[0]["estrena"] + $vectorAnys[$rand];
+                unset($vectorAnys[$rand]);
+                $vectorAnys = array_values($vectorAnys);
+            }
+        }
+
+
+        foreach ($preguntes as &$pregunta) {
+            shuffle($pregunta["opcions"]);
+        }
+
+
+        $json["peliculas"] = $preguntes;
+
+
+
+        echo json_encode($json);
+    }
+    if ($event === "comprobarPartida") {
+
+        $partida = json_decode(file_get_contents('php://input'), true);
+        $nomPartida = $partida["nomPartida"];
+        $pelicula = new pelicula();
+        $usuari = new usuari();
+        $modelPartida = new partida();
+
+        $nEncerts = 0;
+        $nErrors = 0;
+
+        foreach ($partida["respostes"] as $resposta) {
+            $imdbID = $resposta["id"];
+            $anySelected = $resposta["resposta"];
+
+            $dadesPelicula = $pelicula->select($imdbID)[0];
+            if ($dadesPelicula["estrena"] == $anySelected) {
+                //AUGMENTAR 3 DE KARMA A L'USUARI
+
+                $usuari->sumarKarma($_SESSION["idUsuari"]);
+                $nEncerts++;
+            } else {
+                //RESTAR 1 DE KARMA A L'USUARI
+
+                $usuari->restarKarma($_SESSION["idUsuari"]);
+                $nErrors++;
+            }
+            $partida["encerts"] = $nEncerts;
+            $partida["errors"] = $nErrors;
+            $partida["idUsuari"] = $_SESSION["idUsuari"];
+        }
+
+        $result = $modelPartida->insert($partida);
+        $json = array("result" => "");
+        if ($result == true) {
+            $json["result"] = "OK";
+        } else {
+            $json["result"] = "FALSE";
+        }
+        echo json_encode($json);
     }
 }
 

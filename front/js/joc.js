@@ -3,41 +3,12 @@ let jocTriggers = document.getElementsByClassName("joc-trigger");
 
 for (let element of jocTriggers) {
     element.addEventListener("click", function () {
-        fetch("http://localhost/pruebas/joc.php").then(function (res) {
+        fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=generarPartida").then(function (res) {
 
             return res.json();
         }).then(function (data) {
             let preguntas = data.peliculas;
             let html = "";
-            /*
-                        let preguntas = [
-                            {
-                                poster: "https://m.media-amazon.com/images/M/MV5BMTg5NzY0MzA2MV5BMl5BanBnXkFtZTYwNDc3NTc2._V1_SX300.jpg",
-                                opcions: [2006, 2002, 2003, 2004],
-                                nom: "Cars",
-                                imdbID: "tt0317219"
-                            },
-                            {
-                                poster: "https://m.media-amazon.com/images/M/MV5BZDEyN2NhMjgtMjdhNi00MmNlLWE5YTgtZGE4MzNjMTRlMGEwXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg",
-                                opcions: [2002, 2002, 2003, 2004],
-                                nom: "Spider-man",
-                                imdbID: "tt0145487"
-                            },
-                            {
-                                poster: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
-                                opcions: [1994, 2002, 2003, 2004],
-                                nom: "Pulp Fiction",
-                                imdbID: "tt0110912"
-                            },
-                            {
-                                poster: "https://m.media-amazon.com/images/M/MV5BMTc3MDY3ODQ2OV5BMl5BanBnXkFtZTgwOTQ2NTYxMTE@._V1_SX300.jpg",
-                                opcions: [1987, 2002, 2003, 2004],
-                                nom: "Dirty Dancing",
-                                imdbID: "tt0092890"
-                            }
-            
-                        ]*/
-
 
             preguntas.forEach(element => {
 
@@ -90,11 +61,10 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
     let dia = data.getDay();
     let mes = data.getMonth();
     let año = data.getFullYear();
-    console.log(data);
+
 
     Swal.fire({
         title: '¿Enviar respostes?',
-        text: "Write something interesting:",
         showDenyButton: true,
         confirmButtonText: 'Sí',
         denyButtonText: 'No',
@@ -111,7 +81,7 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
             let error = false;
             let joc = {
                 nomPartida: nomPartida,
-                dataPartida: dia + "-" + mes + "-" + año,
+                dataPartida: año + "-" + mes + "-" + dia,
                 respostes: []
             };
             for (let div of divPreguntas) {
@@ -136,15 +106,28 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
             }
             if (!error) {
 
-
-                fetch(`http://localhost/pruebas/comprovarResposta.php`, {
+                let modal = M.Modal.getInstance(document.getElementById("modalGame"));
+                fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=comprobarPartida`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json, text/plain, */*',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(joc)
-                }).then()
+                }).then(function (res) {
+                    return res.json();
+                }).then(function (result) {
+                    if (result.result === "OK") {
+                        Swal.fire('Partida completada!', '', 'success')
+                        modal.close();
+                    } else {
+                        Swal.fire(
+                            'Error',
+                            'Algo no ha funcionat correctament',
+                            'error'
+                        )
+                    }
+                });
 
             } else {
                 Swal.fire(
