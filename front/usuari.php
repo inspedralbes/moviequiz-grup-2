@@ -41,7 +41,6 @@ class usuari extends DBAbstractModel
         $this->query = "SELECT password FROM usuari WHERE email = '$email' ";
         $this->get_results_from_query();
         $hash = $this->rows[0]["password"];
-
         return password_verify($pass, $hash);
     }
 
@@ -52,8 +51,10 @@ class usuari extends DBAbstractModel
         if (array_key_exists("email", $user_data)) {
 
             $email = $user_data["email"];
+            $password = $user_data["password"];
 
-            $this->query = "SELECT * FROM usuari WHERE email = '$email'";
+
+            $this->query = "SELECT * FROM usuari WHERE email = '$email' and password = '$password'";
             $this->get_results_from_query();
 
             if ($this->rows == null) {

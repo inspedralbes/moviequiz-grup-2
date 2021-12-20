@@ -111,7 +111,7 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
             let error = false;
             let joc = {
                 nomPartida: nomPartida,
-                dataPartdia: dia + "-" + mes + "-" + año,
+                dataPartida: dia + "-" + mes + "-" + año,
                 respostes: []
             };
             for (let div of divPreguntas) {

@@ -45,7 +45,6 @@ CREATE TABLE `usuari` (
   `karma` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (ID)
 
-
 ) ;
 
 --

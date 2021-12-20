@@ -43,6 +43,7 @@ foreach($partida["respostes"] as $resposta){
 
 
     //GUARDAR PARTIDA
+    print_r ($partida);
     $modelPartida->insert($partida);
 
 
