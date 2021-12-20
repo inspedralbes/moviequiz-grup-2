@@ -64,6 +64,14 @@ class partida extends DBAbstractModel
     }
 
 
+    public function select_partidas_from_user($id)
+    {
+        $this->query = "SELECT usuari.nom,dia, encerts, errors, json_partida FROM partida, usuari WHERE usuari.id= $id AND usuari.id=partida.id_usuari;";
+        $this->get_results_from_query();
+        return $this->rows;
+    }
+
+
     public function insert($partida = array())
     {
         $dia = $partida["dataPartida"];
@@ -76,7 +84,6 @@ class partida extends DBAbstractModel
         $this->query = "INSERT INTO partida (nom, dia, encerts, errors, json_partida, id_usuari)
         VALUES ('" . $nom . "', '" . $dia . "', '" . $encerts . "', '" . $errors . "', '" . $json_partida . "'," . $idUsuari . ")";
 
-        echo $this->query;
         return $this->execute_single_query();
     }
 
