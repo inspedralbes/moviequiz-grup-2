@@ -40,7 +40,7 @@ CREATE TABLE `usuari` (
   `nomUsuari` varchar(20) NOT NULL,
   `nom` varchar(20) NOT NULL,
   `cognom` varchar(25) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(250) NOT NULL,
   `email` varchar(50) NOT NULL,
   `karma` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (ID)
@@ -108,3 +108,6 @@ COMMIT;
 CREATE TABLE `projectepelis`.`partida` ( `id` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , 
 `dia` DATE NOT NULL , `encerts` INT NOT NULL , `errors` INT NOT NULL , `json_partida` JSON NOT NULL , PRIMARY KEY (`id`)) ; 
 
+ALTER TABLE `partida` ADD `id_usuari` INT NOT NULL AFTER `json_partida`; 
+ALTER TABLE `partida` CHANGE `id_usuari` `id_usuari` INT(11) NULL; 
+ALTER TABLE `partida` ADD INDEX(`id_usuari`);
