@@ -12,7 +12,9 @@ if ($method == "OPTIONS") {
 require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser");
 
@@ -33,7 +35,7 @@ function handler($peticions)
             "poster" => $_POST["poster"]
         );
         $dadesComentari = array(
-            "id" => 2,
+            "id" => $_SESSION["idUsuari"],
             "comentari" => $_POST["comment"],
             "rating" => $_POST["rating"]
         );
@@ -63,8 +65,6 @@ function handler($peticions)
             $pelicula->insert($dadesPelicula);
             $result = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
         }
-
-
 
         $json = array("result" => "");
         if ($result == true) {
