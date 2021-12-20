@@ -189,5 +189,22 @@ window.onload = function () {
         document.getElementById("contenedorPelis").classList.add("hide");
     })
 
+    //CANVIS DE MODALS
+    document.getElementById("RegisterToLogin").addEventListener('click', function () {
+        let modalRegistre = M.Modal.getInstance(document.getElementById("modalRegistre"));
+        modalRegistre.close();
+
+        var instancesLogin = M.Modal.getInstance(elemsLogin);
+        instancesLogin.open();
+    })
+
+    document.getElementById("LoginToRegistre").addEventListener('click', function () {
+        let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
+        modalLogin.close();
+
+        var instancesRegistre = M.Modal.getInstance(elemsRegistre);
+        instancesLogin.open();
+    })
+
 
 }
