@@ -42,6 +42,7 @@ CREATE TABLE `usuari` (
   `cognom` varchar(25) NOT NULL,
   `password` varchar(250) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `avatar` varchar(50) NOT NULL,
   `karma` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (ID)
 
