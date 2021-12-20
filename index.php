@@ -43,7 +43,7 @@
         <div class="avatar">
 
 
-            <img src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png" width=100px height=100px>
+            <img id="avatar" src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png" width=100px height=100px>
 
 
 
