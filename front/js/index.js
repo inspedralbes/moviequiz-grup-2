@@ -59,14 +59,15 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
             return res.json();
         })
         prom.then((a) => {
-            let b = JSON.stringify(a);
-            let jsonpelis = JSON.parse(b);
+
+            let jsonpelis = a.comentaris;
 
             for (let peli of jsonpelis) {
 
-                let id = peli.ImdbID;
+                let id = peli.imdbID;
                 let comentari = peli.comentari;
                 let votacion = peli.puntuacio;
+
 
 
                 let div = document.getElementsByClassName("row")[0];
@@ -75,8 +76,8 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
                 div.innerHTML += "<div class='col s1>'><div class=\"card cartas\" >\n" +
                     "    <div class=\"card-image\">\n" +
-                    " <img id = '"+id+"pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb'>" +
-                            "<span className='card-title' id=" + id + ">"+id+"</span>" +
+                    " <img id = '" + id + "pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb'>" +
+                    "<span className='card-title' id=" + id + ">" + id + "</span>" +
                     "</div>" +
                     "      <span class=\'card-content\' id='com" + id + "'>" + comentari + "</span>" +
                     "      <span class=\'card-content\' id='vot" + id + "'>" + votacion + "</span>" +
@@ -100,6 +101,7 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 })
 
                 promesapeli.then((a) => {
+                    console.log(a)
 
                     let b = JSON.stringify(a);
                     let pelicula = JSON.parse(b);
@@ -109,14 +111,14 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
                     if (peliculavotada == pelicula[0].ImdbID) {
                         document.getElementById(pelicula[0].ImdbID).innerHTML = pelicula[0].nom;
-                        document.getElementById(pelicula[0].ImdbID + "pic").src= pelicula[0].poster;
+                        document.getElementById(pelicula[0].ImdbID + "pic").src = pelicula[0].poster;
 
 
                     }
                 })
 
             }
-            let promesapartida =  fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargapartidasUser`, {
+            let promesapartida = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargapartidasUser`, {
                 method: 'POST',
             }).then(function (res) {
                 return res.json();
@@ -132,7 +134,7 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 let partidasdiv = document.getElementsByClassName("partidasdiv")[0];
 
 
-                for(let game of partida){
+                for (let game of partida) {
 
                     let nompartida = game.nom;
                     let diapartida = game.dia;

@@ -153,15 +153,18 @@ function handler($peticions)
 
     if ($event === "cargaPerfil") {
 
-        $dadesusu = $_POST["id"];
-        $dadesusu = $_SESSION["idUsuari"];
+       
+        $id = $_SESSION["idUsuari"];
 
         $dadespeliuser = new comentariUsuari();
 
-        $dadespeliuser->selectAllFromUser($dadesusu);
+        $dadespeliuser->selectAllFromUser($id);
 
-        $json = json_encode($dadespeliuser->return_rows());
+        $usuari = new usuari();
 
+        $dadesUsuari= $usuari->select_from_id($id);
+        $dadesUsuari[0]["comentaris"]= $dadespeliuser->return_rows();
+        $json= json_encode($dadesUsuari[0]);
         print_r($json);
     }
 
@@ -299,6 +302,7 @@ function handler($peticions)
 
     if ($event === "logearRefresh") {
 
+    
         $user = $_SESSION["idUsuari"];
         $refresco = 1;
         echo $user;
