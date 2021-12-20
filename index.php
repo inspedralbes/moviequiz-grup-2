@@ -222,6 +222,80 @@
 
 
         <div id="modalRegistre" class="modal">
+
+            <div class="row">
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="hola" class="browser-default">
+                        <img src="front/img/avatar-anime.svg">
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-batman.svg">
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-chaplin.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-geisha.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-heisenberg.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-jason.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-luchador.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-queen.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-zombie.svg">
+
+                    </label>
+                </div>
+
+            </div>
+
             <div class="col s12">
                 <form class="registre-form">
                     <div class="row">
