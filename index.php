@@ -14,19 +14,21 @@
 <body>
 
     <?php
+    session_start();
     include("front/header.php");
+
+
     ?>
 
     <div id="main-container">
-    <div class="container">
-        <div class="search_wrap search_wrap_1">
-			<div class="search_box">
-				<input type="text" id="cercar" class="input browser-default" placeholder="Buscar...">
-				<a id="buttonSearch" class="waves-effect waves-light btn-large "><i
-                    class="material-icons ">search</i></a>
-			</div>
-		</div>
-    </div>
+        <div class="container">
+            <div class="search_wrap search_wrap_1">
+                <div class="search_box">
+                    <input type="text" id="cercar" class="input browser-default" placeholder="Buscar...">
+                    <a id="buttonSearch" class="waves-effect waves-light btn-large "><i class="material-icons ">search</i></a>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -40,40 +42,40 @@
 
 
 
-            <div class="avatar">
+        <div class="avatar">
 
 
-                <img src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png" width= 100px height=100px>
-
-
-
-            </div>
-
-            <div class="carrouselvotaciones">
-
-
-                <div class="carousel">
+            <img src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png" width=100px height=100px>
 
 
 
-                </div>
+        </div>
+
+        <div class="carrouselvotaciones">
+
+
+            <div class="carousel">
 
 
 
             </div>
 
-            <div class="karmadiv">
-                <p id="karmap"></p>
 
 
-            </div>
+        </div>
 
-            <div class="partidasdiv">
+        <div class="karmadiv">
+            <p id="karmap"></p>
 
-                AQUI VAN LAS PARTIDAS
+
+        </div>
+
+        <div class="partidasdiv">
+
+            AQUI VAN LAS PARTIDAS
 
 
-            </div>
+        </div>
 
 
 
@@ -208,8 +210,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6 m6 l6">
-                            <p class="margin medium-small"><a class="modal-trigger" id="LoginToRegistre"
-                                    href="#modalRegistre">Registrat Ja!</a></p>
+                            <p class="margin medium-small"><a class="modal-trigger" id="LoginToRegistre" href="#modalRegistre">Registrat Ja!</a></p>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -274,8 +275,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6 m6 l6">
-                            <p class="margin medium-small">Ja tens una compte? <a class="modal-trigger"
-                                    id="RegisterToLogin" href="#modalLogin">Login!</a></p>
+                            <p class="margin medium-small">Ja tens una compte? <a class="modal-trigger" id="RegisterToLogin" href="#modalLogin">Login!</a></p>
                         </div>
                     </div>
                     <div class="modal-footer">

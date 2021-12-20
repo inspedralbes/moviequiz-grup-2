@@ -12,6 +12,9 @@ if ($method == "OPTIONS") {
 require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $peticions = array("insertarPelicula", "insertarComentarioValoracion", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser");
 
@@ -32,7 +35,7 @@ function handler($peticions)
             "poster" => $_POST["poster"]
         );
         $dadesComentari = array(
-            "id" => 2,
+            "id" => $_SESSION["idUsuari"],
             "comentari" => $_POST["comment"],
             "rating" => $_POST["rating"]
         );
@@ -62,8 +65,6 @@ function handler($peticions)
             $pelicula->insert($dadesPelicula);
             $result = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
         }
-
-
 
         $json = array("result" => "");
         if ($result == true) {
@@ -102,20 +103,30 @@ function handler($peticions)
         );
 
 
-        $usuari2 = new usuari();
-        $usuari2->select($dadesUser);
+        $usuari = new usuari();
+        $resultat = $usuari->selecthash($dadesUser);
+
+        $json = array();
+        if ($resultat) {
+            $json["result"] = "OK";
+            $selectedUser = $usuari->select($dadesUser);
+            $_SESSION["idUsuari"] = $selectedUser[0]["id"];
+        } else {
+            $json["result"] = "FALSE";
+        }
+        echo json_encode($json);
     }
 
 
     if ($event === "logoutUser") {
 
-       // session_destroy();
+        // session_destroy();
 
     }
 
 
 
-    
+
     if ($event === "cargaPerfil") {
 
         $dadesusu = $_POST["id"];
@@ -127,28 +138,18 @@ function handler($peticions)
         $json = json_encode($dadespeliuser->return_rows());
 
         print_r($json);
-
-
-        
-
-     }
+    }
 
 
     if ($event === "buscaPeliparaUser") {
 
-    $idpeli = $_POST["idpeli"];
-    $peli = new pelicula();
-    $peliretornada = $peli->select($idpeli);
-    $json = json_encode($peliretornada);
+        $idpeli = $_POST["idpeli"];
+        $peli = new pelicula();
+        $peliretornada = $peli->select($idpeli);
+        $json = json_encode($peliretornada);
 
-    print_r($json);
-
-
-
+        print_r($json);
     }
- 
-
-
 }
 
 

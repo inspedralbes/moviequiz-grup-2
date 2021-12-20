@@ -159,7 +159,7 @@ window.onload = function () {
 
 
 
-                fetch(`http://localhost/pruebas/controller.php?action=insertarPelicula`, {
+                fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=insertarPelicula`, {
 
                     method: 'POST',
                     body: datosEnvio
@@ -167,7 +167,7 @@ window.onload = function () {
                 }).then(function (res) {
                     return res.json()
                 }).then(function (result) {
-                    console.log(result.result)
+
                     if (result.result === "OK") {
                         Swal.fire('Saved!', '', 'success')
                         modal.close();
