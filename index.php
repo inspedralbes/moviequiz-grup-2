@@ -16,8 +16,6 @@
     <?php
     session_start();
     include("front/header.php");
-
-
     ?>
 
     <div id="main-container">

@@ -1,6 +1,6 @@
 <nav>
         <div class="nav-wrapper">
-            <a href="#nav-wrapper" id="logo" class="brand-logo"><img src="front/img/FILM2.webp" alt=""> </a>
+            <a href="index.php" id="logo" class="brand-logo"><img src="front/img/FILM2.webp" alt=""> </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
