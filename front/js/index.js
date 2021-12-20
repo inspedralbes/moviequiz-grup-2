@@ -17,14 +17,22 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
         method: 'POST',
         body: datosEnvio
     }).then(function (res) {
-
         return res.json();
     })
-
     promesa.then((a) => {
+        if (a.result == "OK") {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login realitzat correctament',
+                showConfirmButton: false,
+                timer: 1000
+            })
+        }
 
         let b = JSON.stringify(a);
         console.log(b);
+        console.log(a);
         let json = JSON.parse(b);
 
         document.getElementById("karmap").innerHTML = json.karma + " puntos de karma";
