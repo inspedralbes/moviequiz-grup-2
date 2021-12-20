@@ -102,9 +102,6 @@ function handler($peticions)
         );
 
 
-        $usuari = new usuari();
-        print($usuari->selecthash($dadesUser));
-
         $usuari2 = new usuari();
         $usuari2->select($dadesUser);
     }
