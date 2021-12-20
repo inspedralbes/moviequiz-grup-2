@@ -134,6 +134,8 @@ document.getElementById("registre").addEventListener("click", function () {
     let email = document.getElementById("emailreg").value;
     let password = document.getElementById("passwordreg").value;
     let passwordRepeat = document.getElementById("passwordr").value;
+    let modalRegistre = M.Modal.getInstance(document.getElementById("modalRegistre"));
+    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
 
     const datosEnvio = new FormData();
 
@@ -166,14 +168,30 @@ document.getElementById("registre").addEventListener("click", function () {
 
     if (!error) {
         fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
-
             method: 'POST',
             body: datosEnvio
         }).then(function (res) {
-            return res.text()
-        })
+            return res.json()
+        }).then(function (data) {
+            console.log(data);
+            if (data.result == "OK") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registre realitzat correctament',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+                modalRegistre.close();
+                modalLogin.open();
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Correu o contraseña ja existeixen!',
+                })
+            }
+        });
     }
-
-});
-
+})
 
