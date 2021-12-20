@@ -106,11 +106,12 @@ class usuari extends DBAbstractModel
             $password = $user_data["password"];
             $email = $user_data["email"];
             $karma = $user_data["karma"];
+            $avatar = $user_data["avatar"];
 
             $hashed = password_hash($password, PASSWORD_BCRYPT);
 
-            $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma) values ('$nomusuari', '$nom', '$cognom', '$hashed', '$email', $karma)";
-
+            $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma,avatar) values ('$nomusuari', '$nom', '$cognom', '$hashed', '$email', $karma, '$avatar')";
+            
             return $this->execute_single_query();
         }
     }

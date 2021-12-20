@@ -85,6 +85,7 @@ function handler($peticions)
             "password" => $_POST["password"],
             "email" => $_POST["email"],
             "karma" => 0,
+            "avatar"=> $_POST["avatar"]
 
         );
         $usuari = new usuari();

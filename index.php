@@ -222,25 +222,25 @@
 
 
         <div id="modalRegistre" class="modal">
-
-            <div class="row">
+        <h6 class="center-align">Selecciona una imatge de perfil</h6>
+            <div class="row avatars">
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="hola" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-anime.svg" class="input-avatar">
                         <img src="front/img/avatar-anime.svg">
                     </label>
                 </div>
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-batman.svg" class="input-avatar">
                         <img src="front/img/avatar-batman.svg">
                     </label>
                 </div>
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-chaplin.svg" class="input-avatar">
                         <img src="front/img/avatar-chaplin.svg">
 
                     </label>
@@ -248,7 +248,7 @@
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-geisha.svg" class="input-avatar">
                         <img src="front/img/avatar-geisha.svg">
 
                     </label>
@@ -256,7 +256,7 @@
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-heisenberg.svg" class="input-avatar">
                         <img src="front/img/avatar-heisenberg.svg">
 
                     </label>
@@ -264,7 +264,7 @@
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-jason.svg" class="input-avatar">
                         <img src="front/img/avatar-jason.svg">
 
                     </label>
@@ -272,7 +272,7 @@
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-luchador.svg" class="input-avatar">
                         <img src="front/img/avatar-luchador.svg">
 
                     </label>
@@ -280,7 +280,7 @@
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-queen.svg" class="input-avatar">
                         <img src="front/img/avatar-queen.svg">
 
                     </label>
@@ -288,8 +288,34 @@
 
                 <div class="col s4 m2">
                     <label>
-                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <input type="radio" name="avatar" value="front/img/avatar-zombie.svg" class="input-avatar">
                         <img src="front/img/avatar-zombie.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="avatar" value="front/img/avatar-einstein.svg" class="input-avatar">
+                        <img src="front/img/avatar-einstein.svg">
+
+                    </label>
+                </div>
+
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="avatar" value="front/img/avatar-indian.svg" class="browser-default">
+                        <img src="front/img/avatar-indian.svg">
+
+                    </label>
+                </div>
+
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="avatar" value="front/img/avatar-monroe.svg" class="browser-default">
+                        <img src="front/img/avatar-monroe.svg">
 
                     </label>
                 </div>
@@ -297,6 +323,7 @@
             </div>
 
             <div class="col s12">
+                
                 <form class="registre-form">
                     <div class="row">
                     </div>
@@ -347,7 +374,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <a href="#" class="btn waves-effect waves-light col s12" id="registre">Registrar</a>
+                            <a href="#" class="btn waves-effect waves-light col s12 " id="registre">Registrar</a>
                         </div>
                     </div>
                     <div class="row">

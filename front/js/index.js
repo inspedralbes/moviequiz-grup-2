@@ -179,6 +179,10 @@ document.getElementById("registre").addEventListener("click", function () {
     let email = document.getElementById("emailreg").value;
     let password = document.getElementById("passwordreg").value;
     let passwordRepeat = document.getElementById("passwordr").value;
+    let avatar = document.querySelector('input[name="avatar"]:checked').value;
+
+
+
     let modalRegistre = M.Modal.getInstance(document.getElementById("modalRegistre"));
     let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
 
@@ -189,6 +193,7 @@ document.getElementById("registre").addEventListener("click", function () {
     datosEnvio.append('cognom', cognoms);
     datosEnvio.append('email', email);
     datosEnvio.append('password', password);
+    datosEnvio.append('avatar', avatar);
 
 
 
