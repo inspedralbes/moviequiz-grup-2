@@ -51,7 +51,7 @@ class usuari extends DBAbstractModel
         if (array_key_exists("email", $user_data)) {
 
             $email = $user_data["email"];
-            $password = $user_data["password"];
+            
 
 
             $this->query = "SELECT * FROM usuari WHERE email = '$email'";
@@ -62,6 +62,18 @@ class usuari extends DBAbstractModel
                 return $this->rows;
             }
         }
+    }
+
+    public function select_from_id($id)
+    {
+            $this->query = "SELECT nomUsuari, nom, cognom, email, avatar, karma FROM usuari WHERE id = '$id'";
+            $this->get_results_from_query();
+
+            if ($this->rows == null) {
+            } else {
+                return $this->rows;
+            }
+        
     }
 
     public function sumarKarma($id)
