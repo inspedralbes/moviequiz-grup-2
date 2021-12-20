@@ -123,8 +123,9 @@ class usuari extends DBAbstractModel
             $hashed = password_hash($password, PASSWORD_BCRYPT);
 
             $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma,avatar) values ('$nomusuari', '$nom', '$cognom', '$hashed', '$email', $karma, '$avatar')";
-            
+
             return $this->execute_single_query();
+
         }
     }
 }

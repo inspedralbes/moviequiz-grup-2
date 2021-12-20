@@ -40,6 +40,22 @@ class partida extends DBAbstractModel
         return $this->rows;*/
     }
 
+    public function selectAllFromUser($idUsuari = "")
+    {
+        $this->query = "SELECT * from partida where id_usuari=" . $idUsuari . "";
+        $this->get_results_from_query();
+
+        return $this->rows;
+    }
+    public function return_rows(){
+
+
+        return $this->rows;
+    }
+
+
+
+
     public function select($imdbID = "")
     {
         /* $this->query = "SELECT * FROM pelicula WHERE imdbID='" . $imdbID . "'";
@@ -59,6 +75,8 @@ class partida extends DBAbstractModel
 
         $this->query = "INSERT INTO partida (nom, dia, encerts, errors, json_partida, id_usuari)
         VALUES ('" . $nom . "', '" . $dia . "', '" . $encerts . "', '" . $errors . "', '" . $json_partida . "'," . $idUsuari . ")";
+
+        echo $this->query;
         return $this->execute_single_query();
     }
 

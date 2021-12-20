@@ -52,8 +52,9 @@
         <div class="carrouselvotaciones">
 
 
-            <div class="carousel">
-
+            <div class="peliculasopinadas">
+                <div class="row carta">
+                </div>
 
 
             </div>
@@ -423,6 +424,10 @@
     <script src="front/js/cercador.js"></script>
     <script src="front/js/joc.js"></script>
     <script src="front/js/index.js"></script>
+
+    <script>
+
+    </script>
 
 </body>
 

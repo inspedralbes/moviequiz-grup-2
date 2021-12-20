@@ -17,10 +17,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$peticions = array("insertarPelicula", "insertarComentarioValoracion","borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida");
-
+$peticions = array("insertarPelicula","logearRefresh","cargapartidasUser", "insertarComentarioValoracion","borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida");
 function handler($peticions)
 {
+    $refresco = 0;
+
     $uri = $_SERVER['REQUEST_URI'];
 
 
@@ -68,7 +69,7 @@ function handler($peticions)
         }
 
         $json = array("result" => "");
-        if ($result == true) {
+        if ($result) {
             $json["result"] = "OK";
         } else {
             $json["result"] = "FALSE";
@@ -92,7 +93,7 @@ function handler($peticions)
         $result = $usuari->insert($dadesUser);
 
         $json = array("result" => "");
-        if ($result == true) {
+        if ($result) {
             $json["result"] = "OK";
         } else {
             $json["result"] = "FALSE";
@@ -102,30 +103,41 @@ function handler($peticions)
 
     if ($event === "logearUser") {
 
-        $dadesUser = array(
+        if($refresco == 0) {
+            $dadesUser = array(
 
-            "password" => $_POST["password"],
-            "email" => $_POST["email"]
-        );
-
-
-        $usuari = new usuari();
-        $resultat = $usuari->selecthash($dadesUser);
-
-        $json = array();
-        if ($resultat) {
-            $json["result"] = "OK";
-            $selectedUser = $usuari->select($dadesUser);
-            $_SESSION["idUsuari"] = $selectedUser[0]["id"];
+                "password" => $_POST["password"],
+                "email" => $_POST["email"]
+            );
 
 
-            $json = $selectedUser[0];
-            $json["result"] = "OK";
+            $usuari = new usuari();
+            $resultat = $usuari->selecthash($dadesUser);
+
+            $json = array();
+            if ($resultat) {
+                $json["result"] = "OK";
+                $selectedUser = $usuari->select($dadesUser);
+                $_SESSION["idUsuari"] = $selectedUser[0]["id"];
+
+
+                $json = $selectedUser[0];
+                $json["result"] = "OK";
 
             } else {
                 $json["result"] = "FALSE";
             }
 
+        }
+        else{
+            $usuari = new usuari();
+            $selectedUser = $usuari->selectrefresh($_SESSION["idUsuari"]);
+            $json = $selectedUser[0];
+            $json["result"] = "OK";
+
+
+
+        }
         echo json_encode($json);
     }
 
@@ -255,8 +267,9 @@ function handler($peticions)
         }
 
         $result = $modelPartida->insert($partida);
+
         $json = array("result" => "");
-        if ($result == true) {
+        if ($result == 1) {
             $json["result"] = "OK";
         } else {
             $json["result"] = "FALSE";
@@ -276,8 +289,27 @@ function handler($peticions)
         $dadespeliuser->delete($dadesusu, $idpeli);
     }
 
+    if ($event === "cargapartidasUser") {
+
+        $user = $_SESSION["idUsuari"];
+        $partidauser = new partida();
+        $partidauser->selectAllFromUser($user);
+         $partidauser->return_rows();
+         $json = json_encode($partidauser->return_rows());
+         echo $json;
+
+    }
+
+    if ($event === "logearRefresh") {
 
     
+        $user = $_SESSION["idUsuari"];
+        $refresco = 1;
+        echo $user;
+
+
+    }
+
 
 }
 
