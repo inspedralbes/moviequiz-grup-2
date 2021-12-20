@@ -22,7 +22,7 @@
 
     <div class="row">
         <header class="row" id="profile">
-        <div class="col s12  m1 offset-m5" >
+        <div class="col s12  center-align" >
             <img id="avatar">
         </div>
         <div class="row">
