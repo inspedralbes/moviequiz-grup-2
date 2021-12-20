@@ -17,6 +17,7 @@
     session_start();
     include("front/header.php");
 
+    print_r($_SESSION);
 
     ?>
 

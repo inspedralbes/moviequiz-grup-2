@@ -54,7 +54,7 @@ class usuari extends DBAbstractModel
             $password = $user_data["password"];
 
 
-            $this->query = "SELECT * FROM usuari WHERE email = '$email' and password = '$password'";
+            $this->query = "SELECT * FROM usuari WHERE email = '$email'";
             $this->get_results_from_query();
 
             if ($this->rows == null) {
