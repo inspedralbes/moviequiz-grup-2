@@ -4,6 +4,7 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
     let email = document.getElementById('email').value;
     let password = document.getElementById("password").value;
+    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
 
     console.log(email);
     console.log(password);
@@ -27,6 +28,13 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 title: 'Login realitzat correctament',
                 showConfirmButton: false,
                 timer: 1000
+            })
+            modalLogin.close();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Correu o contraseña no coincideixen!',
             })
         }
 
@@ -149,8 +157,4 @@ document.getElementsByClassName("modal-trigger")[1].addEventListener("click", fu
     fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
 
     })
-
-    document.getElementsByClassName("modal-trigger")[0].hidden = false;
-    document.getElementsByClassName("modal-trigger")[1].hidden = true;
-
 })
