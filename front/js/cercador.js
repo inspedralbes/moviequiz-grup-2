@@ -184,53 +184,26 @@ window.onload = function () {
         })
     })
 
-
-    //VERIFICAR EL LOGIN
-    document.getElementById("buttonLogin").addEventListener("click", function () {
-
-        console.log("click");
-
-        let email = document.getElementById('email').value;
-        let password = document.getElementById("password").value;
-
-        console.log(email);
-        console.log(password);
-
-        const datosEnvio = new FormData();
-
-        datosEnvio.append('email', email);
-        datosEnvio.append('password', password);
-
-        fetch(`http://localhost/pruebas/login.php`, {
-
-            method: 'POST',
-            body: datosEnvio
-        })
+    //BOTON LOGO
+    document.getElementById("logo").addEventListener('click', function () {
+        document.getElementById("contenedorPelis").classList.add("hide");
     })
 
     //CANVIS DE MODALS
     document.getElementById("RegisterToLogin").addEventListener('click', function () {
-        var elemsRegistre = document.querySelectorAll('#modalRegistre');
-        var instancesRegistre = M.Modal.init(elemsRegistre, {
-            dismissible: false
-        });
+        let modalRegistre = M.Modal.getInstance(document.getElementById("modalRegistre"));
+        modalRegistre.close();
 
         var instancesLogin = M.Modal.getInstance(elemsLogin);
         instancesLogin.open();
     })
 
     document.getElementById("LoginToRegistre").addEventListener('click', function () {
-        var elemsLogin = document.querySelectorAll('#modalLogin');
-        var instancesLogin = M.Modal.init(elemsLogin, {
-            dismissible: false
-        });
+        let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
+        modalLogin.close();
 
         var instancesRegistre = M.Modal.getInstance(elemsRegistre);
         instancesLogin.open();
-    })
-
-    document.getElementById("logo").addEventListener('click', function () {
-        document.getElementById("contenedorPelis").classList.add("hide");
     })
 
 

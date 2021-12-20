@@ -3,6 +3,7 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
     let email = document.getElementById('email').value;
     let password = document.getElementById("password").value;
+    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
 
     const datosEnvio = new FormData();
 
@@ -13,11 +14,25 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
         method: 'POST',
         body: datosEnvio
     }).then(function (res) {
-
         return res.json();
     })
-
     promesa.then((a) => {
+        if (a.result == "OK") {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login realitzat correctament',
+                showConfirmButton: false,
+                timer: 1000
+            })
+            modalLogin.close();
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Correu o contraseña no coincideixen!',
+            })
+        }
 
         let b = JSON.stringify(a);
         let json = JSON.parse(b);
@@ -63,7 +78,7 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                     "      <span class=\"card-title activator grey-text text-darken-4\" id=" + id + ">" + id + "</span>" +
                     "      <span class=\"card-title activator blue-text text-darken-4\" id='com" + id + "'>" + comentari + "</span>" +
                     "      <span class=\"card-title activator red-text text-darken-4\" id ='vot" + id + "'>" + votacion + "</span>" +
-                    "  <button id ="+id +"button value="+id+"><i class=\"material-icons\">highlight_off</i></button> "+
+                    "  <button id =" + id + "button value=" + id + "><i class=\"material-icons\">highlight_off</i></button> " +
                     "    </div>\n" +
                     "  </div>";
 
@@ -163,6 +178,9 @@ document.getElementById("registre").addEventListener("click", function () {
     let cognoms = document.getElementById("cognoms").value;
     let email = document.getElementById("emailreg").value;
     let password = document.getElementById("passwordreg").value;
+    let passwordRepeat = document.getElementById("passwordr").value;
+    let modalRegistre = M.Modal.getInstance(document.getElementById("modalRegistre"));
+    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
 
     const datosEnvio = new FormData();
 
@@ -172,23 +190,53 @@ document.getElementById("registre").addEventListener("click", function () {
     datosEnvio.append('email', email);
     datosEnvio.append('password', password);
 
-    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
 
-        method: 'POST',
-        body: datosEnvio
 
-    }).then(function (res) {
-        return res.text()
-    })
-});
 
-document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function () {
+    let error = false;
+    if (usuari == null || usuari == "", nom == null || nom == "", cognoms == null || cognoms == "", email == null || email == "", password == null || password == "", passwordRepeat == null || passwordRepeat == "") {
+        error = true;
+    }
+    if (password != passwordRepeat) {
+        document.getElementById("passwordr").classList.add("invalid");
+        error = true;
+    }
 
-    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
+    if (!email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+        document.getElementById("emailreg").classList.add("invalid");
+        error = true;
+    }
 
-    })
 
-    document.getElementsByClassName("modal-trigger")[0].hidden = false;
-    document.getElementsByClassName("modal-trigger")[1].hidden = true;
 
+    if (!error) {
+        fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
+            method: 'POST',
+            body: datosEnvio
+        }).then(function (res) {
+            return res.json()
+        }).then(function (data) {
+            console.log(data);
+            if (data.result == "OK") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registre realitzat correctament',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+                modalRegistre.close();
+                modalLogin.open();
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Correu o contraseña ja existeixen!',
+                })
+            }
+        });
+    }
 })
+

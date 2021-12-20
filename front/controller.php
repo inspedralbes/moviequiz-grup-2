@@ -87,15 +87,19 @@ function handler($peticions)
             "karma" => 0,
 
         );
-
-
         $usuari = new usuari();
-        $usuari->insert($dadesUser);
+        $result = $usuari->insert($dadesUser);
+
+        $json = array("result" => "");
+        if ($result == true) {
+            $json["result"] = "OK";
+        } else {
+            $json["result"] = "FALSE";
+        }
+        echo json_encode($json);
     }
 
     if ($event === "logearUser") {
-
-
 
         $dadesUser = array(
 

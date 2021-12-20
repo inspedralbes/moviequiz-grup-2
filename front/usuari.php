@@ -111,17 +111,7 @@ class usuari extends DBAbstractModel
 
             $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma) values ('$nomusuari', '$nom', '$cognom', '$hashed', '$email', $karma)";
 
-            $success =  $this->execute_single_query();
-
-            print_r($this->query);
-
-            if ($success == 0) {
-
-                echo "usuari no registrat, ja existeix el nom o el email";
-            } else {
-
-                echo "usuari registrat correctamnet";
-            }
+            return $this->execute_single_query();
         }
     }
 }

@@ -222,6 +222,80 @@
 
 
         <div id="modalRegistre" class="modal">
+
+            <div class="row">
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="hola" class="browser-default">
+                        <img src="front/img/avatar-anime.svg">
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-batman.svg">
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-chaplin.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-geisha.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-heisenberg.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-jason.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-luchador.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-queen.svg">
+
+                    </label>
+                </div>
+
+                <div class="col s4 m2">
+                    <label>
+                        <input type="radio" name="test" value="adios" class="browser-default">
+                        <img src="front/img/avatar-zombie.svg">
+
+                    </label>
+                </div>
+
+            </div>
+
             <div class="col s12">
                 <form class="registre-form">
                     <div class="row">
@@ -251,7 +325,8 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">mail_outline</i>
                             <input class="validate" id="emailreg" type="email">
-                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                            <label for="email">Email</label>
+                            <span class="helper-text" data-error="El format es incorrecte" data-success="Correcte"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -259,13 +334,15 @@
                             <i class="material-icons prefix">lock_outline</i>
                             <input id="passwordreg" type="password">
                             <label for="password">Contrasenya</label>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock_outline</i>
-                            <input id="passwordr" type="password">
-                            <label for="passwordr">Repeteix Contraseña</label>
+                            <input id="passwordr" type="password" class="validate">
+                            <label id="passlabel" for="passwordr">Repeteix Contraseña</label>
+                            <span class="helper-text" data-error="Les contrasenyes no coincideixen" data-success="Correcte"></span>
                         </div>
                     </div>
                     <div class="row">
