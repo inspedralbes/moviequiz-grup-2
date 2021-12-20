@@ -1,3 +1,6 @@
+
+
+
 document.getElementById("buttonLogin").addEventListener("click", function () {
 
 
@@ -65,22 +68,22 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 let comentari = peli.comentari;
                 let votacion = peli.puntuacio;
 
-                document.getElementById("comentarioaux").innerHTML = comentari;
-                document.getElementById("votacionaux").innerHTML = votacion;
 
-                let div = document.getElementsByClassName("carousel")[0];
+                let div = document.getElementsByClassName("row")[0];
 
-                div.innerHTML += "  <div class=\"card\">\n" +
-                    /*"    <div class=\"card-image waves-effect waves-block waves-light\">\n" +
-                    "      <img class=\"activator\" src=\"images/office.jpg\">\n" +
-                    "    </div>\n" +*/
-                    "    <div class=\"card-content\">\n" +
-                    "      <span class=\"card-title activator grey-text text-darken-4\" id=" + id + ">" + id + "</span>" +
-                    "      <span class=\"card-title activator blue-text text-darken-4\" id='com" + id + "'>" + comentari + "</span>" +
-                    "      <span class=\"card-title activator red-text text-darken-4\" id ='vot" + id + "'>" + votacion + "</span>" +
+
+
+                div.innerHTML += "<div class='col s1>'><div class=\"card cartas\" >\n" +
+                    "    <div class=\"card-image\">\n" +
+                    " <img id = '"+id+"pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb'>" +
+                            "<span className='card-title' id=" + id + ">"+id+"</span>" +
+                    "</div>" +
+                    "      <span class=\'card-content\' id='com" + id + "'>" + comentari + "</span>" +
+                    "      <span class=\'card-content\' id='vot" + id + "'>" + votacion + "</span>" +
                     "  <button id =" + id + "button value=" + id + "><i class=\"material-icons\">highlight_off</i></button> " +
                     "    </div>\n" +
                     "  </div>";
+
 
 
                 const ascociarnombreid = new FormData();
@@ -100,14 +103,57 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
                     let b = JSON.stringify(a);
                     let pelicula = JSON.parse(b);
+                    console.log(pelicula[0].ImdbID);
                     let peliculavotada = document.getElementById(pelicula[0].ImdbID).innerText;
+                    console.log(peliculavotada);
 
                     if (peliculavotada == pelicula[0].ImdbID) {
                         document.getElementById(pelicula[0].ImdbID).innerHTML = pelicula[0].nom;
+                        document.getElementById(pelicula[0].ImdbID + "pic").src= pelicula[0].poster;
+
 
                     }
                 })
+
             }
+            let promesapartida =  fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargapartidasUser`, {
+                method: 'POST',
+            }).then(function (res) {
+                return res.json();
+            })
+
+            promesapartida.then((a) => {
+
+                let b = JSON.stringify(a);
+                let partida = JSON.parse(b);
+
+                console.log(partida);
+
+                let partidasdiv = document.getElementsByClassName("partidasdiv")[0];
+
+
+                for(let game of partida){
+
+                    let nompartida = game.nom;
+                    let diapartida = game.dia;
+                    let encerts = game.encerts;
+                    let errors = game.errors;
+
+
+
+                    partidasdiv.innerHTML += "<div class='col s1>'><div class=\"card\" >\n" +
+                        "      <span class=\'card-content\' > Nom de la partida: " + nompartida + "</span>" +
+                        "      <span class=\'card-content\' > Dia de la partida: " + diapartida + "</span>" +
+                        "      <span class=\'card-content\' > Nº de encerts: " + encerts + "</span>" +
+                        "      <span class=\'card-content\' > Nº d'errors: " + errors + "</span>" +
+                        "    </div>\n" +
+                        "  </div>";
+                }
+
+            })
+
+
+
             divis();
 
         })
@@ -121,8 +167,9 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
 
 function divis() {
-    let divs = document.getElementsByClassName("card");
+    let divs = document.getElementsByClassName("col s6 m3");
     for (let div of divs) {
+
 
         div.children[0].children[3].addEventListener("click", function () {
 
@@ -163,13 +210,11 @@ function divis() {
 
 
 
+function carouselizador() {
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, 200);
-});
 
+}
 
 document.getElementById("registre").addEventListener("click", function () {
 

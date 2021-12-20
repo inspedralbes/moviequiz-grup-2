@@ -51,7 +51,6 @@ class usuari extends DBAbstractModel
         if (array_key_exists("email", $user_data)) {
 
             $email = $user_data["email"];
-            $password = $user_data["password"];
 
 
             $this->query = "SELECT * FROM usuari WHERE email = '$email'";
@@ -63,6 +62,20 @@ class usuari extends DBAbstractModel
             }
         }
     }
+
+
+    public function selectrefresh($iduser = "")
+    {
+
+
+            $this->query = "SELECT * FROM usuari WHERE email = '$iduser'";
+            $this->get_results_from_query();
+            return $this->$this->rows();
+
+    }
+
+
+
 
     public function sumarKarma($id)
     {
@@ -111,8 +124,9 @@ class usuari extends DBAbstractModel
             $hashed = password_hash($password, PASSWORD_BCRYPT);
 
             $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma,avatar) values ('$nomusuari', '$nom', '$cognom', '$hashed', '$email', $karma, '$avatar')";
-            
+
             return $this->execute_single_query();
+
         }
     }
 }
