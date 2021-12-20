@@ -52,8 +52,6 @@ class usuari extends DBAbstractModel
 
             $email = $user_data["email"];
             
-
-
             $this->query = "SELECT * FROM usuari WHERE email = '$email'";
             $this->get_results_from_query();
 
