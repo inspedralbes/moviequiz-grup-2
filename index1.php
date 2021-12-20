@@ -1,17 +1,12 @@
 
-
 <?php
-session_start();
+if(!$_SESSION) {
+    session_start();
+}
 print_r($_SESSION);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
-
-
-
 
 <head>
     <meta charset="UTF-8">
@@ -22,6 +17,9 @@ print_r($_SESSION);
     <link rel="stylesheet" href="front/css/index.css">
     <title>Pelis Grup 2</title>
 </head>
+
+
+
 
 <body>
 
@@ -230,7 +228,7 @@ print_r($_SESSION);
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person_outline</i>
-                            <input class="validate" id="nom" type="text">
+                            <input class="validate" id="nomreg" type="text">
                             <label for="nom" data-error="wrong" data-success="right">Nom real</label>
                         </div>
                     </div>
@@ -244,15 +242,15 @@ print_r($_SESSION);
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">mail_outline</i>
-                            <input class="validate" id="email" type="email">
+                            <input class="validate" id="emailreg" type="email">
                             <label for="email" data-error="wrong" data-success="right">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock_outline</i>
-                            <input id="password" type="password">
-                            <label for="password">Contrasenya</label>
+                            <input id="passwordreg" type="password">
+                            <label for="passwordreg">Contrasenya</label>
                         </div>
                     </div>
                     <div class="row">
@@ -264,7 +262,7 @@ print_r($_SESSION);
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Registrar</a>
+                            <a href="#" class="btn waves-effect waves-light col s12" id="registre">Registrar</a>
                         </div>
                     </div>
                     <div class="row">
@@ -305,10 +303,20 @@ print_r($_SESSION);
 
 </body>
 
+<?php
+
+if($_SESSION != null){
+
+
+
+
+}
+
+
+
+?>
+
 <script>
-
-
-
 
     document.getElementById("buttonLogin").addEventListener("click", function () {
 
@@ -325,7 +333,7 @@ print_r($_SESSION);
         datosEnvio.append('email', email);
         datosEnvio.append('password', password);
 
-        let promesa = fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
+        let promesa = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logearUser`, {
 
 
             method: 'POST',
@@ -346,6 +354,7 @@ print_r($_SESSION);
             let json = JSON.parse(b);
 
             console.log(json.nomUsuari);
+            console.log(json.id);
 
             document.getElementById("welcome").innerHTML = "Benvingut " + json.nomUsuari;
             document.getElementById("modalLogin").hidden;
@@ -355,12 +364,90 @@ print_r($_SESSION);
             document.getElementsByClassName("modal-trigger")[0].hidden = true;
 
 
+
+
+
+
+            let email = document.getElementById('email').value;
+            let password = document.getElementById("password").value;
+
+
+            const buscarPelis = new FormData();
+
+            buscarPelis.append('id', json.id);
+
+            console.log(json.id + " aw");
+
+            let prom = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargaPerfil`, {
+
+
+                method: 'POST',
+                body: buscarPelis
+
+
+            }).then(function (res) {
+
+                return res.json();
+            })
+
+
+
+            prom.then((a) => {
+
+
+                let b = JSON.stringify(a);
+                console.log(b + " holapapa");
+
+            })
+
+
+
+
         })
 
     })
 
+
+    document.getElementById("registre").addEventListener("click", function () {
+
+
+        let usuari = document.getElementById("username").value;
+        let nom = document.getElementById("nomreg").value;
+        let cognoms = document.getElementById("cognoms").value;
+        let email = document.getElementById("emailreg").value;
+        let password = document.getElementById("passwordreg").value;
+
+
+
+        const datosEnvio = new FormData();
+
+        datosEnvio.append('user', usuari);
+        datosEnvio.append('nom', nom);
+        datosEnvio.append('cognom', cognoms);
+        datosEnvio.append('email', email);
+        datosEnvio.append('password', password);
+
+        console.log(datosEnvio);
+
+
+
+
+        fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
+
+            method: 'POST',
+            body: datosEnvio
+
+        }).then(function (res) {
+            return res.text()
+        })
+
+    });
+
     document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function (){
 
+        fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
+
+        })
 
         document.getElementsByClassName("modal-trigger")[0].hidden = false;
         document.getElementsByClassName("modal-trigger")[1].hidden = true;
@@ -372,10 +459,5 @@ print_r($_SESSION);
 
     })
 
-
-
 </script>
-
-
-
 </html>

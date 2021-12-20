@@ -29,17 +29,40 @@ class usuari extends DBAbstractModel
         return $this->rows;
     }
 
+
+    public function selecthash($user_data = array())
+    {
+
+        $email = $user_data["email"];
+        $pass = $user_data["password"];
+
+
+
+        $this->query = "SELECT password FROM usuari WHERE email = '$email' ";
+        $this->get_results_from_query();
+        $hash = $this->rows[0]["password"];
+        
+
+        if (password_verify($pass, $hash))
+     {
+            echo '¡La contraseña es válida!';
+        } else {
+            echo 'La contraseña no es válida.';
+        }
+
+
+
+    }
+
     public function select($user_data = array())
     {
 
 
         if (array_key_exists("email", $user_data)) {
 
-            $password = $user_data["password"];
             $email = $user_data["email"];
 
-
-            $this->query = "SELECT * FROM usuari WHERE email = '$email' and password = '$password'";
+            $this->query = "SELECT * FROM usuari WHERE email = '$email'";
             $this->get_results_from_query();
 
 
@@ -63,15 +86,9 @@ class usuari extends DBAbstractModel
             } else {
 
 
-
                 $_SESSION[$username]= $email;
 
                 print $json;
-
-
-
-
-
             }
 
 
@@ -121,12 +138,13 @@ class usuari extends DBAbstractModel
             $email = $user_data["email"];
             $karma = $user_data["karma"];
 
+            $hashed = password_hash($password, PASSWORD_DEFAULT);
 
-            $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma) values ('$nomusuari', '$nom', '$cognom', '$password', '$email', $karma)";
+            $this->query = "insert into usuari(nomUsuari,nom,cognom,password,email,karma) values ('$nomusuari', '$nom', '$cognom', '$hashed', '$email', $karma)";
 
            $success=  $this->execute_single_query();
 
-           print_r($success . " success ");
+           print_r($this->query);
 
            if($success == 0){
 

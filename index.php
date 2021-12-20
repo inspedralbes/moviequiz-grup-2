@@ -29,6 +29,56 @@
     </div>
 
 
+
+        <div id="auxiliar">
+
+            <p id="nomaux"></p>
+            <p id="comentarioaux"></p>
+            <p id="votacionaux"></p>
+        </div>
+
+
+
+
+            <div class="avatar">
+
+
+                <img src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png" width= 100px height=100px>
+
+
+
+            </div>
+
+            <div class="carrouselvotaciones">
+
+
+                <div class="carousel">
+
+
+
+                </div>
+
+
+
+            </div>
+
+            <div class="karmadiv">
+                <p id="karmap"></p>
+
+
+            </div>
+
+            <div class="partidasdiv">
+
+                AQUI VAN LAS PARTIDAS
+
+
+            </div>
+
+
+
+
+
         <div id="contenedorPelis" class="row">
         </div>
         <div id="modalAdd" class="modal">
@@ -185,7 +235,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">person_outline</i>
-                            <input class="validate" id="nom" type="text">
+                            <input class="validate" id="nomreg" type="text">
                             <label for="nom" data-error="wrong" data-success="right">Nom real</label>
                         </div>
                     </div>
@@ -199,14 +249,14 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">mail_outline</i>
-                            <input class="validate" id="email" type="email">
+                            <input class="validate" id="emailreg" type="email">
                             <label for="email" data-error="wrong" data-success="right">Email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock_outline</i>
-                            <input id="password" type="password">
+                            <input id="passwordreg" type="password">
                             <label for="password">Contrasenya</label>
                         </div>
                     </div>
@@ -219,7 +269,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <a href="#" class="btn waves-effect waves-light col s12" id="buttonLogin">Registrar</a>
+                            <a href="#" class="btn waves-effect waves-light col s12" id="registre">Registrar</a>
                         </div>
                     </div>
                     <div class="row">
@@ -270,35 +320,8 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="front/js/cercador.js"></script>
     <script src="front/js/joc.js"></script>
+    <script src="front/js/index.js"></script>
 
 </body>
-
-<script>
-
-    document.getElementById("buttonLogin").addEventListener("click", function () {
-
-        console.log("click");
-
-        let email = document.getElementById('email').value;
-        let password = document.getElementById("password").value;
-
-        console.log(email);
-        console.log(password);
-
-        const datosEnvio = new FormData();
-
-        datosEnvio.append('email', email);
-        datosEnvio.append('password', password);
-
-        fetch(`http://localhost/pruebas/controller.php?action=logearUser`, {
-
-            method: 'POST',
-            body: datosEnvio
-
-            //promise recibe respuesta json
-        })
-    })
-
-</script>
 
 </html>
