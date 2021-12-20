@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$peticions = array("insertarPelicula","logearRefresh","cargapartidasUser", "insertarComentarioValoracion","borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida");
+$peticions = array("insertarPelicula","logearRefresh","cargapartidasUser", "insertarComentarioValoracion","borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto");
 function handler($peticions)
 {
     $refresco = 0;
@@ -169,6 +169,28 @@ function handler($peticions)
     }
 
 
+
+    if ($event === "cargarPerfilConcreto") {
+
+       
+        $id = 2;
+
+        $dadespeliuser = new comentariUsuari();
+
+        $dadespeliuser->selectAllFromUser($id);
+
+        $usuari = new usuari();
+        $partida=new partida();
+
+        $dadesUsuari= $usuari->select_from_id($id);
+        $dadesUsuari[0]["comentaris"]= $dadespeliuser->return_rows();
+        $partidas = $partida->select_partidas_from_user($id);
+        
+        $json= json_encode($dadesUsuari[0]);
+        print_r($json);
+    }
+
+
     if ($event === "buscaPeliparaUser") {
 
         $idpeli = $_POST["idpeli"];
@@ -191,12 +213,15 @@ function handler($peticions)
         );
 
 
+        
         $favorits = $comentariUsuari->selectAllFromUser($_SESSION["idUsuari"]);
+        
+
         $pelisKeys = array_rand($favorits, 5);
         $pelicules = array();
 
         for ($i = 0; $i < count($pelisKeys); $i++) {
-            $imdbID = $favorits[$pelisKeys[$i]]["ImdbID"];
+            $imdbID = $favorits[$pelisKeys[$i]]["imdbID"];
             array_push($pelicules, $pelicula->select($imdbID));
         }
 
