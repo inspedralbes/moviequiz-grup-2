@@ -251,7 +251,8 @@
                         <div class="input-field col s12">
                             <i class="material-icons prefix">mail_outline</i>
                             <input class="validate" id="emailreg" type="email">
-                            <label for="email" data-error="wrong" data-success="right">Email</label>
+                            <label for="email">Email</label>
+                            <span class="helper-text" data-error="El format es incorrecte" data-success="Correcte"></span>
                         </div>
                     </div>
                     <div class="row">
@@ -259,13 +260,15 @@
                             <i class="material-icons prefix">lock_outline</i>
                             <input id="passwordreg" type="password">
                             <label for="password">Contrasenya</label>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock_outline</i>
-                            <input id="passwordr" type="password">
-                            <label for="passwordr">Repeteix Contraseña</label>
+                            <input id="passwordr" type="password" class="validate">
+                            <label id="passlabel" for="passwordr">Repeteix Contraseña</label>
+                            <span class="helper-text" data-error="Les contrasenyes no coincideixen" data-success="Correcte"></span>
                         </div>
                     </div>
                     <div class="row">

@@ -117,6 +117,7 @@ document.getElementById("registre").addEventListener("click", function () {
     let cognoms = document.getElementById("cognoms").value;
     let email = document.getElementById("emailreg").value;
     let password = document.getElementById("passwordreg").value;
+    let passwordRepeat = document.getElementById("passwordr").value;
 
     const datosEnvio = new FormData();
 
@@ -126,23 +127,37 @@ document.getElementById("registre").addEventListener("click", function () {
     datosEnvio.append('email', email);
     datosEnvio.append('password', password);
 
-    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
 
-        method: 'POST',
-        body: datosEnvio
 
-    }).then(function (res) {
-        return res.text()
-    })
+
+    let error = false;
+    if (usuari == null || usuari == "", nom == null || nom == "", cognoms == null || cognoms == "", email == null || email == "", password == null || password == "", passwordRepeat == null || passwordRepeat == "") {
+        error = true;
+    }
+    if (password != passwordRepeat) {
+        document.getElementById("passwordr").classList.add("invalid");
+        error = true;
+    }
+
+    if (!email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+        document.getElementById("emailreg").classList.add("invalid");
+        error = true;
+    }
+
+
+
+    if (!error) {
+        fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
+
+            method: 'POST',
+            body: datosEnvio
+        }).then(function (res) {
+            return res.text()
+        })
+    }
+
 });
 
-document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function () {
 
-    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
-
-    })
-
-    document.getElementsByClassName("modal-trigger")[0].hidden = false;
-    document.getElementsByClassName("modal-trigger")[1].hidden = true;
-
-})

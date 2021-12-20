@@ -51,8 +51,8 @@ Un cop comenceu heu de canviar aquesta explicació amb la corresponent al vostre
 FUNCIONALITAT:
 	- Obtenir pelis (cerca OMDB) ✓
 	- Afegir puntuacio i comentari a pelicula  ✓
-	- Registre
-	- Login 
-	- Joc
+	- Registre ✓
+	- Login  ✓
+	- Joc✓
 	- Mostrar pelicules que tenia
 	- Veure fitxa peli (puntuacio mitja + comentari)
