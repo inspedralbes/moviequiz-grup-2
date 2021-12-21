@@ -160,3 +160,76 @@ document.getElementById("btnlogout-mobile").addEventListener("click", function (
 });
 
 
+document.getElementById("registre").addEventListener("click", function () {
+
+    let usuari = document.getElementById("username").value;
+    let nom = document.getElementById("nomreg").value;
+    let cognoms = document.getElementById("cognoms").value;
+    let email = document.getElementById("emailreg").value;
+    let password = document.getElementById("passwordreg").value;
+    let passwordRepeat = document.getElementById("passwordr").value;
+    let avatar = document.querySelector('input[name="avatar"]:checked').value;
+
+
+
+    let modalRegistre = M.Modal.getInstance(document.getElementById("modalRegistre"));
+    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
+
+    const datosEnvio = new FormData();
+
+    datosEnvio.append('user', usuari);
+    datosEnvio.append('nom', nom);
+    datosEnvio.append('cognom', cognoms);
+    datosEnvio.append('email', email);
+    datosEnvio.append('password', password);
+    datosEnvio.append('avatar', avatar);
+
+
+
+
+    let error = false;
+    if (usuari == null || usuari == "", nom == null || nom == "", cognoms == null || cognoms == "", email == null || email == "", password == null || password == "", passwordRepeat == null || passwordRepeat == "") {
+        error = true;
+    }
+    if (password != passwordRepeat) {
+        document.getElementById("passwordr").classList.add("invalid");
+        error = true;
+    }
+
+    if (!email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )) {
+        document.getElementById("emailreg").classList.add("invalid");
+        error = true;
+    }
+
+
+
+    if (!error) {
+        fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=registrarUser`, {
+            method: 'POST',
+            body: datosEnvio
+        }).then(function (res) {
+            return res.json()
+        }).then(function (data) {
+
+            if (data.result == "OK") {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registre realitzat correctament',
+                    showConfirmButton: false,
+                    timer: 1000
+                })
+                modalRegistre.close();
+                modalLogin.open();
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Correu o contraseña ja existeixen!',
+                })
+            }
+        });
+    }
+})
