@@ -75,13 +75,13 @@ function loadata(formulario, modalLogin) {
                 let icono = `<i class="material-icons">favorite</i>`;
 
                 let str = "";
-                let comentarioDiv = "<div class='collecttionpelis' id ='"+ id+"container'>" +
+                let comentarioDiv = "<div class='collecttionpelis' id ='" + id + "container'>" +
                     "<div class='gridcarta'><img id ='" + id + "pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb' height='100px' width='100px' class='circle'></div>" +
                     "<div class='gridcarta'><h4 class='title' id ='" + id + "'>" + id + "</h4></div>" +
                     " <div class='gridcarta'><p>" + comentari + "</p></div>" +
-                    "<div class='gridcarta'><button id='but'"+id+" value='"+id+"'>" +
-                    "<a class='punts'>" +
-                      "<button id='but"+id+"' value='"+id+"'>";
+                    "<div class='gridcarta'><button id='but'" + id + " value='" + id + "'>Eliminar</button>"
+                "<a class='punts'>" +
+                    "<button id='but" + id + "' value='" + id + "'>";
 
                 for (let index = 0; index < votacion; index++) {
                     comentarioDiv += icono;
@@ -89,9 +89,6 @@ function loadata(formulario, modalLogin) {
                 str += comentarioDiv + "</a></div></div>";;
 
                 div.innerHTML += str;
-
-
-
 
                 const ascociarnombreid = new FormData();
                 ascociarnombreid.append('idpeli', id);
@@ -239,7 +236,7 @@ function divis() {
                         return res.text()
                     })
 
-                    let divborrar = document.getElementById(idpeli+ "container").remove();
+                    let divborrar = document.getElementById(idpeli + "container").remove();
 
 
 
@@ -339,6 +336,7 @@ document.getElementsByClassName("modal-trigger")[1].addEventListener("click", fu
 
     document.getElementsByClassName("modal-trigger")[1].hidden = true;
     document.getElementsByClassName("modal-trigger")[0].hidden = false;
+    document.getElementById("btnPerfil").classList.add("hide");
 
 })
 
