@@ -108,7 +108,7 @@ ALTER TABLE `usu_peli`
 COMMIT;
 
 
-CREATE TABLE `projectepelis`.`partida` ( `id` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , 
+CREATE TABLE `partida` ( `id` INT NOT NULL AUTO_INCREMENT , `nom` VARCHAR(50) NOT NULL , 
 `dia` DATE NOT NULL , `encerts` INT NOT NULL , `errors` INT NOT NULL , `json_partida` JSON NOT NULL , PRIMARY KEY (`id`)) ; 
 
 ALTER TABLE `partida` ADD `id_usuari` INT NOT NULL AFTER `json_partida`; 

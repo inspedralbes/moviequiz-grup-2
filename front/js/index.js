@@ -1,7 +1,7 @@
 function loadata(formulario, modalLogin) {
 
 
-    let promesa = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logearUser`, {
+    let promesa = fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=logearUser`, {
         method: 'POST',
         body: formulario,
         credentials: "same-origin"
@@ -313,7 +313,7 @@ document.getElementById("registre").addEventListener("click", function () {
 
 
     if (!error) {
-        fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=registrarUser`, {
+        fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=registrarUser`, {
             method: 'POST',
             body: datosEnvio
         }).then(function (res) {
