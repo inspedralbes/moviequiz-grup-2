@@ -207,5 +207,6 @@ window.onload = function () {
     })
 
     document.getElementById("InfoUser").classList.add("hide");
+    document.getElementById("btnPerfil").classList.add("hide");
 
 }

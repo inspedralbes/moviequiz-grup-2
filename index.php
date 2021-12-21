@@ -136,28 +136,47 @@
                 <input type="hidden" name="poster" id="poster">
             </div>
 
-            <div class="cuadradomaestro" id="InfoUser">
+
+            <div id="datosUsuarios">
                 <div class="row">
-                    <div class="col s12 m12 l6 grid-index" id="grid-index-top">
-                        <img id="avatar">
-                        <p id="dadesusuari"></p>
-                    </div>
-                    <div class="col s12 m12 l6 grid-index" id="grid-index-top">
-                        <div class="peliculasopinadas">
-                            <div class="row carta">
+                    <div class="col s12 m12 l8 cuadradomaestro" id="InfoUser">
+                        <div class="row">
+                            <div class="col s12 m12 l6 grid-index" id="grid-index-top">
+                                <img id="avatar">
+                                <p id="dadesusuari"></p>
+                            </div>
+                            <div class="col s12 m12 l6 grid-index" id="grid-index-top">
+                                <div class="peliculasopinadas">
+                                    <div class="row carta">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
+                                <p id="karmap"></p>
+                            </div>
+                            <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
+                                <div class="partidasdiv">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
-                        <p id="karmap"></p>
-                    </div>
-                    <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
-                        <div class="partidasdiv">
+                    <aside class="col s12 m12 l4">
+                        <table class="responsive-table">
+                            <thead>
+                            <tr>
+                                <th class="center">Nombre de Jugador</th>
+                                <th class="center">Puntos de Karma</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div id="RankingGlobal">
+                            <ul id="ranking" class="ranking"></ul>
                         </div>
-                    </div>
-                </div>
-                
+                    </aside>
+                </div>   
             </div>
+
+            
         </div>
 
         <div id="modalLogin" class="modal">
