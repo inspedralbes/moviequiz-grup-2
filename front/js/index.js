@@ -238,6 +238,9 @@ function divis() {
                         return res.text()
                     })
 
+                    let divborrar = document.getElementById(idpeli+ "container").remove();
+
+
 
 
 
