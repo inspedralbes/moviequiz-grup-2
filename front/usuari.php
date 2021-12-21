@@ -34,7 +34,7 @@ class usuari extends DBAbstractModel
     public function selectAllusers()
     {
 
-        $this->query = "SELECT * from usuari order by karma asc";
+        $this->query = "SELECT * from usuari order by karma desc";
 
         $this->get_results_from_query();
 
