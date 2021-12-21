@@ -32,7 +32,7 @@
 
 
         <div id="cuerpoInfo">
-            
+
             <div id="contenedorPelis" class="row">
             </div>
             <div id="modalAdd" class="modal">
@@ -151,32 +151,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
+                            <div class="col s12 m12 l6 grid-index" id="grid-index-bottom">
                                 <p id="karmap"></p>
                             </div>
-                            <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
+                            <div class="col s12 m12 l6 grid-index" id="grid-index-bottom">
                                 <div class="partidasdiv">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <aside class="col s12 m12 l4" id="aside-ranking">
-                        <table class="responsive-table">
-                            <thead>
-                            <tr>
-                                <th class="center">Nombre de Jugador</th>
-                                <th class="center">Puntos de Karma</th>
-                            </tr>
-                            </thead>
-                        </table>
                         <div id="RankingGlobal">
-                            <ul id="ranking" class="ranking"></ul>
+                            <ul id="ranking" class="collection"></ul>
                         </div>
                     </aside>
-                </div>   
+                </div>
             </div>
 
-            
+
         </div>
 
         <div id="modalLogin" class="modal">
@@ -217,7 +209,7 @@
 
 
         <div id="modalRegistre" class="modal">
-        <h6 class="center-align">Selecciona una imatge de perfil</h6>
+            <h6 class="center-align">Selecciona una imatge de perfil</h6>
             <div class="row avatars">
                 <div class="col s4 m2">
                     <label>
@@ -318,7 +310,7 @@
             </div>
 
             <div class="col s12">
-                
+
                 <form class="registre-form">
                     <div class="row">
                     </div>

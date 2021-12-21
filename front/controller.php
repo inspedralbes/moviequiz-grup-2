@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$peticions = array("insertarPelicula", "seleccionartotsusuaris", "cargapartidasUser", "insertarComentarioValoracion", "borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto");
+$peticions = array("insertarPelicula", "seleccionartotsusuaris", "cargapartidasUser", "insertarComentarioValoracion", "borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto", "seleccionartotsusuaris");
 function handler($peticions)
 {
     $refresco = 0;
@@ -353,7 +353,6 @@ function handler($peticions)
 
         $json = json_encode($usuaris);
         echo $json;
-
     }
 }
 

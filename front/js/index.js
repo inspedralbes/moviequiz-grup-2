@@ -356,3 +356,24 @@ document.getElementsByClassName("modal-trigger")[1].addEventListener("click", fu
 
 })
 
+
+fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=seleccionartotsusuaris").then(function (res) {
+    return res.json();
+}).then(function (datos) {
+
+    let ulUsuarios = document.getElementById("ranking");
+    let str = "";
+    datos.usuaris.forEach(usuario => {
+        console.log(usuario)
+        let usuarioLi = ` <li class="collection-item avatar">
+                <a href="perfil.php?id=${usuario.id}"> <img src=${usuario.avatar} alt="" class="circle "></a>
+                <span class="title">${usuario.nomUsuari}</span>
+                <p>${usuario.nom} ${usuario.cognom}<br></p>
+                <a  class="secondary-content"> ${usuario.karma}</a></li>`
+        str += usuarioLi;
+    });
+    ulUsuarios.innerHTML = str;
+})
+
+
+
