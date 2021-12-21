@@ -183,7 +183,7 @@ function handler($peticions)
     if ($event === "cargarPerfilConcreto") {
 
 
-        $id = 2;
+        $id = $_POST["id"];
 
         $dadespeliuser = new comentariUsuari();
 
