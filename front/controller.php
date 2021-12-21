@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$peticions = array("insertarPelicula","logearRefresh","cargapartidasUser", "insertarComentarioValoracion","borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto");
+$peticions = array("insertarPelicula", "logearRefresh", "cargapartidasUser", "insertarComentarioValoracion", "borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto");
 function handler($peticions)
 {
     $refresco = 0;
@@ -86,7 +86,7 @@ function handler($peticions)
             "password" => $_POST["password"],
             "email" => $_POST["email"],
             "karma" => 0,
-            "avatar"=> $_POST["avatar"]
+            "avatar" => $_POST["avatar"]
 
         );
         $usuari = new usuari();
@@ -103,7 +103,7 @@ function handler($peticions)
 
     if ($event === "logearUser") {
 
-        if(!$_SESSION) {
+        if (!$_SESSION) {
             $dadesUser = array(
 
                 "password" => $_POST["password"],
@@ -123,13 +123,10 @@ function handler($peticions)
 
                 $json = $selectedUser[0];
                 $json["result"] = "OK";
-
             } else {
                 $json["result"] = "FALSE";
             }
-
-        }
-        else{
+        } else {
             $dadesUser = array(
 
                 "email" =>  $_SESSION["email"],
@@ -149,21 +146,16 @@ function handler($peticions)
 
                 $json = $selectedUser[0];
                 $json["result"] = "OK";
-
             } else {
                 $json["result"] = "FALSE";
             }
-
-
-
         }
         echo json_encode($json);
     }
 
     if ($event === "logoutUser") {
 
-       session_destroy();
-
+        session_destroy();
     }
 
 
@@ -171,7 +163,7 @@ function handler($peticions)
 
     if ($event === "cargaPerfil") {
 
-       
+
         $id = $_SESSION["idUsuari"];
 
         $dadespeliuser = new comentariUsuari();
@@ -180,9 +172,9 @@ function handler($peticions)
 
         $usuari = new usuari();
 
-        $dadesUsuari= $usuari->select_from_id($id);
-        $dadesUsuari[0]["comentaris"]= $dadespeliuser->return_rows();
-        $json= json_encode($dadesUsuari[0]);
+        $dadesUsuari = $usuari->select_from_id($id);
+        $dadesUsuari[0]["comentaris"] = $dadespeliuser->return_rows();
+        $json = json_encode($dadesUsuari[0]);
         print_r($json);
     }
 
@@ -190,7 +182,7 @@ function handler($peticions)
 
     if ($event === "cargarPerfilConcreto") {
 
-       
+
         $id = 2;
 
         $dadespeliuser = new comentariUsuari();
@@ -198,12 +190,12 @@ function handler($peticions)
         $dadespeliuser->selectAllFromUser($id);
 
         $usuari = new usuari();
-        $partida=new partida();
+        $partida = new partida();
 
-        $dadesUsuari= $usuari->select_from_id($id);
-        $dadesUsuari[0]["comentaris"]= $dadespeliuser->return_rows();
-        $dadesUsuari[0]["partides"]=$partida->select_partidas_from_user($id);
-        $json= json_encode($dadesUsuari[0]);
+        $dadesUsuari = $usuari->select_from_id($id);
+        $dadesUsuari[0]["comentaris"] = $dadespeliuser->return_rows();
+        $dadesUsuari[0]["partides"] = $partida->select_partidas_from_user($id);
+        $json = json_encode($dadesUsuari[0]);
         print_r($json);
     }
 
@@ -221,6 +213,9 @@ function handler($peticions)
 
     if ($event === "generarPartida") {
 
+
+
+
         $comentariUsuari = new comentariUsuari();
         $pelicula = new pelicula();
 
@@ -229,36 +224,35 @@ function handler($peticions)
             "peliculas" => array("")
         );
 
-
-        
-        $favorits = $comentariUsuari->selectAllFromUser($_SESSION["idUsuari"]);
-        
+        $favorits = array();
+        if (isset($_SESSION["idUsuari"])) {
+            $favorits = $comentariUsuari->selectAllFromUser($_SESSION["idUsuari"]);
+        } else {
+            $favorits = $pelicula->selectAll();
+        }
 
         $pelisKeys = array_rand($favorits, 5);
         $pelicules = array();
 
         for ($i = 0; $i < count($pelisKeys); $i++) {
-            $imdbID = $favorits[$pelisKeys[$i]]["imdbID"];
-            array_push($pelicules, $pelicula->select($imdbID));
+            array_push($pelicules, $favorits[$pelisKeys[$i]]);
         }
-
 
         $preguntes = array();
 
         foreach ($pelicules as $key => $pelicula) {
             $vectorAnys = [-15, -10, -5, -2, +2, +5, +10, +15];
-
             $preguntes[$key] = array(
-                "imdbID" => $pelicula[0]["ImdbID"],
-                "nom" => $pelicula[0]["nom"],
-                "poster" => $pelicula[0]["poster"],
-                "opcions" => array($pelicula[0]["estrena"], 0, 0, 0)
+                "imdbID" => $pelicula["ImdbID"],
+                "nom" => $pelicula["nom"],
+                "poster" => $pelicula["poster"],
+                "opcions" => array($pelicula["estrena"], 0, 0, 0)
             );
 
 
             for ($i = 1; $i < count($preguntes[$key]["opcions"]); $i++) {
                 $rand = rand(0, count($vectorAnys) - 1);
-                $preguntes[$key]["opcions"][$i] = $pelicula[0]["estrena"] + $vectorAnys[$rand];
+                $preguntes[$key]["opcions"][$i] = $pelicula["estrena"] + $vectorAnys[$rand];
                 unset($vectorAnys[$rand]);
                 $vectorAnys = array_values($vectorAnys);
             }
@@ -294,23 +288,30 @@ function handler($peticions)
             $dadesPelicula = $pelicula->select($imdbID)[0];
             if ($dadesPelicula["estrena"] == $anySelected) {
                 //AUGMENTAR 3 DE KARMA A L'USUARI
+                if (isset($_SESSION["idUsuari"])) {
+                    $usuari->sumarKarma($_SESSION["idUsuari"]);
+                }
 
-                $usuari->sumarKarma($_SESSION["idUsuari"]);
                 $nEncerts++;
             } else {
                 //RESTAR 1 DE KARMA A L'USUARI
-
-                $usuari->restarKarma($_SESSION["idUsuari"]);
+                if (isset($_SESSION["idUsuari"])) {
+                    $usuari->restarKarma($_SESSION["idUsuari"]);
+                }
                 $nErrors++;
             }
             $partida["encerts"] = $nEncerts;
             $partida["errors"] = $nErrors;
-            $partida["idUsuari"] = $_SESSION["idUsuari"];
+            if (isset($_SESSION["idUsuari"])) {
+                $partida["idUsuari"] = $_SESSION["idUsuari"];
+            } else {
+                $partida["idUsuari"] = 99999;
+            }
         }
 
         $result = $modelPartida->insert($partida);
 
-       
+
         if ($result == 1) {
             $partida["result"] = "OK";
         } else {
@@ -336,23 +337,18 @@ function handler($peticions)
         $user = $_SESSION["idUsuari"];
         $partidauser = new partida();
         $partidauser->selectAllFromUser($user);
-         $partidauser->return_rows();
-         $json = json_encode($partidauser->return_rows());
-         echo $json;
-
+        $partidauser->return_rows();
+        $json = json_encode($partidauser->return_rows());
+        echo $json;
     }
 
     if ($event === "logearRefresh") {
 
-    
+
         $user = $_SESSION["idUsuari"];
         $refresco = 1;
         echo $user;
-
-
     }
-
-
 }
 
 

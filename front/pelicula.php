@@ -29,18 +29,10 @@ class pelicula extends DBAbstractModel
 
     //select dels camps passats de tots els registres
     //stored in $rows property
-    public function selectAll($fields = array())
+    public function selectAll()
     {
 
-        $this->query = "SELECT ";
-        $firstField = true;
-        for ($i = 0; $i < count($fields); $i++) {
-            if ($firstField) {
-                $this->query .= $fields[$i];
-                $firstField = false;
-            } else $this->query .= ", " . $fields[$i];
-        }
-        $this->query .= " FROM persones";
+        $this->query = "SELECT * FROM pelicula order by nFavorits";
         $this->get_results_from_query();
         return $this->rows;
     }
@@ -68,7 +60,6 @@ class pelicula extends DBAbstractModel
                 $this->query = "INSERT INTO pelicula (imdbID, nom, poster, estrena, nfavorits)
                 VALUES ('" . $imdbID . "', '" . $nom . "', '" . $poster . "'," . $year . ",1)";
                 $this->execute_single_query();
-
             }
         }
     }
