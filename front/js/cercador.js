@@ -206,5 +206,6 @@ window.onload = function () {
         instancesLogin.open();
     })
 
+    document.getElementById("InfoUser").classList.add("hide");
 
 }
