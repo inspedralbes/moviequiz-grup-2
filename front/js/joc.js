@@ -3,7 +3,7 @@ let jocTriggers = document.getElementsByClassName("joc-trigger");
 
 for (let element of jocTriggers) {
     element.addEventListener("click", function () {
-        fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=generarPartida").then(function (res) {
+        fetch("http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=generarPartida").then(function (res) {
 
             return res.json();
         }).then(function (data) {
@@ -107,7 +107,7 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
             if (!error) {
 
                 let modal = M.Modal.getInstance(document.getElementById("modalGame"));
-                fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=comprobarPartida`, {
+                fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=comprobarPartida`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json, text/plain, */*',

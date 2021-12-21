@@ -9,7 +9,7 @@ const idUsuari = urlParams.get('id');
 let datos = new FormData();
 datos.append("id", idUsuari);
 
-fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargarPerfilConcreto", {
+fetch("http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=cargarPerfilConcreto", {
     method: "POST",
     body: datos
 }).then(function (res) {

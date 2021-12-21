@@ -59,7 +59,7 @@ function loadata(formulario, modalLogin) {
 
         buscarPelis.append('id', json.id);
 
-        let prom = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargaPerfil`, {
+        let prom = fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=cargaPerfil`, {
             method: 'POST',
             body: buscarPelis
         }).then(function (res) {
@@ -105,7 +105,7 @@ function loadata(formulario, modalLogin) {
                 ascociarnombreid.append('idpeli', id);
 
 
-                let promesapeli = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=buscaPeliparaUser`, {
+                let promesapeli = fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=buscaPeliparaUser`, {
 
                     method: 'POST',
                     body: ascociarnombreid
@@ -133,7 +133,7 @@ function loadata(formulario, modalLogin) {
                 })
 
             }
-            let promesapartida = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargapartidasUser`, {
+            let promesapartida = fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=cargapartidasUser`, {
                 method: 'POST',
             }).then(function (res) {
                 return res.json();
@@ -186,7 +186,7 @@ window.addEventListener('load', (event) => {
     let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
     let formulario = "nada por aqui";
 
-    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=seleccionartotsusuaris`, {
+    fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=seleccionartotsusuaris`, {
 
         method: 'POST',
 
@@ -246,7 +246,7 @@ function divis() {
                     const formulario = new FormData();
                     formulario.append('idpeli', idpeli);
 
-                    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=borrarPeliUser`, {
+                    fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=borrarPeliUser`, {
 
                         method: 'POST',
                         body: formulario
@@ -366,7 +366,7 @@ document.getElementById("btnlogout").addEventListener("click", function () {
 
 document.getElementById("btnlogout-mobile").addEventListener("click", function () {
 
-    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
+    fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=logoutUser`, {
         method: 'POST',
     })
 
@@ -383,7 +383,7 @@ document.getElementById("btnlogout-mobile").addEventListener("click", function (
 })
 
 
-fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=seleccionartotsusuaris").then(function (res) {
+fetch("http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=seleccionartotsusuaris").then(function (res) {
     return res.json();
 }).then(function (datos) {
 

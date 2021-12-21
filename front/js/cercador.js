@@ -159,7 +159,7 @@ window.onload = function () {
 
 
 
-                fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=insertarPelicula`, {
+                fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=insertarPelicula`, {
 
                     method: 'POST',
                     body: datosEnvio,
