@@ -30,52 +30,47 @@
 
 
 
-        <div id="auxiliar">
-
-            <p id="nomaux"></p>
-            <p id="comentarioaux"></p>
-            <p id="votacionaux"></p>
-        </div>
 
 
+        <div class="cuadradomaestro" >
+            <div class="grid-index">
 
 
-        <div class="avatar">
-
-
-            <img id="avatar" src="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile.png" width=100px height=100px>
-
-
-
-        </div>
-
-        <div class="carrouselvotaciones">
-
-
-            <div class="peliculasopinadas">
-                <div class="row carta">
-                </div>
+                <img id="avatar">
+                <p id="dadesusuari"></p>
 
 
             </div>
 
+            <div class="grid-index">
 
+
+                <div class="peliculasopinadas">
+                    <div class="row carta">
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+            <div class="grid-index">
+                <p id="karmap"></p>
+
+
+            </div>
+            <div class="grid-index">
+
+                <div class="partidasdiv">
+
+
+
+                </div>
+            </div>
 
         </div>
-
-        <div class="karmadiv">
-            <p id="karmap"></p>
-
-
-        </div>
-
-        <div class="partidasdiv">
-
-            AQUI VAN LAS PARTIDAS
-
-
-        </div>
-
 
 
 

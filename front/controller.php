@@ -52,14 +52,14 @@ function handler($peticions)
 
             if ($comentariUsuari->select($dadesPelicula["imdbID"], $dadesComentari["id"])) {
                 //La peli ja la té guardada l'usuari
-                $result = false;
+                $result = 0;
             } else {
                 //La peli no la té guardada l'usuari
                 $pelicula->increaseNFavorits($dadesPelicula["imdbID"]);
                 $succes = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
                 if ($succes == 0) {
-                    $result = false;
-                } else $result = true;
+                    $result = 0;
+                } else $result = 1;
             }
         } else {
             //La peli no està guardada en la base de dades
@@ -103,7 +103,7 @@ function handler($peticions)
 
     if ($event === "logearUser") {
 
-        if($refresco == 0) {
+        if(!$_SESSION) {
             $dadesUser = array(
 
                 "password" => $_POST["password"],
@@ -130,10 +130,29 @@ function handler($peticions)
 
         }
         else{
+            $dadesUser = array(
+
+                "email" =>  $_SESSION["email"],
+                "password" =>  $_SESSION["passworduser"]
+            );
+
+
             $usuari = new usuari();
-            $selectedUser = $usuari->selectrefresh($_SESSION["idUsuari"]);
-            $json = $selectedUser[0];
-            $json["result"] = "OK";
+            $resultat = $usuari->selecthash($dadesUser);
+
+            $json = array();
+            if ($resultat) {
+                $json["result"] = "OK";
+                $selectedUser = $usuari->select($dadesUser);
+                $_SESSION["idUsuari"] = $selectedUser[0]["id"];
+
+
+                $json = $selectedUser[0];
+                $json["result"] = "OK";
+
+            } else {
+                $json["result"] = "FALSE";
+            }
 
 
 
@@ -141,10 +160,9 @@ function handler($peticions)
         echo json_encode($json);
     }
 
-
     if ($event === "logoutUser") {
 
-        // session_destroy();
+       session_destroy();
 
     }
 

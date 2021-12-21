@@ -1,21 +1,9 @@
+function loadata(formulario, modalLogin){
 
-
-
-document.getElementById("buttonLogin").addEventListener("click", function () {
-
-
-    let email = document.getElementById('email').value;
-    let password = document.getElementById("password").value;
-    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
-
-    const datosEnvio = new FormData();
-
-    datosEnvio.append('email', email);
-    datosEnvio.append('password', password);
 
     let promesa = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logearUser`, {
         method: 'POST',
-        body: datosEnvio
+        body: formulario
     }).then(function (res) {
         return res.json();
     })
@@ -40,7 +28,13 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
         let b = JSON.stringify(a);
         let json = JSON.parse(b);
 
-        document.getElementById("karmap").innerHTML = json.karma + " puntos de karma";
+
+        document.getElementById("avatar").src = json.avatar;
+        document.getElementById("dadesusuari").innerHTML = "<h4>Nom d'usuari: "+json.nomUsuari+"</h4><br><h4>Nom real:"+ json.nom+"</h4><br><h4>Cognoms: "+json.cognom+"</h4>";
+
+
+        document.getElementById("karmap").innerHTML = "<h1>"+json.karma+"</h1><br>KARMA" ;
+
         document.getElementById("modalLogin").hidden;
         document.getElementsByClassName("modal-trigger")[1].hidden = false;
         document.getElementsByClassName("modal-trigger")[0].hidden = true;
@@ -67,20 +61,28 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 let id = peli.imdbID;
                 let comentari = peli.comentari;
                 let votacion = peli.puntuacio;
+                console.log(id);
+
+
+
                 let div = document.getElementsByClassName("row")[0];
 
+                let icono = `<i class="material-icons">favorite</i>`;
 
+                let str = "";
+                let comentarioDiv = "<div class='collecttionpelis'>"+
+                    "<div class='gridcarta'><img id ='" + id + "pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb' height='100px' width='100px' class='circle'></div>" +
+                    "<div class='gridcarta'><h4 class='title' id ='"+id+"'>"+id+"</h4></div>"+
+                    " <div class='gridcarta'><p>"+comentari+"</p></div>" +
+                    "<div class='gridcarta'><a class='punts'>";
 
-                div.innerHTML += "<div class='col s1>'><div class=\"card cartas\" >\n" +
-                    "    <div class=\"card-image\">\n" +
-                    " <img id = '" + id + "pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb'>" +
-                    "<span className='card-title' id=" + id + ">" + id + "</span>" +
-                    "</div>" +
-                    "      <span class=\'card-content\' id='com" + id + "'>" + comentari + "</span>" +
-                    "      <span class=\'card-content\' id='vot" + id + "'>" + votacion + "</span>" +
-                    "  <button id =" + id + "button value=" + id + "><i class=\"material-icons\">highlight_off</i></button> " +
-                    "    </div>\n" +
-                    "  </div>";
+                for (let index = 0; index < votacion; index++) {
+                    comentarioDiv += icono;
+                }
+                str += comentarioDiv + "</a></div></div>";;
+
+                div.innerHTML += str;
+
 
 
 
@@ -129,6 +131,7 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 console.log(partida);
 
                 let partidasdiv = document.getElementsByClassName("partidasdiv")[0];
+                partidasdiv.innerHTML ="<h1>Les meves partides</h1>";
 
 
                 for (let game of partida) {
@@ -159,6 +162,33 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
 
     })
+}
+
+
+window.addEventListener('load', (event) => {
+
+    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
+    let formulario = "nada por aqui";
+
+    loadata(formulario, modalLogin);
+
+});
+
+
+document.getElementById("buttonLogin").addEventListener("click", function () {
+
+
+    let email = document.getElementById('email').value;
+    let password = document.getElementById("password").value;
+    let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
+
+    const datosEnvio = new FormData();
+
+    datosEnvio.append('email', email);
+    datosEnvio.append('password', password);
+
+
+    loadata(datosEnvio, modalLogin);
 
 
 
@@ -209,11 +239,7 @@ function divis() {
 
 
 
-function carouselizador() {
 
-
-
-}
 
 document.getElementById("registre").addEventListener("click", function () {
 
@@ -287,5 +313,18 @@ document.getElementById("registre").addEventListener("click", function () {
             }
         });
     }
+})
+
+document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function (){
+
+    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
+        method: 'POST',
+    })
+
+    location.reload(); //es estupido hacer otro fecth para poner datos vacios
+
+    document.getElementsByClassName("modal-trigger")[1].hidden= true;
+    document.getElementsByClassName("modal-trigger")[0].hidden = false;
+
 })
 
