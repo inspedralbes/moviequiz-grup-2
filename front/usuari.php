@@ -49,10 +49,8 @@ class usuari extends DBAbstractModel
         $email = $user_data["email"];
         $pass = $user_data["password"];
 
-
-
         $this->query = "SELECT password FROM usuari WHERE email = '$email' ";
-        $this->get_results_from_query();
+        print_r($this->get_results_from_query());
         $hash = $this->rows[0]["password"];
         if (password_verify($pass, $hash)){
             $_SESSION["passworduser"] = $pass;

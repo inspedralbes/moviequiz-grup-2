@@ -4,6 +4,10 @@ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+
+
+    session_start();
+
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == "OPTIONS") {
     die();
@@ -13,13 +17,13 @@ require_once "usuari.php";
 require_once "pelicula.php";
 require_once "comentariUsuari.php";
 require_once "partida.php";
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 $peticions = array("insertarPelicula", "seleccionartotsusuaris", "cargapartidasUser", "insertarComentarioValoracion", "borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto", "seleccionartotsusuaris");
 function handler($peticions)
 {
+
+    
+    
     $refresco = 0;
 
     $uri = $_SERVER['REQUEST_URI'];
@@ -30,51 +34,63 @@ function handler($peticions)
             $event = $peticio;
     if ($event === "insertarPelicula") {
 
-        $dadesPelicula = array(
-            "year" => $_POST["year"],
-            "imdbID" => $_POST["imdbID"],
-            "nom" => $_POST["nom"],
-            "poster" => $_POST["poster"]
-        );
-        $dadesComentari = array(
-            "id" => $_SESSION["idUsuari"],
-            "comentari" => $_POST["comment"],
-            "rating" => $_POST["rating"]
-        );
 
-        $comentariUsuari = new comentariUsuari();
-        $pelicula = new pelicula();
+        
 
+        $id="";
+        if(isset($_SESSION["idUsuari"])){
+            $id=$_SESSION["idUsuari"];
 
-        $result = false;
-        if ($pelicula->select($dadesPelicula["imdbID"])) {
-            //La peli està guardada en la base de dades
-
-            if ($comentariUsuari->select($dadesPelicula["imdbID"], $dadesComentari["id"])) {
-                //La peli ja la té guardada l'usuari
-                $result = 0;
-            } else {
-                //La peli no la té guardada l'usuari
-                $pelicula->increaseNFavorits($dadesPelicula["imdbID"]);
-                $succes = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
-                if ($succes == 0) {
+            $dadesPelicula = array(
+                "year" => $_POST["year"],
+                "imdbID" => $_POST["imdbID"],
+                "nom" => $_POST["nom"],
+                "poster" => $_POST["poster"]
+            );
+            $dadesComentari = array(
+                "id" =>$id,
+                "comentari" => $_POST["comment"],
+                "rating" => $_POST["rating"]
+            );
+    
+            $comentariUsuari = new comentariUsuari();
+            $pelicula = new pelicula();
+    
+    
+            $result = false;
+            if ($pelicula->select($dadesPelicula["imdbID"])) {
+                //La peli està guardada en la base de dades
+    
+                if ($comentariUsuari->select($dadesPelicula["imdbID"], $dadesComentari["id"])) {
+                    //La peli ja la té guardada l'usuari
                     $result = 0;
-                } else $result = 1;
+                } else {
+                    //La peli no la té guardada l'usuari
+                    $pelicula->increaseNFavorits($dadesPelicula["imdbID"]);
+                    $succes = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
+                    if ($succes == 0) {
+                        $result = 0;
+                    } else $result = 1;
+                }
+            } else {
+                //La peli no està guardada en la base de dades
+    
+                $pelicula->insert($dadesPelicula);
+                $result = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
             }
-        } else {
-            //La peli no està guardada en la base de dades
-
-            $pelicula->insert($dadesPelicula);
-            $result = $comentariUsuari->insert($dadesPelicula, $dadesComentari);
+    
+            $json = array("result" => "");
+            if ($result) {
+                $json["result"] = "OK";
+            } else {
+                $json["result"] = "FALSE";
+            }
+            echo json_encode($json);
+        }else{
+            echo json_encode(array("result"=>"FALSE"));
         }
 
-        $json = array("result" => "");
-        if ($result) {
-            $json["result"] = "OK";
-        } else {
-            $json["result"] = "FALSE";
-        }
-        echo json_encode($json);
+        
     }
 
 
@@ -104,6 +120,7 @@ function handler($peticions)
     if ($event === "logearUser") {
 
         if (!$_SESSION) {
+            
             $dadesUser = array(
 
                 "password" => $_POST["password"],
@@ -127,6 +144,7 @@ function handler($peticions)
                 $json["result"] = "FALSE";
             }
         } else {
+           
             $dadesUser = array(
 
                 "email" =>  $_SESSION["email"],
@@ -150,6 +168,7 @@ function handler($peticions)
                 $json["result"] = "FALSE";
             }
         }
+       
         echo json_encode($json);
     }
 

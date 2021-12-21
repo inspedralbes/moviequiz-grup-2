@@ -162,7 +162,8 @@ window.onload = function () {
                 fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=insertarPelicula`, {
 
                     method: 'POST',
-                    body: datosEnvio
+                    body: datosEnvio,
+                    credentials: 'same-origin'
 
                 }).then(function (res) {
                     return res.json()

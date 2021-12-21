@@ -3,7 +3,8 @@ function loadata(formulario, modalLogin) {
 
     let promesa = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logearUser`, {
         method: 'POST',
-        body: formulario
+        body: formulario,
+        credentials: "same-origin"
     }).then(function (res) {
         return res.json();
     })
