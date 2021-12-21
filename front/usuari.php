@@ -41,7 +41,13 @@ class usuari extends DBAbstractModel
         $this->query = "SELECT password FROM usuari WHERE email = '$email' ";
         $this->get_results_from_query();
         $hash = $this->rows[0]["password"];
-        return password_verify($pass, $hash);
+        if (password_verify($pass, $hash)){
+            $_SESSION["passworduser"] = $pass;
+            $_SESSION["email"] = $email;
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
     public function select($user_data = array())
@@ -117,6 +123,7 @@ class usuari extends DBAbstractModel
             $email = $user_data["email"];
             $karma = $user_data["karma"];
             $avatar = $user_data["avatar"];
+
 
             $hashed = password_hash($password, PASSWORD_BCRYPT);
 

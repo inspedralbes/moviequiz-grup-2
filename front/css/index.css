@@ -2,6 +2,19 @@ body{
     background-color: #BFA19F;
 }
 
+.cuadradomaestro{
+	display: grid;
+	grid-template-columns: auto auto;
+
+}
+
+.grid-index {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	text-align: center;
+}
+
 nav, .page-footer{
 	background-color: #696DBF;
 }
@@ -106,6 +119,44 @@ li {
 	outline: 2px solid #696dbfc7;
   }
 
+.avatars{
+	margin: 5%;
+}
+.material-icons{
+	color: #D97373;
+}
+
+#profile{
+	background: #D97373;
+}
+
+#avatar{
+	height: 150px;
+	width: auto;
+}
+
+.collecttionpelis{
 
 
+	display: grid;
+	grid-template-columns: auto auto;
+	border: 1px black solid;
+	width: 600px;
+}
 
+.gridcarta{
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	align-content: center;
+	align-items: center;
+
+}
+.puntskarma{
+	background-color: #696DBF;
+	align-items: center;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
