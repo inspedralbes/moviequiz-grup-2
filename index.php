@@ -31,151 +31,133 @@
 
 
 
-
-        <div class="cuadradomaestro" >
-            <div class="grid-index">
-
-
-                <img id="avatar">
-                <p id="dadesusuari"></p>
-
-
+        <div id="cuerpoInfo">
+            
+            <div id="contenedorPelis" class="row">
             </div>
-
-            <div class="grid-index">
-
-
-                <div class="peliculasopinadas">
-                    <div class="row carta">
-                    </div>
-
-
-                </div>
-
-
-
-            </div>
-
-            <div class="grid-index">
-                <p id="karmap"></p>
-
-
-            </div>
-            <div class="grid-index">
-
-                <div class="partidasdiv">
-
-
-
-                </div>
-            </div>
-
-        </div>
-
-
-
-
-        <div id="contenedorPelis" class="row">
-        </div>
-        <div id="modalAdd" class="modal">
-            <div id="modal-preloader" class="center-align">
-                <div class="preloader-wrapper big active ">
-                    <div class="spinner-layer spinner-blue">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
+            <div id="modalAdd" class="modal">
+                <div id="modal-preloader" class="center-align">
+                    <div class="preloader-wrapper big active ">
+                        <div class="spinner-layer spinner-blue">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
                         </div>
-                        <div class="gap-patch">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="circle-clipper right">
-                            <div class="circle"></div>
-                        </div>
-                    </div>
 
-                    <div class="spinner-layer spinner-red">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
+                        <div class="spinner-layer spinner-red">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
                         </div>
-                        <div class="gap-patch">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="circle-clipper right">
-                            <div class="circle"></div>
-                        </div>
-                    </div>
 
-                    <div class="spinner-layer spinner-yellow">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
+                        <div class="spinner-layer spinner-yellow">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
                         </div>
-                        <div class="gap-patch">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="circle-clipper right">
-                            <div class="circle"></div>
-                        </div>
-                    </div>
 
-                    <div class="spinner-layer spinner-green">
-                        <div class="circle-clipper left">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="gap-patch">
-                            <div class="circle"></div>
-                        </div>
-                        <div class="circle-clipper right">
-                            <div class="circle"></div>
+                        <div class="spinner-layer spinner-green">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="modal-content" id="modal-content-add">
+                    <div id="modal-image" class="center-align"></div>
+                    <h4 id="modal-title" class="left-align">Movie Title</h4>
+                    <h5 id="modal-director" class="left-align">Movie Director</h5>
+                    <h6 id="modal-year" class="left-align">Year</h6>
+                    <p id="modal-plot">Movie plot</p>
+                    <ul class="collection" id="modal-ratings">
+                    </ul>
+                    <div id="modal-review" class="center-align">
+                        <label>
+                            <input name="rating" type="radio" value="1" />
+                            <span>1</span>
+                        </label>
+                        <label>
+                            <input name="rating" type="radio" value="2" />
+                            <span>2</span>
+                        </label>
+                        <label>
+                            <input checked name="rating" type="radio" value="3" />
+                            <span>3</span>
+                        </label>
+                        <label>
+                            <input name="rating" type="radio" value="4" />
+                            <span>4</span>
+                        </label>
+                        <label>
+                            <input name="rating" type="radio" value="5" />
+                            <span>5</span>
+                        </label>
+                    </div>
+                    <div id="modal-comment">
+                        <div class="input-field col s12">
+                            <textarea id="comentari" name="comentari" class="materialize-textarea"></textarea>
+                            <label for="comentari">Comentari</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer" id="modal-footer-add">
+                    <a href="#!" class=" waves-effect waves-green btn" id="buttonConfirmarAfegir">Confirmar</a>
+                </div>
+                <input type="hidden" name="year" id="year">
+                <input type="hidden" name="imdbID" id="imdbID">
+                <input type="hidden" name="nom" id="nom">
+                <input type="hidden" name="poster" id="poster">
             </div>
 
-            <div class="modal-content" id="modal-content-add">
-                <div id="modal-image" class="center-align"></div>
-                <h4 id="modal-title" class="left-align">Movie Title</h4>
-                <h5 id="modal-director" class="left-align">Movie Director</h5>
-                <h6 id="modal-year" class="left-align">Year</h6>
-                <p id="modal-plot">Movie plot</p>
-                <ul class="collection" id="modal-ratings">
-                </ul>
-                <div id="modal-review" class="center-align">
-                    <label>
-                        <input name="rating" type="radio" value="1" />
-                        <span>1</span>
-                    </label>
-                    <label>
-                        <input name="rating" type="radio" value="2" />
-                        <span>2</span>
-                    </label>
-                    <label>
-                        <input checked name="rating" type="radio" value="3" />
-                        <span>3</span>
-                    </label>
-                    <label>
-                        <input name="rating" type="radio" value="4" />
-                        <span>4</span>
-                    </label>
-                    <label>
-                        <input name="rating" type="radio" value="5" />
-                        <span>5</span>
-                    </label>
-                </div>
-                <div id="modal-comment">
-                    <div class="input-field col s12">
-                        <textarea id="comentari" name="comentari" class="materialize-textarea"></textarea>
-                        <label for="comentari">Comentari</label>
+            <div class="cuadradomaestro" >
+                <div class="row">
+                    <div class="col s12 m12 l6 grid-index" id="grid-index-top">
+                        <img id="avatar">
+                        <p id="dadesusuari"></p>
+                    </div>
+                    <div class="col s12 m12 l6 grid-index" id="grid-index-top">
+                        <div class="peliculasopinadas">
+                            <div class="row carta">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
+                        <p id="karmap"></p>
+                    </div>
+                    <div class="col s12 m12 l6 grid-index"id="grid-index-bottom">
+                        <div class="partidasdiv">
+                        </div>
                     </div>
                 </div>
-
+                
             </div>
-
-            <div class="modal-footer" id="modal-footer-add">
-                <a href="#!" class=" waves-effect waves-green btn" id="buttonConfirmarAfegir">Confirmar</a>
-            </div>
-            <input type="hidden" name="year" id="year">
-            <input type="hidden" name="imdbID" id="imdbID">
-            <input type="hidden" name="nom" id="nom">
-            <input type="hidden" name="poster" id="poster">
         </div>
 
         <div id="modalLogin" class="modal">

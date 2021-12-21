@@ -1,4 +1,4 @@
-function loadata(formulario, modalLogin){
+function loadata(formulario, modalLogin) {
 
 
     let promesa = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logearUser`, {
@@ -30,10 +30,10 @@ function loadata(formulario, modalLogin){
 
 
         document.getElementById("avatar").src = json.avatar;
-        document.getElementById("dadesusuari").innerHTML = "<h4>Nom d'usuari: "+json.nomUsuari+"</h4><br><h4>Nom real:"+ json.nom+"</h4><br><h4>Cognoms: "+json.cognom+"</h4>";
+        document.getElementById("dadesusuari").innerHTML = "<h4>Nom d'usuari: " + json.nomUsuari + "</h4><br><h4>Nom real: " + json.nom + "</h4><br><h4>Cognoms: " + json.cognom + "</h4>";
 
 
-        document.getElementById("karmap").innerHTML = "<h1>"+json.karma+"</h1><br>KARMA" ;
+        document.getElementById("karmap").innerHTML = "<h1>" + json.karma + "</h1><br>KARMA";
 
         document.getElementById("modalLogin").hidden;
         document.getElementsByClassName("modal-trigger")[1].hidden = false;
@@ -65,15 +65,15 @@ function loadata(formulario, modalLogin){
 
 
 
-                let div = document.getElementsByClassName("row")[0];
+                let div = document.getElementsByClassName("peliculasopinadas")[0];
 
                 let icono = `<i class="material-icons">favorite</i>`;
 
                 let str = "";
-                let comentarioDiv = "<div class='collecttionpelis'>"+
+                let comentarioDiv = "<div class='collecttionpelis'>" +
                     "<div class='gridcarta'><img id ='" + id + "pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb' height='100px' width='100px' class='circle'></div>" +
-                    "<div class='gridcarta'><h4 class='title' id ='"+id+"'>"+id+"</h4></div>"+
-                    " <div class='gridcarta'><p>"+comentari+"</p></div>" +
+                    "<div class='gridcarta'><h4 class='title' id ='" + id + "'>" + id + "</h4></div>" +
+                    " <div class='gridcarta'><p>" + comentari + "</p></div>" +
                     "<div class='gridcarta'><a class='punts'>";
 
                 for (let index = 0; index < votacion; index++) {
@@ -131,7 +131,7 @@ function loadata(formulario, modalLogin){
                 console.log(partida);
 
                 let partidasdiv = document.getElementsByClassName("partidasdiv")[0];
-                partidasdiv.innerHTML ="<h1>Les meves partides</h1>";
+                partidasdiv.innerHTML = "<h1>Les meves partides</h1>";
 
 
                 for (let game of partida) {
@@ -315,7 +315,7 @@ document.getElementById("registre").addEventListener("click", function () {
     }
 })
 
-document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function (){
+document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function () {
 
     fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
         method: 'POST',
@@ -323,7 +323,7 @@ document.getElementsByClassName("modal-trigger")[1].addEventListener("click", fu
 
     location.reload(); //es estupido hacer otro fecth para poner datos vacios
 
-    document.getElementsByClassName("modal-trigger")[1].hidden= true;
+    document.getElementsByClassName("modal-trigger")[1].hidden = true;
     document.getElementsByClassName("modal-trigger")[0].hidden = false;
 
 })

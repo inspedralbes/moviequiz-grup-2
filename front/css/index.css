@@ -2,10 +2,16 @@ body{
     background-color: #BFA19F;
 }
 
+#cuerpoInfo {
+	margin: 1%;
+}
+
 .cuadradomaestro{
 	display: grid;
-	grid-template-columns: auto auto;
-
+	/*grid-template-columns: auto auto;
+	grid-template-rows: 450px 200px;*/
+	background-color: #8b7d77;
+	overflow: hidden;
 }
 
 .grid-index {
@@ -136,12 +142,10 @@ li {
 }
 
 .collecttionpelis{
-
-
 	display: grid;
 	grid-template-columns: auto auto;
 	border: 1px black solid;
-	width: 600px;
+	width: 100%;
 }
 
 .gridcarta{
@@ -159,4 +163,14 @@ li {
 	border-radius: 50%;
 	width: 50px;
 	height: 50px;
+}
+
+#grid-index-top {
+	height: 450px;
+	overflow-y: scroll;
+}
+
+#grid-index-bottom {
+	height: 200px;
+	overflow-y: scroll;
 }
