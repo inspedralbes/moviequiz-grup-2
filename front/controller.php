@@ -288,18 +288,25 @@ function handler($peticions)
             $dadesPelicula = $pelicula->select($imdbID)[0];
             if ($dadesPelicula["estrena"] == $anySelected) {
                 //AUGMENTAR 3 DE KARMA A L'USUARI
+                if (isset($_SESSION["idUsuari"])) {
+                    $usuari->sumarKarma($_SESSION["idUsuari"]);
+                }
 
-                $usuari->sumarKarma($_SESSION["idUsuari"]);
                 $nEncerts++;
             } else {
                 //RESTAR 1 DE KARMA A L'USUARI
-
-                $usuari->restarKarma($_SESSION["idUsuari"]);
+                if (isset($_SESSION["idUsuari"])) {
+                    $usuari->restarKarma($_SESSION["idUsuari"]);
+                }
                 $nErrors++;
             }
             $partida["encerts"] = $nEncerts;
             $partida["errors"] = $nErrors;
-            $partida["idUsuari"] = $_SESSION["idUsuari"];
+            if (isset($_SESSION["idUsuari"])) {
+                $partida["idUsuari"] = $_SESSION["idUsuari"];
+            } else {
+                $partida["idUsuari"] = 99999;
+            }
         }
 
         $result = $modelPartida->insert($partida);
