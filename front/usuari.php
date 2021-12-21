@@ -30,6 +30,19 @@ class usuari extends DBAbstractModel
     }
 
 
+
+    public function selectAllusers()
+    {
+
+        $this->query = "SELECT * from usuari order by karma asc";
+
+        $this->get_results_from_query();
+
+
+        return $this->rows;
+    }
+
+
     public function selecthash($user_data = array())
     {
 

@@ -17,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$peticions = array("insertarPelicula", "logearRefresh", "cargapartidasUser", "insertarComentarioValoracion", "borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto");
+$peticions = array("insertarPelicula", "seleccionartotsusuaris", "cargapartidasUser", "insertarComentarioValoracion", "borrarPeliUser", "registrarUser", "logearUser", "logoutUser", "cargaPerfil", "buscaPeliparaUser", "generarPartida", "comprobarPartida", "cargarPerfilConcreto");
 function handler($peticions)
 {
     $refresco = 0;
@@ -342,12 +342,18 @@ function handler($peticions)
         echo $json;
     }
 
-    if ($event === "logearRefresh") {
+    if ($event === "seleccionartotsusuaris") {
+
+        $usuari = new usuari();
+        $array = $usuari->selectAllusers();
+
+        $usuaris["result"] = "OK";
+        $usuaris["usuaris"] = $array;
 
 
-        $user = $_SESSION["idUsuari"];
-        $refresco = 1;
-        echo $user;
+        $json = json_encode($usuaris);
+        echo $json;
+
     }
 }
 
