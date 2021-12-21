@@ -177,6 +177,14 @@ window.addEventListener('load', (event) => {
     let modalLogin = M.Modal.getInstance(document.getElementById("modalLogin"));
     let formulario = "nada por aqui";
 
+    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=seleccionartotsusuaris`, {
+
+        method: 'POST',
+
+    }).then(function (res) {
+        return res.json()
+    })
+
     loadata(formulario, modalLogin);
 
 });
