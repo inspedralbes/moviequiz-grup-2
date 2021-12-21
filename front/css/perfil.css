@@ -1,7 +1,7 @@
 .avatars{
 	margin: 5%;
 }
-.material-icons{
+.secondary-content .material-icons {
 	color: #D97373;
 }
 
@@ -9,11 +9,11 @@
 	background: #D97373;
 }
 
+.inline-icon {
+	vertical-align: bottom;
+	font-size: 17px;
+ }
 #avatar{
 	height: 150px;
     width: auto;
-}
-
-#nomUsuari{
-
 }

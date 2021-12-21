@@ -117,9 +117,23 @@ document.getElementById("buttonConfirmarJoc").addEventListener("click", function
                 }).then(function (res) {
                     return res.json();
                 }).then(function (result) {
+                    let puntuacio = result.encerts * 3;
+                    puntuacio = puntuacio - result.errors;
+                    let icon = "";
+                    if (puntuacio > 0) {
+                        icon = `<i class="material-icons inline-icon ">mood</i>`;
+                    } else {
+                        icon = `<i class="material-icons inline-icon ">mood_bad</i>`;
+                    }
                     if (result.result === "OK") {
-                        Swal.fire('Partida completada!', '', 'success')
+                        Swal.fire('Partida completada!', '', 'success').then(() => {
+                            Swal.fire({
+                                title: "Resum partida:",
+                                html: ` <div>Encerts: <span class="light-green-text darken-3">${result.encerts}</span><br><span>Errors:  </span><span class="red-text darken-2" >${result.errors}</span><br>Puntuació: ${puntuacio}<br>Data: ${result.dataPartida}<br>${icon}</div>`
+                            })
+                        });
                         modal.close();
+
                     } else {
                         Swal.fire(
                             'Error',

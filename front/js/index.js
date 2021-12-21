@@ -67,9 +67,6 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
                 let id = peli.imdbID;
                 let comentari = peli.comentari;
                 let votacion = peli.puntuacio;
-
-
-
                 let div = document.getElementsByClassName("row")[0];
 
 
