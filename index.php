@@ -166,6 +166,7 @@
                         </div>
                     </div>
                     <aside class="col s12 m12 l4" id="aside-ranking">
+                        <div><h5 class="center condensed light" >Classificació Global</h5><hr></div>
                         <div id="RankingGlobal">
                             <ul id="ranking" class="collection"></ul>
                         </div>
