@@ -20,8 +20,11 @@ function loadata(formulario, modalLogin) {
             modalLogin.close();
             document.getElementById("InfoUser").classList.remove("hide");
             document.getElementById("btnPerfil").classList.remove("hide");
+            document.getElementById("btnPerfil-mobile").classList.remove("hide");
             document.getElementById("btnPerfil").href += "?id=" + a.id;
             document.getElementById("aside-ranking").classList.remove("hide");
+            document.getElementById("btnPerfil-mobile").href += "?id=" + a.id;
+
         } else {
             Swal.fire({
                 icon: 'error',
@@ -349,6 +352,7 @@ document.getElementsByClassName("modal-trigger")[1].addEventListener("click", fu
     document.getElementsByClassName("modal-trigger")[0].hidden = false;
     document.getElementById("btnPerfil").classList.add("hide");
     document.getElementById("aside-ranking").classList.add("hide");
+    document.getElementById("btnPerfil-mobile").classList.add("hide");
 
 })
 

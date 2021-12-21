@@ -208,6 +208,7 @@ window.onload = function () {
 
     document.getElementById("InfoUser").classList.add("hide");
     document.getElementById("btnPerfil").classList.add("hide");
+    document.getElementById("btnPerfil-mobile").classList.add("hide");
     document.getElementById("aside-ranking").classList.add("hide");
 
 }
