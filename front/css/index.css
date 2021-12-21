@@ -187,3 +187,7 @@ li {
     color: #1883ba;
     background-color: rgba(255, 255, 255, 0.8);
   }
+
+aside {
+	border: 1px black solid;
+}
