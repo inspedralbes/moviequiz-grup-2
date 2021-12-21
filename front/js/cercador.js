@@ -211,5 +211,7 @@ window.onload = function () {
     document.getElementById("btnPerfil").classList.add("hide");
     document.getElementById("btnPerfil-mobile").classList.add("hide");
     document.getElementById("aside-ranking").classList.add("hide");
+    document.getElementById("btnRegistre").classList.remove("hide");
+    document.getElementById("btnRegistre-mobile").classList.remove("hide");
 
 }

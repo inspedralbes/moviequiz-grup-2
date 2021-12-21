@@ -6,7 +6,7 @@
                 <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
                 <li><a class="modal-trigger" hidden>Logout</a></li>
 
-                <li><a class="modal-trigger " href="#modalRegistre">Registre</a></li>
+                <li><a class="modal-trigger " href="#modalRegistre" id="btnRegistre">Registre</a></li>
                 <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
                 <li><a class="material-icons prefix" href="../moviequiz-grup-2/perfil.php" id="btnPerfil">person</a></li>
             </ul>
@@ -16,7 +16,7 @@
     <ul class="sidenav" id="mobile-demo">
         <li><a class="modal-trigger" href="#modalLogin">Login</a></li>
         <li><a class="modal-trigger" href="#modalLogin" hidden>Logout</a></li>
-        <li><a class="modal-trigger" href="#modalRegistre">Registre</a></li>
+        <li><a class="modal-trigger" href="#modalRegistre" id="btnRegistre-mobile">Registre</a></li>
         <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
         <li><a class="material-icons prefix" href="../moviequiz-grup-2/perfil.php" id="btnPerfil-mobile">person</a></li>
     </ul>
