@@ -43,7 +43,7 @@ class comentariUsuari extends DBAbstractModel
 
     public function selectAllFromUser($idUsuari = "")
     {
-        $this->query = "SELECT usu_peli.imdbID,comentari, puntuacio,nom, poster, estrena from usu_peli, pelicula where id= " . $idUsuari . " AND usu_peli.ImdbID=pelicula.ImdbID";
+        $this->query = "SELECT usu_peli.ImdbID,comentari, puntuacio,nom, poster, estrena from usu_peli, pelicula where id= " . $idUsuari . " AND usu_peli.ImdbID=pelicula.ImdbID";
         $this->get_results_from_query();
 
         return $this->rows;

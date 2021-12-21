@@ -224,10 +224,12 @@ function handler($peticions)
             "peliculas" => array("")
         );
 
-
-
-        $favorits = $comentariUsuari->selectAllFromUser($_SESSION["idUsuari"]);
-
+        $favorits = array();
+        if (isset($_SESSION["idUsuari"])) {
+            $favorits = $comentariUsuari->selectAllFromUser($_SESSION["idUsuari"]);
+        } else {
+            $favorits = $pelicula->selectAll();
+        }
 
         $pelisKeys = array_rand($favorits, 5);
         $pelicules = array();
@@ -241,7 +243,7 @@ function handler($peticions)
         foreach ($pelicules as $key => $pelicula) {
             $vectorAnys = [-15, -10, -5, -2, +2, +5, +10, +15];
             $preguntes[$key] = array(
-                "imdbID" => $pelicula["imdbID"],
+                "imdbID" => $pelicula["ImdbID"],
                 "nom" => $pelicula["nom"],
                 "poster" => $pelicula["poster"],
                 "opcions" => array($pelicula["estrena"], 0, 0, 0)
