@@ -21,6 +21,7 @@ function loadata(formulario, modalLogin) {
             document.getElementById("InfoUser").classList.remove("hide");
             document.getElementById("btnPerfil").classList.remove("hide");
             document.getElementById("btnPerfil").href += "?id=" + a.id;
+            document.getElementById("aside-ranking").classList.remove("hide");
         } else {
             Swal.fire({
                 icon: 'error',
@@ -339,6 +340,7 @@ document.getElementsByClassName("modal-trigger")[1].addEventListener("click", fu
     document.getElementsByClassName("modal-trigger")[1].hidden = true;
     document.getElementsByClassName("modal-trigger")[0].hidden = false;
     document.getElementById("btnPerfil").classList.add("hide");
+    document.getElementById("aside-ranking").classList.add("hide");
 
 })
 

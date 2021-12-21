@@ -160,7 +160,7 @@
                             </div>
                         </div>
                     </div>
-                    <aside class="col s12 m12 l4">
+                    <aside class="col s12 m12 l4" id="aside-ranking">
                         <table class="responsive-table">
                             <thead>
                             <tr>
