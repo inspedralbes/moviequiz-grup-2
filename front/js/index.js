@@ -8,6 +8,7 @@ function loadata(formulario, modalLogin) {
         return res.json();
     })
     promesa.then((a) => {
+
         if (a.result == "OK") {
             Swal.fire({
                 position: 'center',
@@ -19,6 +20,7 @@ function loadata(formulario, modalLogin) {
             modalLogin.close();
             document.getElementById("InfoUser").classList.remove("hide");
             document.getElementById("btnPerfil").classList.remove("hide");
+            document.getElementById("btnPerfil").href += "?id=" + a.id;
         } else {
             Swal.fire({
                 icon: 'error',
@@ -65,7 +67,7 @@ function loadata(formulario, modalLogin) {
                 let comentari = peli.comentari;
                 let votacion = peli.puntuacio;
 
-                console.log(peli);
+
 
 
 
@@ -92,7 +94,7 @@ function loadata(formulario, modalLogin) {
 
                 const ascociarnombreid = new FormData();
                 ascociarnombreid.append('idpeli', id);
-                console.log(id + " id de peli")
+
 
                 let promesapeli = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=buscaPeliparaUser`, {
 
@@ -105,13 +107,13 @@ function loadata(formulario, modalLogin) {
                 })
 
                 promesapeli.then((a) => {
-                    console.log(a)
+
 
                     let b = JSON.stringify(a);
                     let pelicula = JSON.parse(b);
-                    console.log(pelicula[0].ImdbID);
+
                     let peliculavotada = document.getElementById(pelicula[0].ImdbID).innerText;
-                    console.log(peliculavotada);
+
 
                     if (peliculavotada == pelicula[0].ImdbID) {
                         document.getElementById(pelicula[0].ImdbID).innerHTML = pelicula[0].nom;
@@ -133,7 +135,7 @@ function loadata(formulario, modalLogin) {
                 let b = JSON.stringify(a);
                 let partida = JSON.parse(b);
 
-                console.log(partida);
+
 
                 let partidasdiv = document.getElementsByClassName("partidasdiv")[0];
                 partidasdiv.innerHTML = "<h1>Les meves partides</h1>";
@@ -304,7 +306,7 @@ document.getElementById("registre").addEventListener("click", function () {
         }).then(function (res) {
             return res.json()
         }).then(function (data) {
-            console.log(data);
+
             if (data.result == "OK") {
                 Swal.fire({
                     position: 'center',

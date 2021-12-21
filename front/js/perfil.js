@@ -3,8 +3,16 @@
 var sidenavElems = document.querySelectorAll('.sidenav');
 var sidenavs = M.Sidenav.init(sidenavElems);
 
+const urlParams = new URLSearchParams(window.location.search);
+const idUsuari = urlParams.get('id');
 
-fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargarPerfilConcreto").then(function (res) {
+let datos = new FormData();
+datos.append("id", idUsuari);
+
+fetch("http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=cargarPerfilConcreto", {
+    method: "POST",
+    body: datos
+}).then(function (res) {
     return res.json()
 }).then(function (usuari) {
     let ulComentarios = document.getElementById("comentaris");
