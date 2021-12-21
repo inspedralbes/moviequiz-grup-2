@@ -3,6 +3,8 @@ DROP TABLE IF EXISTS usu_peli;
 DROP TABLE IF EXISTS usuari;
 
 DROP TABLE IF EXISTS pelicula;
+DROP TABLE IF EXISTS partida;
+
 
 --
 -- Base de dades: `projectepelis`
