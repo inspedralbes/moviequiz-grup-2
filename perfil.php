@@ -19,22 +19,27 @@
     include("front/header.php");
     ?>
 
-
-    <div class="row">
-        <header class="row" id="profile">
+    <header class="row" id="profile">
         <div class="col s12  center-align" >
             <img id="avatar">
         </div>
         <div class="row">
         <div class="col s12 center-align"  id="nomUsuari"></div>
         <div class="col s12  center-align"  id="nom"></div>
+        <div class="col s12  center-align" ">Karma: <span id="karma"></span></div>
         </div>
-      
-        </header>
-        
-        <div class="col s12">
+    </header>
+
+    <div class="row">
+        <div class="col s12 m6">
             <ul id="comentaris" class="collection"></ul>
         </div>
+        <div class="col s12 m6">
+            <ul id="partidas" class="collection with-header">
+            <li class="collection-header"><h4>Partides</h4></li>
+            <ul>
+        </div>
+        
     </div>   
 
     <div id="modalGame" class="modal">

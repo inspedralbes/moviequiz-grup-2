@@ -184,8 +184,7 @@ function handler($peticions)
 
         $dadesUsuari= $usuari->select_from_id($id);
         $dadesUsuari[0]["comentaris"]= $dadespeliuser->return_rows();
-        $partidas = $partida->select_partidas_from_user($id);
-        
+        $dadesUsuari[0]["partides"]=$partida->select_partidas_from_user($id);
         $json= json_encode($dadesUsuari[0]);
         print_r($json);
     }
