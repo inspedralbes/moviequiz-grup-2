@@ -345,7 +345,26 @@ document.getElementById("registre").addEventListener("click", function () {
     }
 })
 
-document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function () {
+//document.getElementsByClassName("modal-trigger")[1].addEventListener("click", function () {
+document.getElementById("btnlogout").addEventListener("click", function () {
+
+    fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
+        method: 'POST',
+    })
+
+    location.reload(); //es estupido hacer otro fecth para poner datos vacios
+
+    document.getElementsByClassName("modal-trigger")[1].hidden = true;
+    document.getElementsByClassName("modal-trigger")[0].hidden = false;
+    document.getElementById("btnPerfil").classList.add("hide");
+    document.getElementById("aside-ranking").classList.add("hide");
+    document.getElementById("btnPerfil-mobile").classList.add("hide");
+    document.getElementById("btnRegistre").classList.remove("hide");
+    document.getElementById("btnRegistre-mobile").classList.remove("hide");
+
+})
+
+document.getElementById("btnlogout-mobile").addEventListener("click", function () {
 
     fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=logoutUser`, {
         method: 'POST',
