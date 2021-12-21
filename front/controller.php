@@ -292,13 +292,13 @@ function handler($peticions)
 
         $result = $modelPartida->insert($partida);
 
-        $json = array("result" => "");
+       
         if ($result == 1) {
-            $json["result"] = "OK";
+            $partida["result"] = "OK";
         } else {
-            $json["result"] = "FALSE";
+            $partida["result"] = "FALSE";
         }
-        echo json_encode($json);
+        echo json_encode($partida);
     }
 
 
