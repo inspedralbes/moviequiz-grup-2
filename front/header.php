@@ -8,6 +8,7 @@
 
                 <li><a class="modal-trigger " href="#modalRegistre">Registre</a></li>
                 <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
+                <li><a class="material-icons prefix" href="../moviequiz-grup-2/perfil.php" id="btnPerfil">person</a></li>
             </ul>
         </div>
     </nav>

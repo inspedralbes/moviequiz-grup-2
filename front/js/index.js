@@ -18,6 +18,7 @@ function loadata(formulario, modalLogin) {
             })
             modalLogin.close();
             document.getElementById("InfoUser").classList.remove("hide");
+            document.getElementById("btnPerfil").classList.remove("hide");
         } else {
             Swal.fire({
                 icon: 'error',
