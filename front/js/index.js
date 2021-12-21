@@ -81,8 +81,8 @@ function loadata(formulario, modalLogin) {
                     "<div class='gridcarta'><img id ='" + id + "pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb' height='100px' width='100px' class='circle'></div>" +
                     "<div class='gridcarta'><h4 class='title' id ='" + id + "'>" + id + "</h4></div>" +
                     " <div class='gridcarta'><p>" + comentari + "</p></div>" +
-                    "<div class='gridcarta'><button id='but'" + id + " value='" + id + "'>" +
-                    "<a class='punts'>" +
+                    "<div class='gridcarta'><button id='but'" + id + " value='" + id + "'>Eliminar</button>"
+                "<a class='punts'>" +
                     "<button id='but" + id + "' value='" + id + "'>";
 
                 for (let index = 0; index < votacion; index++) {
@@ -91,9 +91,6 @@ function loadata(formulario, modalLogin) {
                 str += comentarioDiv + "</a></div></div>";;
 
                 div.innerHTML += str;
-
-
-
 
                 const ascociarnombreid = new FormData();
                 ascociarnombreid.append('idpeli', id);
@@ -341,6 +338,7 @@ document.getElementsByClassName("modal-trigger")[1].addEventListener("click", fu
 
     document.getElementsByClassName("modal-trigger")[1].hidden = true;
     document.getElementsByClassName("modal-trigger")[0].hidden = false;
+    document.getElementById("btnPerfil").classList.add("hide");
 
 })
 

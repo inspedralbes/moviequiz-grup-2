@@ -7,9 +7,6 @@ body{
 }
 
 .cuadradomaestro{
-	display: grid;
-	/*grid-template-columns: auto auto;
-	grid-template-rows: 450px 200px;*/
 	background-color: #8b7d77;
 	overflow: hidden;
 }
@@ -174,3 +171,19 @@ li {
 	height: 200px;
 	overflow-y: scroll;
 }
+
+#but {
+	text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+
+#but:hover{
+    color: #1883ba;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
