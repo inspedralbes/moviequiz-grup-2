@@ -17,6 +17,7 @@ function loadata(formulario, modalLogin) {
                 timer: 1000
             })
             modalLogin.close();
+            document.getElementById("InfoUser").classList.remove("hide");
         } else {
             Swal.fire({
                 icon: 'error',

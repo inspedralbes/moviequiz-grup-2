@@ -136,7 +136,7 @@
                 <input type="hidden" name="poster" id="poster">
             </div>
 
-            <div class="cuadradomaestro" >
+            <div class="cuadradomaestro" id="InfoUser">
                 <div class="row">
                     <div class="col s12 m12 l6 grid-index" id="grid-index-top">
                         <img id="avatar">
