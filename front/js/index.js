@@ -57,12 +57,15 @@ function loadata(formulario, modalLogin) {
 
             let jsonpelis = a.comentaris;
 
+
             for (let peli of jsonpelis) {
 
-                let id = peli.imdbID;
+                let id = peli.ImdbID;
                 let comentari = peli.comentari;
                 let votacion = peli.puntuacio;
-                console.log(id);
+
+                console.log(peli);
+
 
 
 
@@ -71,11 +74,13 @@ function loadata(formulario, modalLogin) {
                 let icono = `<i class="material-icons">favorite</i>`;
 
                 let str = "";
-                let comentarioDiv = "<div class='collecttionpelis'>" +
+                let comentarioDiv = "<div class='collecttionpelis' id ='"+ id+"container'>" +
                     "<div class='gridcarta'><img id ='" + id + "pic' src='https://images.pexels.com/photos/160933/girl-rabbit-friendship-love-160933.jpeg?h=350&auto=compress&cs=tinysrgb' height='100px' width='100px' class='circle'></div>" +
                     "<div class='gridcarta'><h4 class='title' id ='" + id + "'>" + id + "</h4></div>" +
                     " <div class='gridcarta'><p>" + comentari + "</p></div>" +
-                    "<div class='gridcarta'><a class='punts'>";
+                    "<div class='gridcarta'><button id='but'"+id+" value='"+id+"'>" +
+                    "<a class='punts'>" +
+                      "<button id='but"+id+"' value='"+id+"'>";
 
                 for (let index = 0; index < votacion; index++) {
                     comentarioDiv += icono;
@@ -89,6 +94,7 @@ function loadata(formulario, modalLogin) {
 
                 const ascociarnombreid = new FormData();
                 ascociarnombreid.append('idpeli', id);
+                console.log(id + " id de peli")
 
                 let promesapeli = fetch(`http://localhost/pruebas/moviequiz-grup-2/front/controller.php?action=buscaPeliparaUser`, {
 
@@ -197,11 +203,10 @@ document.getElementById("buttonLogin").addEventListener("click", function () {
 
 
 function divis() {
-    let divs = document.getElementsByClassName("col s6 m3");
+    let divs = document.getElementsByClassName("collecttionpelis");
     for (let div of divs) {
 
-
-        div.children[0].children[3].addEventListener("click", function () {
+        div.children[3].children[0].addEventListener("click", function () {
 
 
             Swal.fire({
@@ -218,7 +223,7 @@ function divis() {
                 }
             }).then((result) => {
                 if (result.isConfirmed) {
-                    let idpeli = div.children[0].children[3].value;
+                    let idpeli = div.children[3].children[0].value;
 
 
                     const formulario = new FormData();
@@ -232,6 +237,10 @@ function divis() {
                     }).then(function (res) {
                         return res.text()
                     })
+
+
+
+
                 }
             })
         })
