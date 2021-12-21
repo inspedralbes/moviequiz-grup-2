@@ -19,6 +19,8 @@ function loadata(formulario, modalLogin) {
                 timer: 1000
             })
             modalLogin.close();
+            document.getElementById("btnLogin").classList.add("hide");
+            document.getElementById("btnLogin-mobile").classList.add("hide");
             document.getElementById("btnRegistre").classList.add("hide");
             //document.getElementById("btnRegistre").href += "?id=" + a.id;
             document.getElementById("btnRegistre-mobile").classList.add("hide");
@@ -365,6 +367,8 @@ document.getElementById("btnlogout").addEventListener("click", function () {
     document.getElementById("btnPerfil-mobile").classList.add("hide");
     document.getElementById("btnRegistre").classList.remove("hide");
     document.getElementById("btnRegistre-mobile").classList.remove("hide");
+    document.getElementById("btnLogin").classList.remove("hide");
+    document.getElementById("btnLogin-mobile").classList.remove("hide");
 
 })
 
@@ -385,6 +389,8 @@ document.getElementById("btnlogout-mobile").addEventListener("click", function (
     document.getElementById("btnPerfil-mobile").classList.add("hide");
     document.getElementById("btnRegistre").classList.remove("hide");
     document.getElementById("btnRegistre-mobile").classList.remove("hide");
+    document.getElementById("btnLogin").classList.remove("hide");
+    document.getElementById("btnLogin-mobile").classList.remove("hide");
 
 })
 

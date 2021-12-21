@@ -215,7 +215,7 @@ window.onload = function () {
     document.getElementById("aside-ranking").classList.add("hide");
     document.getElementById("btnRegistre").classList.remove("hide");
     document.getElementById("btnRegistre-mobile").classList.remove("hide");
-    //document.getElementById("btnLogin").classList.remove("hide");
-    //document.getElementById("btnLogin-mobile").classList.remove("hide");
+    document.getElementById("btnLogin").classList.remove("hide");
+    document.getElementById("btnLogin-mobile").classList.remove("hide");
 
 }
