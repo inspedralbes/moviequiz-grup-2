@@ -54,8 +54,8 @@ CREATE TABLE `usuari` (
 -- Bolcament de dades per a la taula `usuari`
 --
 
-INSERT INTO `usuari` (`id`, `nomUsuari`, `nom`, `cognom`, `password`, `email`, `karma`) VALUES
-(1, 'SergioV', 'Sergio', 'Villacampa', 'sergio2002', 'a20servilrac@inspedralbes.cat', 0);
+INSERT INTO `usuari` (`id`, `nomUsuari`, `nom`, `cognom`, `password`, `email`,`avatar`, `karma`) VALUES
+(1, 'SergioV', 'Sergio', 'Villacampa', 'sergio2002', 'a20servilrac@inspedralbes.cat','front/img/avatar-jason.svg', 0);
 
 -- --------------------------------------------------------
 
