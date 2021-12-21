@@ -5,7 +5,6 @@
             <ul class="right hide-on-med-and-down">
                 <li><a class="modal-trigger" href="#modalLogin" id="btnLogin">Login</a></li>
                 <li><a  id="btnlogout">Logout</a></li>
-
                 <li><a class="modal-trigger " href="#modalRegistre" id="btnRegistre">Registre</a></li>
                 <li><a class="modal-trigger joc-trigger" href="#modalGame">Jugar</a></li>
                 <li><a class="material-icons prefix" href="perfil.php" id="btnPerfil">person</a></li>

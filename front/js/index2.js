@@ -74,7 +74,7 @@ function cargarRanking() {
         let ulUsuarios = document.getElementById("ranking2");
         let str = `<li class="collection-header"><h4>Ranking usuarios</h4></li>`;
         datos.usuaris.forEach(usuario => {
-            console.log(usuario)
+
             let usuarioLi = ` <li class="collection-item avatar">
                     <a href="perfil.php?id=${usuario.id}"> <img src=${usuario.avatar} alt="" class="circle "></a>
                     <span class="title">${usuario.nomUsuari}</span>
