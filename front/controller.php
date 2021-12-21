@@ -203,6 +203,9 @@ function handler($peticions)
 
 
         $id = $_POST["id"];
+        if($id=="this"){
+            $id=$_SESSION["idUsuari"];
+        }
 
         $dadespeliuser = new comentariUsuari();
 
