@@ -34,10 +34,13 @@ function cargarDatosUsuario() {
         str = "";
         let icono = `<i class="material-icons">favorite</i>`;
         datos.comentaris.forEach(comentario => {
-            let comentarioDiv = ` <li class="collection-item avatar">
+            let comentarioDiv = ` <li class="collection-item avatar" id=${comentario.ImdbID}>
                 <img src=${comentario.poster} alt="" class="circle">
                 <span class="title">${comentario.nom}</span>
                 <p>${comentario.comentari}<br></p>
+                <button  value="${comentario.ImdbID}">Eliminar pelicula</button>;
+
+                
                 <a href="#!" class="secondary-content">`;
             for (let index = 0; index < comentario.puntuacio; index++) {
                 comentarioDiv += icono;
@@ -63,6 +66,7 @@ function cargarDatosUsuario() {
 
 
     })
+    borrarPeli();
 }
 
 
@@ -86,6 +90,53 @@ function cargarRanking() {
     })
 }
 
+function borrarPeli() {
+    let divs = document.getElementsByClassName("collection-item avatar");
+    for (let div of divs) {
+
+        div.children[3].addEventListener("click", function () {
+
+
+            Swal.fire({
+                title: '¿Vols eliminar aquesta pelicula?',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Sí',
+                denyButtonText: 'No',
+                customClass: {
+                    actions: 'my-actions',
+                    cancelButton: 'order-1 right-gap',
+                    confirmButton: 'order-2',
+                    denyButton: 'order-3',
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let idpeli = div.children[3].value;
+
+
+                    const formulario = new FormData();
+                    formulario.append('idpeli', idpeli);
+
+                    fetch(`http://moviequiz2.alumnes.inspedralbes.cat/front/controller.php?action=borrarPeliUser`, {
+
+                        method: 'POST',
+                        body: formulario
+
+                    }).then(function (res) {
+                        return res.text()
+                    })
+
+                     document.getElementById(idpeli).remove();
+
+
+
+
+
+                }
+            })
+        })
+    }
+}
 
 
 
