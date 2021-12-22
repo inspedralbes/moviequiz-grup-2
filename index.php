@@ -403,7 +403,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="front/js/cercador.js"></script>
     <script src="front/js/joc.js"></script>
-    <script src="front/js/index.js"></script>
+    <script src="front/js/index2.js"></script>
 
     <script>
 
