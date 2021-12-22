@@ -16,8 +16,7 @@
     <?php
   
     session_start();
-
-    include("front/header.php");
+        include("front/header.php");
     ?>
 
     <div id="main-container">
@@ -163,7 +162,6 @@
                         </div>
                     </div>
                     <aside class="col s12 m12 l4" id="aside-ranking">
-                        <div><h5 class="center condensed light" >Classificació Global</h5><hr></div>
                         <div id="RankingGlobal">
                             <ul id="ranking" class="collection"></ul>
                         </div>
@@ -393,7 +391,39 @@
         </div>
 
 
-    
+       
+
+
+
+
+
+
+        <div class="row">
+            <div  id="datos" class="card col s12 m4"></div>
+            <div class="col s4">
+            <ul id="comentaris" class="collection"></ul>
+        </div>
+        <div class="col s4">
+            <ul id="partidas" class="collection">
+            <ul>
+        </div>
+        <div class="col s4">
+            <ul id="ranking2" class="collection with-header">
+            <ul>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
 
     <?php
     include("front/footer.php");
