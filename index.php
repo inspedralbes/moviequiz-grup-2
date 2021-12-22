@@ -400,14 +400,14 @@
 
         <div class="row">
             <div  id="datos" class="card col s12 m4"></div>
-            <div class="col s4">
+            <div class="col s6">
             <ul id="comentaris" class="collection"></ul>
         </div>
-        <div class="col s4">
+        <div class="col s6">
             <ul id="partidas" class="collection">
             <ul>
         </div>
-        <div class="col s4">
+        <div class="col s6">
             <ul id="ranking2" class="collection with-header">
             <ul>
         </div>
